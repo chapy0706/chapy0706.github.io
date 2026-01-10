@@ -1,0 +1,133 @@
+---
+import ImageReveal from '@components/react/ImageReveal';
+import { Image } from 'astro:assets';
+import warehouseImg from '@assets/photo-1566576721346-d4a3b4eaeb55.jpg';
+import fleetImg from '@assets/photo-1601584115197-04ecc0da31d7.jpg';
+import manufacturingImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
+import commandCenterImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+import distributionImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-teal-100 text-teal-800 text-sm font-semibold rounded-full">
+        Our Infrastructure
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+        World-Class <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">Facilities</span>
+      </h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        State-of-the-art infrastructure and cutting-edge technology designed for 
+        operational excellence across all our global locations.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Large featured image -->
+      <div class="md:row-span-2">
+        <ImageReveal client:load delay={0}>
+          <div class="relative h-full group overflow-hidden rounded-2xl shadow-xl">
+            <Image 
+              src={warehouseImg}
+              alt="Automated warehouse with modern robotics"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width={1200}
+              height={800}
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <h3 class="text-2xl font-bold mb-2">Automated Warehousing</h3>
+              <p class="text-gray-200">Advanced robotics and AI-powered inventory management</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+
+      <ImageReveal client:load delay={0.1}>
+        <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl">
+          <Image 
+            src={fleetImg}
+            alt="Fleet of modern delivery trucks"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            width={800}
+            height={600}
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 class="text-xl font-bold mb-1">Fleet Management</h3>
+            <p class="text-sm text-gray-200">Modern vehicles, optimized routes</p>
+          </div>
+        </div>
+      </ImageReveal>
+
+      <ImageReveal client:load delay={0.2}>
+        <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl">
+          <Image 
+            src={manufacturingImg}
+            alt="Manufacturing floor with precision equipment"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            width={800}
+            height={600}
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 class="text-xl font-bold mb-1">Manufacturing</h3>
+            <p class="text-sm text-gray-200">ISO-certified production lines</p>
+          </div>
+        </div>
+      </ImageReveal>
+
+      <div class="lg:row-start-3">        
+        <ImageReveal client:load delay={0.3}>
+          <div class="lg:col-span-2 relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl">
+            <Image 
+              src={commandCenterImg}
+              alt="Control center with real-time monitoring"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width={1200}
+              height={600}
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <h3 class="text-xl font-bold mb-1">Command Center</h3>
+              <p class="text-sm text-gray-200">Real-time visibility and control across all operations</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+      <div class="lg:row-start-2 lg:col-start-2 lg:row-span-2 lg:col-span-2">        
+        <ImageReveal client:load delay={0.4}>
+          <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl">
+            <Image 
+              src={distributionImg}
+              alt="Distribution center with sorting systems"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width={800}
+              height={600}
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <h3 class="text-xl font-bold mb-1">Distribution Hub</h3>
+              <p class="text-sm text-gray-200">High-speed sorting and cross-docking</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+    </div>
+    
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+      <a 
+        href="/facilities" 
+        class="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-linear-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 rounded-lg shadow-lg hover:shadow-xl transition-all group"
+      >
+        Tour Our Facilities
+        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+

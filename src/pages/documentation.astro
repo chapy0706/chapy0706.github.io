@@ -1,0 +1,443 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import ImageReveal from '../components/react/ImageReveal';
+import { Image } from 'astro:assets';
+
+import gettingStartedImg from '@assets/photo-1451187580459-43490279c0fa.jpg';
+import onboardingChecklistImg from '@assets/photo-1486406146926-c627a92ad1ab.jpg';
+import serviceOverviewImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
+import technicalDocumentationImg from '@assets/photo-1454165804606-c3d57bc86b40.jpg';
+import operationsManualImg from '@assets/photo-1521737604893-d14cc237f11d.jpg';
+
+import formsTemplatesImg from '@assets/photo-1450101499163-c8848c66ca85.jpg';
+import heroBgImg from '@assets/photo-1454165804606-c3d57bc86b40.jpg';
+
+// Icon SVG paths
+const iconPaths = {
+  zap: 'M13 10V3L4 14h7v7l9-11h-7z',
+  book: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M6.5 17V2H20v15H6.5z',
+  code: 'm16 18 6-6-6-6M8 6l-6 6 6 6',
+  shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  lightbulb: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 1 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+  fileText: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8'
+};
+
+const docCategories = [
+  {
+    title: 'Getting Started',
+    iconPath: iconPaths.zap,
+    image: gettingStartedImg,
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'bg-blue-50',
+    iconColor: 'text-blue-600',
+    docs: [
+      { title: 'Quick Start Guide', description: 'Get up and running in minutes with our comprehensive onboarding guide', type: 'PDF', size: '2.4 MB' },
+      { title: 'Onboarding Checklist', description: 'Everything you need to get started with our platform', type: 'PDF', size: '1.8 MB' },
+      { title: 'Service Overview', description: 'Understand our complete range of capabilities and services', type: 'PDF', size: '3.2 MB' }
+    ]
+  },
+  {
+    title: 'Operations Manual',
+    iconPath: iconPaths.book,
+    image: onboardingChecklistImg,
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'bg-purple-50',
+    iconColor: 'text-purple-600',
+    docs: [
+      { title: 'Warehousing Procedures', description: 'Complete storage and handling guidelines for all product types', type: 'PDF', size: '4.1 MB' },
+      { title: 'Manufacturing Processes', description: 'Quality control standards and production workflows', type: 'PDF', size: '5.3 MB' },
+      { title: 'Shipping Guidelines', description: 'Transportation protocols and delivery procedures', type: 'PDF', size: '3.7 MB' },
+      { title: 'Safety Protocols', description: 'Comprehensive workplace safety and compliance standards', type: 'PDF', size: '2.9 MB' }
+    ]
+  },
+  {
+    title: 'Technical Documentation',
+    iconPath: iconPaths.code,
+    image: serviceOverviewImg,
+    color: 'from-green-500 to-emerald-500',
+    bgColor: 'bg-green-50',
+    iconColor: 'text-green-600',
+    docs: [
+      { title: 'API Integration Guide', description: 'Connect your systems with our RESTful API endpoints', type: 'PDF', size: '6.2 MB' },
+      { title: 'EDI Specifications', description: 'Electronic data interchange standards and formats', type: 'PDF', size: '4.8 MB' },
+      { title: 'WMS User Manual', description: 'Complete warehouse management system documentation', type: 'PDF', size: '8.5 MB' },
+      { title: 'Tracking Portal Guide', description: 'Real-time shipment tracking and monitoring tools', type: 'PDF', size: '3.1 MB' }
+    ]
+  },
+  {
+    title: 'Compliance & Certifications',
+    iconPath: iconPaths.shield,
+    image: technicalDocumentationImg,
+    color: 'from-amber-500 to-orange-500',
+    bgColor: 'bg-amber-50',
+    iconColor: 'text-amber-600',
+    docs: [
+      { title: 'ISO 9001 Certificate', description: 'Quality management system certification documentation', type: 'PDF', size: '1.2 MB' },
+      { title: 'FDA Registration', description: 'Food and drug administration compliance records', type: 'PDF', size: '2.3 MB' },
+      { title: 'C-TPAT Certification', description: 'Customs trade partnership against terrorism', type: 'PDF', size: '1.8 MB' },
+      { title: 'Safety Data Sheets', description: 'Comprehensive material safety information database', type: 'PDF', size: '5.4 MB' }
+    ]
+  },
+  {
+    title: 'Best Practices',
+    iconPath: iconPaths.lightbulb,
+    image: operationsManualImg,
+    color: 'from-indigo-500 to-blue-500',
+    bgColor: 'bg-indigo-50',
+    iconColor: 'text-indigo-600',
+    docs: [
+      { title: 'Inventory Optimization', description: 'Strategies to maximize efficiency and reduce costs', type: 'PDF', size: '3.6 MB' },
+      { title: 'Packaging Guidelines', description: 'Best practices for product protection and presentation', type: 'PDF', size: '2.8 MB' },
+      { title: 'Supply Chain Tips', description: 'Proven methods to streamline your operations', type: 'PDF', size: '4.2 MB' },
+      { title: 'Sustainability Guide', description: 'Eco-friendly logistics solutions and practices', type: 'PDF', size: '3.9 MB' }
+    ]
+  },
+  {
+    title: 'Forms & Templates',
+    iconPath: iconPaths.fileText,
+    image: formsTemplatesImg,
+    color: 'from-teal-500 to-cyan-500',
+    bgColor: 'bg-teal-50',
+    iconColor: 'text-teal-600',
+    docs: [
+      { title: 'Bill of Lading Template', description: 'Standard shipping documentation template', type: 'DOC', size: '0.5 MB' },
+      { title: 'Packing List Form', description: 'Itemized shipment details and inventory form', type: 'XLS', size: '0.3 MB' },
+      { title: 'Inspection Checklist', description: 'Quality control and verification template', type: 'DOC', size: '0.4 MB' },
+      { title: 'Incident Report Form', description: 'Standardized issue reporting and tracking form', type: 'PDF', size: '0.6 MB' }
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'How do I access the customer portal?',
+    answer: 'Contact your account manager to receive login credentials for our secure customer portal. Once registered, you can track shipments, view inventory, generate reports, and manage your account 24/7 from anywhere in the world.'
+  },
+  {
+    question: 'What file formats are supported for EDI?',
+    answer: 'We support all standard EDI formats including X12 (850, 856, 810, 997, etc.), EDIFACT, and custom XML formats. Our integration team can work with your existing systems to ensure seamless data exchange and compatibility.'
+  },
+  {
+    question: 'Where can I find safety data sheets (SDS)?',
+    answer: 'All safety data sheets are available in the Compliance & Certifications section of this documentation center. You can also request specific SDS documents directly from your account manager or through our support portal.'
+  },
+  {
+    question: 'How often is documentation updated?',
+    answer: 'Documentation is reviewed and updated quarterly, or more frequently as needed for regulatory changes, system updates, or process improvements. You will be notified of any critical updates via email and through the customer portal.'
+  },
+  {
+    question: 'Can I download multiple documents at once?',
+    answer: 'Yes, you can select multiple documents and download them as a ZIP archive. Simply use the bulk selection feature available in each category section to download multiple files simultaneously.'
+  },
+  {
+    question: 'Is there a mobile app for accessing documentation?',
+    answer: 'Yes, our mobile application is available for both iOS and Android devices. You can download it from the App Store or Google Play Store. The app provides full access to all documentation and features offline reading capabilities.'
+  }
+];
+---
+
+<BaseLayout title="Documentation - Resources & Guides">
+  <!-- Hero Section with Professional Background -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <Image 
+        src={heroBgImg}
+        alt="Professional documentation and resources"
+        class="w-full h-full object-cover"
+        width={2070}
+        height={1380}
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/85 to-slate-900/70"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
+    </div>
+
+    <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-4 py-2 mb-6 bg-linear-to-r from-blue-600 to-teal-600 text-white text-sm font-semibold rounded-full shadow-lg backdrop-blur-sm">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Comprehensive Resource Center
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fadeInUp">
+          Documentation
+          <span class="block text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-teal-400 to-blue-400 mt-2">
+            Center
+          </span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto leading-relaxed animate-fadeInUp" style="animation-delay: 0.1s">
+          Access comprehensive guides, technical documentation, compliance certificates, 
+          and resources to optimize your logistics operations.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-300 animate-fadeInUp" style="animation-delay: 0.2s">
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mr-2 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>100+ Documents</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mr-2 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Regular Updates</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mr-2 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>24/7 Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <Section background="gray">
+    <div class="max-w-4xl mx-auto mb-16">
+      <Card class="p-6 shadow-xl border-2 border-gray-100">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="flex-1 relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search documentation, guides, and resources..."
+              class="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg"
+            />
+          </div>
+          <button class="bg-linear-to-r from-blue-600 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Search
+          </button>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-sm text-gray-500">Quick links:</span>
+          <a href="#getting-started" class="text-sm text-blue-600 hover:text-blue-800 font-medium">Getting Started</a>
+          <span class="text-gray-300">•</span>
+          <a href="#api" class="text-sm text-blue-600 hover:text-blue-800 font-medium">API Docs</a>
+          <span class="text-gray-300">•</span>
+          <a href="#compliance" class="text-sm text-blue-600 hover:text-blue-800 font-medium">Compliance</a>
+          <span class="text-gray-300">•</span>
+          <a href="#faq" class="text-sm text-blue-600 hover:text-blue-800 font-medium">FAQ</a>
+        </div>
+      </Card>
+    </div>
+
+    <!-- Documentation Categories -->
+    <div class="space-y-20">
+      {docCategories.map((category, index) => {
+        const categoryId = category.title.toLowerCase().replace(/\s+/g, '-');
+        return (
+        <div class="animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} id={categoryId}>
+          <!-- Category Header with Image -->
+          <div class="mb-8">
+            <ImageReveal client:load delay={index * 0.1}>
+              <div class="relative h-64 rounded-2xl overflow-hidden shadow-2xl group">
+                <Image 
+                  src={category.image}
+                  alt={category.title}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  width={2070}
+                  height={1380}
+                />
+                <div class={`absolute inset-0 bg-linear-to-r ${category.color} opacity-80`}></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-center text-white">
+                    <div class={`w-20 h-20 ${category.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl backdrop-blur-sm bg-white/20 border-2 border-white/30`}>
+                      <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={`${category.iconPath}`} />
+                      </svg>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-2">{category.title}</h2>
+                    <p class="text-lg text-white/90">{category.docs.length} Documents Available</p>
+                  </div>
+                </div>
+              </div>
+            </ImageReveal>
+          </div>
+            
+            <!-- Documents Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {category.docs.map((doc, docIndex) => (
+                <ImageReveal client:load delay={index * 0.1 + docIndex * 0.05}>
+                  <Card hover class="cursor-pointer group h-full flex flex-col">
+                    <div class="flex-1">
+                      <div class="flex items-start justify-between mb-4">
+                        <div class={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center ${category.iconColor} shadow-md group-hover:scale-110 transition-transform`}>
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                        <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${category.bgColor} ${category.iconColor} border border-current/20`}>
+                          {doc.type}
+                        </span>
+                      </div>
+                      
+                      <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                        {doc.title}
+                      </h3>
+                      <p class="text-sm text-gray-600 mb-4 leading-relaxed">{doc.description}</p>
+                      
+                      <div class="flex items-center text-xs text-gray-500 mb-4">
+                        <span>Size: {doc.size}</span>
+                      </div>
+                    </div>
+                    
+                    <button class={`w-full mt-auto flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-white bg-linear-to-r ${category.color} hover:shadow-lg transition-all group-hover:scale-105`}>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      <span>Download</span>
+                    </button>
+                  </Card>
+                </ImageReveal>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section background="white" id="faq">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+        Support
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Frequently Asked <span class="gradient-text">Questions</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Quick answers to common questions about our documentation and resources.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <ImageReveal client:load delay={index * 0.05}>
+          <Card hover class="animate-fadeInUp border-2 border-gray-100 hover:border-blue-200 transition-colors" style={`animation-delay: ${index * 0.05}s`}>
+            <details class="group">
+              <summary class="flex items-center justify-between cursor-pointer list-none py-2">
+                <h3 class="text-lg font-semibold text-gray-900 pr-4 group-hover:text-blue-600 transition-colors">
+                  {faq.question}
+                </h3>
+                <div class="shrink-0">
+                  <svg class="w-5 h-5 text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </summary>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </details>
+          </Card>
+        </ImageReveal>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Help Section -->
+  <Section background="gradient">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Need More <span class="gradient-text">Help?</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Our team is here to assist you with any questions or support you need.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ImageReveal client:load delay={0}>
+          <Card hover class="text-center h-full">
+            <div class="w-20 h-20 bg-linear-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Need Support?</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              Our support team is available 24/7 to help with any questions or technical issues you may encounter.
+            </p>
+            <a href="/rfq" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold group">
+              Contact Support
+              <svg class="w-4 h-4 -rotate-90 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </Card>
+        </ImageReveal>
+
+        <ImageReveal client:load delay={0.1}>
+          <Card hover class="text-center h-full">
+            <div class="w-20 h-20 bg-linear-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Training Resources</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              Access comprehensive video tutorials, webinars, and training materials to master our platform.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold group">
+              View Training
+              <svg class="w-4 h-4 -rotate-90 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </Card>
+        </ImageReveal>
+
+        <ImageReveal client:load delay={0.2}>
+          <Card hover class="text-center h-full">
+            <div class="w-20 h-20 bg-linear-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Stay Updated</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              Subscribe to receive notifications about new documentation, updates, and important announcements.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold group">
+              Subscribe
+              <svg class="w-4 h-4 -rotate-90 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </Card>
+        </ImageReveal>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    margin-bottom: 0.5rem;
+  }
+</style>

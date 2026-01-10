@@ -1,0 +1,454 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+import { Image } from 'astro:assets';
+import ImageReveal from '../components/react/ImageReveal';
+import FacilityStats from '../components/react/FacilityStats';
+
+import northAmericanHubImg from '@assets/photo-1566576721346-d4a3b4eaeb55.jpg';
+import westCoastDistributionImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
+import eastCoastOperationsImg from '@assets/photo-1553413077-190dd305871c.jpg';
+import southernManufacturingCenterImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
+import midwestColdStorageImg from '@assets/photo-1601584115197-04ecc0da31d7.jpg';
+import southeastDistributionImg from '@assets/photo-1558618666-fcd25c85cd64.jpg';
+
+import ctaBgImg from '@assets/photo-1565043589221-1a6fd9ae45c7.jpg';
+
+const facilities = [
+  {
+    name: 'North American Hub',
+    location: 'Chicago, Illinois',
+    address: '1234 Industrial Boulevard, Chicago, IL 60609',
+    type: 'Distribution & Manufacturing',
+    size: '500,000 sq ft',
+    image: northAmericanHubImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>`,
+    phone: '+1 (312) 555-0100',
+    email: 'chicago@astroflow.com',
+    manager: 'Sarah Johnson',
+    hours: '24/7 Operations',
+    features: [
+      'Automated warehouse systems',
+      'Climate-controlled storage',
+      'CNC machining center',
+      'Rail and truck access',
+      '24/7 operations'
+    ],
+    certifications: ['ISO 9001', 'ISO 14001', 'OSHA Compliant']
+  },
+  {
+    name: 'West Coast Distribution',
+    location: 'Los Angeles, California',
+    address: '5678 Portside Drive, Los Angeles, CA 90040',
+    type: 'Port Logistics & Warehousing',
+    size: '350,000 sq ft',
+    image: westCoastDistributionImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>`,
+    phone: '+1 (323) 555-0200',
+    email: 'losangeles@astroflow.com',
+    manager: 'Michael Chen',
+    hours: 'Mon-Sun: 6:00 AM - 10:00 PM',
+    features: [
+      'Port-adjacent location',
+      'Cross-docking capabilities',
+      'Bonded warehouse',
+      'Container storage',
+      'LTL/FTL consolidation'
+    ],
+    certifications: ['C-TPAT', 'ISO 9001', 'FDA Registered']
+  },
+  {
+    name: 'East Coast Operations',
+    location: 'Newark, New Jersey',
+    address: '9012 Commerce Way, Newark, NJ 07114',
+    type: 'Distribution & Value-Added Services',
+    size: '400,000 sq ft',
+    image: eastCoastOperationsImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>`,
+    phone: '+1 (973) 555-0300',
+    email: 'newark@astroflow.com',
+    manager: 'David Rodriguez',
+    hours: 'Mon-Fri: 7:00 AM - 8:00 PM, Sat: 8:00 AM - 4:00 PM',
+    features: [
+      'E-commerce fulfillment',
+      'Kitting and assembly',
+      'Returns processing',
+      'Same-day shipping',
+      'Multi-client operations'
+    ],
+    certifications: ['ISO 9001', 'ISTA Certified', 'TSA Approved']
+  },
+  {
+    name: 'Southern Manufacturing Center',
+    location: 'Houston, Texas',
+    address: '3456 Manufacturing Parkway, Houston, TX 77001',
+    type: 'Manufacturing & Assembly',
+    size: '300,000 sq ft',
+    image: southernManufacturingCenterImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+    </svg>`,
+    phone: '+1 (713) 555-0400',
+    email: 'houston@astroflow.com',
+    manager: 'Jennifer Martinez',
+    hours: 'Mon-Fri: 6:00 AM - 6:00 PM',
+    features: [
+      'Precision manufacturing',
+      'Quality control lab',
+      'Assembly lines',
+      'Prototype development',
+      'Tool & die shop'
+    ],
+    certifications: ['ISO 9001', 'AS9100', 'ITAR Registered']
+  },
+  {
+    name: 'Midwest Cold Storage',
+    location: 'Minneapolis, Minnesota',
+    address: '7890 Cold Chain Avenue, Minneapolis, MN 55401',
+    type: 'Refrigerated & Frozen Storage',
+    size: '250,000 sq ft',
+    image: midwestColdStorageImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>`,
+    phone: '+1 (612) 555-0500',
+    email: 'minneapolis@astroflow.com',
+    manager: 'Robert Anderson',
+    hours: '24/7 Operations',
+    features: [
+      'Temperature zones: -20°F to 60°F',
+      'HACCP compliant',
+      'Blast freezing',
+      'Food-grade facility',
+      'Lot tracking systems'
+    ],
+    certifications: ['FSMA', 'SQF Level 3', 'FDA Registered']
+  },
+  {
+    name: 'Southeast Distribution',
+    location: 'Atlanta, Georgia',
+    address: '2345 Logistics Boulevard, Atlanta, GA 30301',
+    type: 'Distribution & Transportation Hub',
+    size: '450,000 sq ft',
+    image: southeastDistributionImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+    </svg>`,
+    phone: '+1 (404) 555-0600',
+    email: 'atlanta@astroflow.com',
+    manager: 'Amanda Williams',
+    hours: 'Mon-Sun: 5:00 AM - 11:00 PM',
+    features: [
+      'Strategic location',
+      'Cross-docking',
+      'Regional distribution',
+      'Parcel integration',
+      'Transloading services'
+    ],
+    certifications: ['ISO 9001', 'C-TPAT', 'OSHA Compliant']
+  }
+];
+
+const facilityStandards = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>`,
+    title: 'Security',
+    description: '24/7 surveillance, access control, and security personnel at all locations',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    </svg>`,
+    title: 'Quality Control',
+    description: 'Rigorous inspection processes and quality management systems',
+    color: 'from-teal-500 to-teal-600'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>`,
+    title: 'Efficiency',
+    description: 'Optimized layouts and automated systems for maximum throughput',
+    color: 'from-amber-500 to-amber-600'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`,
+    title: 'Sustainability',
+    description: 'Energy-efficient operations and environmental management programs',
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>`,
+    title: 'Technology',
+    description: 'Real-time tracking, WMS, and automated reporting systems',
+    color: 'from-purple-500 to-purple-600'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>`,
+    title: 'Expert Team',
+    description: 'Trained professionals dedicated to operational excellence',
+    color: 'from-pink-500 to-pink-600'
+  }
+];
+---
+
+<BaseLayout title="Our Facilities - AstroFlow">
+  <!-- Hero Section -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+      <Image 
+        src= {ctaBgImg}
+        alt="Modern facilities and infrastructure"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/50"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-4 py-2 mb-6 bg-linear-to-r from-blue-600 to-teal-600 text-white text-sm font-semibold rounded-full shadow-lg">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+          </svg>
+          Our Infrastructure
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          Our <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-teal-400 to-blue-400">
+            Facilities
+          </span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Strategically located facilities across North America equipped with state-of-the-art 
+          technology and industry certifications.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <Section background="white">
+    <FacilityStats client:load />
+  </Section>
+
+  <!-- Facilities Grid -->
+  <Section background="gray">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-primary-100 text-primary-800 text-sm font-semibold rounded-full">
+        Our Locations
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Strategic <span class="gradient-text">Facilities</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Each facility is designed to meet specific industry needs with cutting-edge infrastructure and capabilities.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {facilities.map((facility, index) => (
+        <ImageReveal client:load delay={index * 0.1}>
+          <Card hover class="overflow-hidden animate-fadeInUp group" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- Facility Image -->
+            <div class="relative h-64 overflow-hidden">
+              <Image 
+                src={facility.image}
+                alt={facility.name}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-gray-900/80 via-gray-900/40 to-transparent"></div>
+              <div class="absolute top-4 right-4">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30" set:html={facility.icon}></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-1">{facility.name}</h3>
+                <p class="text-sm text-gray-200">{facility.type}</p>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-5">
+              <!-- Location & Size -->
+              <div class="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {facility.location}
+                </span>
+                <span class="text-gray-300">•</span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3z" />
+                  </svg>
+                  {facility.size}
+                </span>
+              </div>
+
+              <!-- Features -->
+              <div>
+                <h4 class="text-sm font-semibold text-gray-700 uppercase mb-3 tracking-wide flex items-center gap-2">
+                  <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Key Features
+                </h4>
+                <ul class="grid grid-cols-1 gap-2.5">
+                  {facility.features.map((feature) => (
+                    <li class="flex items-start space-x-2.5 text-sm">
+                      <svg class="w-4 h-4 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Certifications -->
+              <div class="border-t border-gray-200 pt-4">
+                <h4 class="text-sm font-semibold text-gray-700 uppercase mb-3 tracking-wide flex items-center gap-2">
+                  <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                  Certifications
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  {facility.certifications.map((cert) => (
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-linear-to-r from-primary-100 to-secondary-100 text-primary-800 border border-primary-200">
+                      {cert}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </ImageReveal>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Map Section -->
+  <Section background="white">
+    <Card class="overflow-hidden">
+      <div class="text-center mb-8">
+        <div class="inline-block px-4 py-2 mb-4 bg-primary-100 text-primary-800 text-sm font-semibold rounded-full">
+          Network Coverage
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Strategic <span class="gradient-text">Coverage</span>
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Our facilities are strategically positioned to provide optimal coverage across North America
+        </p>
+      </div>
+      
+      <!-- Map Placeholder -->
+      <div class="relative aspect-video bg-linear-to-br from-primary-50 via-white to-secondary-50 rounded-xl overflow-hidden border border-gray-200">
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+          <div class="text-center">
+            <svg class="w-24 h-24 mx-auto text-primary-300 mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-gray-600 font-semibold text-lg mb-2">Interactive Map</p>
+            <p class="text-sm text-gray-400">Contact us for detailed facility information and tours</p>
+          </div>
+        </div>
+        
+        <!-- Decorative location markers -->
+        <div class="absolute inset-0 opacity-40">
+          <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg"></div>
+          <div class="absolute top-1/3 left-1/2 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg" style="animation-delay: 0.2s"></div>
+          <div class="absolute top-1/2 right-1/3 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg" style="animation-delay: 0.4s"></div>
+          <div class="absolute bottom-1/3 left-1/3 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg" style="animation-delay: 0.6s"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg" style="animation-delay: 0.8s"></div>
+          <div class="absolute top-2/3 right-1/4 w-4 h-4 bg-primary-600 rounded-full animate-pulse shadow-lg" style="animation-delay: 1s"></div>
+        </div>
+      </div>
+    </Card>
+  </Section>
+
+  <!-- Facility Standards -->
+  <Section background="gradient">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-white/80 backdrop-blur-sm text-primary-800 text-sm font-semibold rounded-full border border-primary-200">
+        Our Standards
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Facility <span class="gradient-text">Standards</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Every facility meets our rigorous standards for safety, security, and operational excellence.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {facilityStandards.map((feature, index) => (
+        <Card hover class="text-center animate-fadeInUp group" style={`animation-delay: ${index * 0.1}s`}>
+          <div class={`w-16 h-16 mx-auto mb-4 rounded-xl bg-linear-to-br ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`} set:html={feature.icon}></div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <Image 
+        src={ctaBgImg}
+        alt="Modern facilities and infrastructure"
+        class="w-full h-full object-cover"
+        width={2070}
+        height={1380}
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-blue-900/95 to-teal-900/95"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <div class="inline-block px-4 py-2 mb-6 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold rounded-full">
+          Get Started Today
+        </div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Ready to Visit Our <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-teal-400">Facilities</span>?
+        </h2>
+        <p class="text-xl md:text-2xl text-slate-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Schedule a tour to see our operations firsthand and discuss how we can meet your needs.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button href="/rfq" size="lg" class="bg-blue-600! hover:bg-blue-700! text-white! shadow-2xl!">
+            Request a Quote
+          </Button>
+          <Button href="/capabilities" size="lg" variant="outline" class="border-2! border-white! text-white! hover:bg-white/10! shadow-2xl!">
+            View Capabilities
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

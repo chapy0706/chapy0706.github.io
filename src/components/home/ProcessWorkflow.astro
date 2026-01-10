@@ -1,0 +1,152 @@
+---
+import { Image } from 'astro:assets';
+
+import discoveryImg from '@assets/photo-1454165804606-c3d57bc86b40.jpg';
+import implementationImg from '@assets/photo-1522071820081-009f0129c71c.jpg';
+import optimizationImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+import supportGrowthImg from '@assets/photo-1552664730-d307ca884978.jpg';
+
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  alt: string;
+  hoverBorder: string;
+  gradient: string;
+  textColor: string;
+}
+
+const steps = [
+  {
+    number: 1,
+    title: "Discovery & Planning",
+    description: "We analyze your current operations, identify pain points, and design a customized solution that aligns with your business goals.",
+    image: discoveryImg,
+    alt: "Business planning and strategy",
+    hoverBorder: "hover:border-blue-500",
+    gradient: "from-blue-600/90",
+    textColor: "text-blue-600"
+  },
+  {
+    number: 2,
+    title: "Implementation",
+    description: "Our expert team sets up your infrastructure, integrates systems, and ensures seamless onboarding with minimal disruption.",
+    image: implementationImg,
+    alt: "Team collaboration and implementation",
+    hoverBorder: "hover:border-teal-500",
+    gradient: "from-teal-600/90",
+    textColor: "text-teal-700"
+  },
+  {
+    number: 3,
+    title: "Optimization",
+    description: "Continuous monitoring and data-driven improvements ensure your operations become more efficient and cost-effective over time.",
+    image: optimizationImg,
+    alt: "Data analytics and optimization",
+    hoverBorder: "hover:border-blue-500",
+    gradient: "from-blue-600/90",
+    textColor: "text-blue-600"
+  },
+  {
+    number: 4,
+    title: "Support & Growth",
+    description: "Dedicated account management and 24/7 support help you scale operations and adapt to changing market demands.",
+    image: supportGrowthImg,
+    alt: "Customer support and growth",
+    hoverBorder: "hover:border-teal-500",
+    gradient: "from-teal-600/90",
+    textColor: "text-teal-700"
+  }
+];
+
+const arrowPath = "M9 5l7 7-7 7";
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-teal-100 text-teal-800 text-sm font-semibold rounded-full">
+        How We Work
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+        Our Proven <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">Process</span>
+      </h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        A streamlined approach designed to deliver results from day one, with continuous optimization and support.
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Connection Line (hidden on mobile) -->
+      <div class="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-linear-to-r from-blue-200 via-teal-200 to-blue-200"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        {steps.map((step) => (
+          <div class="relative h-full">
+            <div class={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border-2 border-slate-100 ${step.hoverBorder} relative z-10 flex flex-col h-full`}>
+              <div class="relative h-48 overflow-hidden">
+                <Image 
+                  src={step.image}
+                  alt={step.alt}
+                  class="w-full h-full object-cover"
+                  width={800}
+                  height={400}
+                />
+                <div class={`absolute inset-0 bg-linear-to-t ${step.gradient} to-transparent`}></div>
+                <div class={`absolute top-4 right-4 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center ${step.textColor} font-bold text-xl shadow-lg`}>
+                  {step.number}
+                </div>
+              </div>
+              <div class="p-8 flex flex-col flex-1">
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+                <p class="text-slate-600 leading-relaxed flex-1">
+                  {step.description}
+                </p>
+                <div class={`mt-6 flex items-center text-sm ${step.textColor} font-semibold`}>
+                  Learn more
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={arrowPath} />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Key Benefits -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold text-slate-900 mb-2">Fast Deployment</h4>
+        <p class="text-slate-600">Get up and running in weeks, not months</p>
+      </div>
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-100 text-teal-600 mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold text-slate-900 mb-2">Proven Results</h4>
+        <p class="text-slate-600">Measurable improvements from day one</p>
+      </div>
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold text-slate-900 mb-2">24/7 Support</h4>
+        <p class="text-slate-600">Always available when you need us</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+

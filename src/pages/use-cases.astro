@@ -1,0 +1,256 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Section from '@components/ui/Section.astro';
+import Button from '@components/ui/Button.astro';
+import TestimonialCard from '@components/ui/TestimonialCard.astro';
+import UseCaseTabs from '@components/react/UseCaseTabs';
+import StatsCards from '@components/react/StatsCards';
+import { Image } from 'astro:assets';
+
+import ecommerceImg from '@assets/photo-1607082349566-187342175e2f.jpg';
+import healthcareImg from '@assets/photo-1587854692152-cbe660dbde88.jpg';
+import automotiveImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
+import technologyImg from '@assets/photo-1518770660439-4636190af475.jpg';
+import consumerGoodsImg from '@assets/photo-1558618666-fcd25c85cd64.jpg';
+import foodBeverageImg from '@assets/photo-1542838132-92c53300491e.jpg';
+
+import testimonial1Img from '@assets/photo-1494790108377-be9c29b29330.jpg';
+import testimonial2Img from '@assets/photo-1559839734-2b71ea197ec2.jpg';
+import testimonial3Img from '@assets/photo-1507003211169-0a1dd7228f2d.jpg';
+
+import heroBgImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+import ctaBgImg from '@assets/photo-1553413077-190dd305871c.jpg';
+
+const useCases:any[] = [
+  {
+    industry: 'E-Commerce & Retail',
+    iconName: 'ShoppingCart',
+    image: ecommerceImg,
+    challenge: 'Managing high-volume orders during peak seasons with tight delivery windows and customer expectations for fast, accurate fulfillment.',
+    solution: 'Scalable warehousing with automated order processing, same-day shipping capabilities, and integrated returns management.',
+    results: [
+      '40% reduction in order processing time',
+      '99.5% order accuracy rate',
+      '2-day average delivery time',
+      '95% customer satisfaction score'
+    ]
+  },
+  {
+    industry: 'Healthcare & Pharmaceuticals',
+    iconName: 'Heart',
+    image: healthcareImg,
+    challenge: 'Maintaining strict temperature controls, regulatory compliance, and chain of custody for sensitive medical products and pharmaceuticals.',
+    solution: 'FDA-compliant climate-controlled facilities with validated cold chain logistics, real-time monitoring, and full audit trails.',
+    results: [
+      '100% regulatory compliance',
+      'Zero temperature excursions',
+      'Complete lot traceability',
+      'Reduced waste by 30%'
+    ]
+  },
+  {
+    industry: 'Automotive & Manufacturing',
+    iconName: 'Car',
+    image: automotiveImg,
+    challenge: 'Coordinating just-in-time delivery of components across multiple manufacturing plants while minimizing inventory holding costs.',
+    solution: 'Strategic distribution centers near production facilities, milk-run logistics, and predictive inventory management.',
+    results: [
+      '50% reduction in inventory costs',
+      '99.8% on-time delivery',
+      'Zero production line stoppages',
+      'Improved cash flow'
+    ]
+  },
+  {
+    industry: 'Technology & Electronics',
+    iconName: 'Laptop',
+    image: technologyImg,
+    challenge: 'Secure handling of high-value electronics, efficient reverse logistics for returns, and rapid product lifecycle management.',
+    solution: 'ESD-protected environments, secure chain of custody, streamlined returns processing, and asset recovery programs.',
+    results: [
+      'Zero security incidents',
+      '48-hour return processing',
+      '85% asset recovery rate',
+      'Reduced shrinkage by 60%'
+    ]
+  },
+  {
+    industry: 'Consumer Goods',
+    iconName: 'Package',
+    image: consumerGoodsImg,
+    challenge: 'Managing diverse product portfolios with varying shelf lives, promotional campaigns, and seasonal demand fluctuations.',
+    solution: 'Multi-client warehousing, FEFO inventory management, promotional labeling services, and demand-driven distribution.',
+    results: [
+      '35% improvement in stock turnover',
+      'Reduced spoilage by 45%',
+      '3-day promo turnaround time',
+      'Flexible capacity scaling'
+    ]
+  },
+  {
+    industry: 'Food & Beverage',
+    iconName: 'UtensilsCrossed',
+    image: foodBeverageImg,
+    challenge: 'Maintaining food safety standards, managing perishables, and ensuring compliance with HACCP and FDA regulations.',
+    solution: 'FSMA-compliant facilities, temperature-zoned warehousing, lot tracking, and specialized refrigerated transport.',
+    results: [
+      '100% food safety compliance',
+      '2% product loss rate',
+      'Full batch recall capability',
+      'Extended product freshness'
+    ]
+  }
+];
+
+const testimonials:any[] = [
+  {
+    quote: "AstroFlow's automated warehousing solution transformed our e-commerce operations. We reduced order processing time by 40% and achieved 99.5% accuracy. Their same-day shipping capabilities helped us compete with industry giants.",
+    name: "Sarah Mitchell",
+    role: "VP Operations, TechRetail",
+    image: testimonial1Img,
+    ringColor: "ring-blue-200"
+  },
+  {
+    quote: "Their FDA-compliant cold chain logistics are exceptional. We've maintained 100% regulatory compliance with zero temperature excursions. The real-time monitoring and complete audit trails give us complete confidence.",
+    name: "Dr. James Chen",
+    role: "Director, PharmaLogistics",
+    image: testimonial2Img,
+    ringColor: "ring-teal-200"
+  },
+  {
+    quote: "Just-in-time delivery with 99.8% on-time performance and zero production stoppages. Their strategic distribution centers and predictive inventory management cut our inventory costs by 50%.",
+    name: "Robert Johnson",
+    role: "Operations Manager, AutoParts Co.",
+    image: testimonial3Img,
+    ringColor: "ring-blue-200"
+  }
+];
+---
+
+<BaseLayout title="Use Cases - Industry Solutions">
+  <!-- Hero Section -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+      <Image 
+        src={heroBgImg}
+        alt="Industry solutions and use cases"
+        class="w-full h-full object-cover"
+        width={2070}
+        height={1380}
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/50"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-4 py-2 mb-6 bg-linear-to-r from-blue-600 to-teal-600 text-white text-sm font-semibold rounded-full shadow-lg">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          Industry Solutions
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          Industry <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-teal-400 to-blue-400">
+            Use Cases
+          </span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Real-world solutions delivering measurable results across diverse industries. 
+          See how we've transformed operations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases with Tabs -->
+  <Section background="gray">
+    <UseCaseTabs useCases={useCases} client:load />
+  </Section>
+
+  <!-- Success Metrics -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Proven <span class="gradient-text">Results</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Our track record speaks for itself with measurable improvements across key performance indicators.
+      </p>
+    </div>
+
+    <StatsCards 
+      stats={[
+        { value: '99.8%', label: 'On-Time Delivery', iconName: 'CheckCircle2' },
+        { value: '45%', label: 'Average Cost Savings', iconName: 'TrendingDown' },
+        { value: '500+', label: 'Satisfied Clients', iconName: 'Users' },
+        { value: '50M+', label: 'Units Shipped', iconName: 'Package' }
+      ]}
+      client:load 
+    />
+  </Section>
+
+  <!-- Testimonials Section -->
+  <Section background="gray">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+        Client Success Stories
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Trusted by <span class="gradient-text">Industry Leaders</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        See how we've helped companies across different industries transform their operations and achieve remarkable results.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <TestimonialCard testimonial={testimonial} />
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <Image 
+        src={ctaBgImg}
+        alt="Let's work together"
+        class="w-full h-full object-cover"
+        width={2070}
+        height={1380}
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-blue-900/95 to-teal-900/95"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <div class="inline-block px-4 py-2 mb-6 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold rounded-full">
+          Get Started Today
+        </div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Ready to Transform Your <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-teal-400">Operations</span>?
+        </h2>
+        <p class="text-xl md:text-2xl text-slate-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Every industry has unique requirements. Let us create a customized solution for your business.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button href="/rfq" size="lg" class="bg-blue-600! hover:bg-blue-700! text-white! shadow-2xl!">
+            Request a Quote
+          </Button>
+          <Button href="/capabilities" size="lg" variant="outline" class="border-2! border-white! text-white! hover:bg-white/10! shadow-2xl!">
+            View Capabilities
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

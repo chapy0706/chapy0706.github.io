@@ -1,0 +1,36 @@
+---
+import FeatureShowcase from '../react/FeatureShowcase';
+---
+
+<section class="py-24 bg-slate-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+        Our Services
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+        Comprehensive <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">Solutions</span>
+      </h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        End-to-end logistics and manufacturing services powered by cutting-edge technology 
+        and tailored to your unique business needs.
+      </p>
+    </div>
+
+    <FeatureShowcase client:load />
+    
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+      <a 
+        href="/capabilities" 
+        class="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg shadow-lg hover:shadow-xl transition-all group"
+      >
+        Explore All Capabilities
+        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+

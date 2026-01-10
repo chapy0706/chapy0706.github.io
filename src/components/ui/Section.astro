@@ -1,0 +1,28 @@
+---
+interface Props {
+  class?: string;
+  background?: 'white' | 'gray' | 'gradient';
+  id?: string;
+}
+
+const { 
+  class: className = '',
+  background = 'white',
+  id
+} = Astro.props;
+
+const bgStyles = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  gradient: 'bg-linear-to-br from-primary-50 via-white to-secondary-50'
+};
+
+const classes = `py-16 lg:py-24 ${bgStyles[background]} ${className}`;
+---
+
+<section class={classes} id={id}>
+  <div class="container mx-auto">
+    <slot />
+  </div>
+</section>
+

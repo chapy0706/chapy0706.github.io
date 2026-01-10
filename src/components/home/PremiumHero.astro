@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../ui/Button.astro';
+import heroBgImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
+---
+
+<section class="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0">
+    <Image 
+      src={heroBgImg}
+      alt="Modern logistics warehouse with advanced automation"
+      class="w-full h-full object-cover"
+      width={2070}
+      height={1380}
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl">
+      <div class="inline-flex items-center px-4 py-2 mb-6 bg-linear-to-r from-blue-600 to-teal-600 text-white text-sm font-semibold rounded-full shadow-lg">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+        </svg>
+        Industry Leading Logistics Solutions
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+        Optimize Your Operations with
+        <span class="block text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-teal-400 to-blue-400 mt-2">
+          AstroFlow
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-2xl leading-relaxed">
+        Transform your supply chain with our integrated logistics and manufacturing solutions. 
+        From warehousing to delivery, we power your success with cutting-edge technology.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 mb-12">
+        <Button href="/rfq" size="lg" class="bg-blue-600! hover:bg-blue-700! text-white! shadow-2xl!">
+          Request a Quote
+        </Button>
+        <Button href="/capabilities" size="lg" variant="outline" class="border-2! border-white! text-white! hover:bg-white/10! shadow-2xl!">
+          Explore Solutions
+        </Button>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/20">
+        <div class="group">
+          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">500+</div>
+          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Global Clients</div>
+        </div>
+        <div class="group">
+          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">50M+</div>
+          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Units Shipped</div>
+        </div>
+        <div class="group">
+          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">99.9%</div>
+          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">On-Time</div>
+        </div>
+        <div class="group">
+          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">15+</div>
+          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Facilities</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
+
