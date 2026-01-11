@@ -1,5 +1,12 @@
 ---
+// src/pages/posts/[...slug].astro
+import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import Layout from "../../layouts/BaseLayout.astro";
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -9,23 +16,28 @@ export async function getStaticPaths() {
   }));
 }
 
-const { post } = Astro.props;
+const { post } = Astro.props as Props;
 const { Content } = await post.render();
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>{post.data.title}</title>
-  </head>
-  <body>
-    <main style="max-width: 720px; margin: 0 auto; padding: 24px;">
-      <a href="/posts/">← Posts</a>
-      <h1>{post.data.title}</h1>
-      <p>{post.data.pubDate.toISOString().slice(0, 10)}</p>
-      <article>
-        <Content />
-      </article>
-    </main>
-  </body>
-</html>
+<Layout title={post.data.title}>
+  <main class="container mx-auto px-4 py-10">
+    <a class="text-sm opacity-70 hover:opacity-100" href="/posts/">← Posts</a>
+
+    <header class="mt-4">
+      <h1 class="text-3xl font-bold">{post.data.title}</h1>
+
+      <div class="mt-2 text-sm opacity-70">
+        {post.data.pubDate.toISOString().slice(0, 10)}
+      </div>
+
+      {post.data.description && (
+        <p class="mt-4 text-base opacity-80">{post.data.description}</p>
+      )}
+    </header>
+
+    <article class="mt-8 max-w-none">
+      <Content />
+    </article>
+  </main>
+</Layout>

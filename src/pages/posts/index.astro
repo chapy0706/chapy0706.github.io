@@ -1,4 +1,5 @@
 ---
+import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("posts"))
@@ -6,23 +7,27 @@ const posts = (await getCollection("posts"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>Posts</title>
-  </head>
-  <body>
-    <main style="max-width: 720px; margin: 0 auto; padding: 24px;">
-      <h1>Posts</h1>
+<Layout title="Posts">
+  <main class="container mx-auto px-4 py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Posts</h1>
+      <p class="text-sm opacity-70">書いたものの一覧。</p>
+    </header>
 
-      <ul>
-        {posts.map((post) => (
-          <li>
-            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-            <div>{post.data.pubDate.toISOString().slice(0, 10)}</div>
-          </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+    <ul class="grid gap-4 md:grid-cols-2">
+      {posts.map((post) => (
+        <li class="rounded-2xl border p-5 hover:shadow-sm transition">
+          <a class="block" href={`/posts/${post.slug}/`}>
+            <div class="text-sm opacity-70">
+              {post.data.pubDate.toISOString().slice(0, 10)}
+            </div>
+            <div class="mt-1 text-xl font-semibold">{post.data.title}</div>
+            {post.data.description && (
+              <p class="mt-2 text-sm opacity-80">{post.data.description}</p>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>

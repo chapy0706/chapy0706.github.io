@@ -7,8 +7,8 @@ export const SITE = {
 } as const;
 
 export const NAVIGATION = [
-  { name: 'Home', href: '/' },
-  { name: 'Capabilities', href: '/capabilities' },
+  { name: 'TOP', href: '/' },
+  { name: 'ブログ', href: '/posts' },
   { name: 'Use Cases', href: '/use-cases' },
   { name: 'Facilities', href: '/facilities' },
   { name: 'Request Quote', href: '/rfq' },
