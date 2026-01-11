@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Posts</title>
+  </head>
+  <body>
+    <main style="max-width: 720px; margin: 0 auto; padding: 24px;">
+      <h1>Posts</h1>
+
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+            <div>{post.data.pubDate.toISOString().slice(0, 10)}</div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
