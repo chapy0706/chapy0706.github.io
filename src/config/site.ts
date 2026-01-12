@@ -1,9 +1,9 @@
 // Site configuration
 export const SITE = {
-  title: 'AstroFlow',
-  description: 'Leading provider of optimized logistics and manufacturing solutions with state-of-the-art facilities and industry expertise.',
+  title: 'ちゃぴぃのほんわか日記',
+  description: '今までの道のりで体感した経験を呟いたりします',
   url: 'https://yourdomain.com',
-  author: 'AstroFlow',
+  author: 'ちゃぴぃ',
 } as const;
 
 export const NAVIGATION = [
@@ -16,6 +16,7 @@ export const NAVIGATION = [
 ] as const;
 
 export const SOCIAL_LINKS = {
+  github: 'https://github.com/chapy0706',
   linkedin: 'https://linkedin.com/company/yourcompany',
   twitter: 'https://twitter.com/yourcompany',
   facebook: 'https://facebook.com/yourcompany',
