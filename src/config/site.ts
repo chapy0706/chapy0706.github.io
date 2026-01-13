@@ -1,6 +1,6 @@
 // Site configuration
 export const SITE = {
-  title: 'ちゃぴぃのほんわか日記',
+  title: 'ちゃぴぃのまったりダイアリー',
   description: '今までの道のりで体感した経験を呟いたりします',
   url: 'https://yourdomain.com',
   author: 'ちゃぴぃ',
