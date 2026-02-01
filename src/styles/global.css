@@ -1,3 +1,4 @@
+/* src/styles/global.css */
 @import "tailwindcss";
 
 /* Smooth scrolling */
@@ -5,8 +6,64 @@ html {
   @apply scroll-smooth;
 }
 
+/* 見出しジャンプ時に、固定ヘッダーで隠れがちなら入れる（任意） */
+/*
+:where(h2, h3, h4) {
+  scroll-margin-top: 6rem;
+}
+*/
+
 .nav-active {
   @apply after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-blue-300 hover:after:bg-transparent after:rounded-full;
+}
+
+/* ===== Markdown Alerts (GitHub-style) ===== */
+.markdown-alert {
+  @apply relative my-6 rounded-xl border px-4 py-3;
+}
+
+.markdown-alert-title {
+  @apply mb-2 flex items-center gap-2 font-semibold;
+}
+
+/* NOTE */
+.markdown-alert-note {
+  @apply border-blue-200 bg-blue-50/60 text-slate-900 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-slate-100;
+}
+.markdown-alert-note .markdown-alert-title {
+  @apply text-blue-800 dark:text-blue-200;
+}
+
+/* TIP */
+.markdown-alert-tip {
+  @apply border-emerald-200 bg-emerald-50/60 text-slate-900 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-slate-100;
+}
+.markdown-alert-tip .markdown-alert-title {
+  @apply text-emerald-800 dark:text-emerald-200;
+}
+
+/* IMPORTANT */
+.markdown-alert-important {
+  @apply border-violet-200 bg-violet-50/60 text-slate-900 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-slate-100;
+}
+.markdown-alert-important .markdown-alert-title {
+  @apply text-violet-800 dark:text-violet-200;
+}
+
+/* WARNING */
+.markdown-alert-warning {
+  @apply border-amber-200 bg-amber-50/60 text-slate-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-slate-100;
+}
+.markdown-alert-warning .markdown-alert-title {
+  @apply text-amber-800 dark:text-amber-200;
+}
+
+/* CAUTION (もし使うなら) */
+.markdown-alert-caution {
+  @apply border-rose-200 bg-rose-50/60 text-slate-900 dark:border-rose-900/60 dark:bg-rose-950/30 dark:text-slate-100;
+}
+.markdown-alert-caution .markdown-alert-title {
+  @apply text-rose-800 dark:text-rose-200;
 }
 
 /* Animations */

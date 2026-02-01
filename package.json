@@ -29,5 +29,8 @@
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17"
   },
-  "packageManager": "pnpm@10.26.1+sha256.e8e6e499128f6804f5c92223cd1f2e3f62557102c0c6e254cc99bb2aa229bbf9"
+  "packageManager": "pnpm@10.26.1+sha256.e8e6e499128f6804f5c92223cd1f2e3f62557102c0c6e254cc99bb2aa229bbf9",
+  "devDependencies": {
+    "remark-alerts": "^0.0.1"
+  }
 }

@@ -59,6 +59,10 @@ importers:
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.18
+    devDependencies:
+      remark-alerts:
+        specifier: ^0.0.1
+        version: 0.0.1(@types/mdast@4.0.4)(unified@11.0.5)
 
 packages:
 
@@ -2391,6 +2395,12 @@ packages:
 
   rehype@13.0.2:
     resolution: {integrity: sha512-j31mdaRFrwFRUIlxGeuPXXKWQxet52RBQRvCmzl5eCefn/KGbomK5GMHNMsOJf55fgo3qw5tST5neDuarDYR2A==}
+
+  remark-alerts@0.0.1:
+    resolution: {integrity: sha512-xDUy3FqgYu3rUsYovZKLXZwHuM7M/XUFxsTDAMeEKoHsg9hiEHR59FkRqeGtzZDg8ThEJYnFiJJW49n9ruvVLw==}
+    peerDependencies:
+      '@types/mdast': ^4.0.3
+      unified: ^11.0.4
 
   remark-gfm@4.0.1:
     resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
@@ -5360,6 +5370,12 @@ snapshots:
       rehype-parse: 9.0.1
       rehype-stringify: 10.0.1
       unified: 11.0.5
+
+  remark-alerts@0.0.1(@types/mdast@4.0.4)(unified@11.0.5):
+    dependencies:
+      '@types/mdast': 4.0.4
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
 
   remark-gfm@4.0.1:
     dependencies:
