@@ -1,13 +1,2048 @@
 [
   {
-    "id": "example",
-    "title": "サンプル本",
-    "authors": ["著者名"],
-    "category": "sample",
-    "tags": ["tag1"],
-    "year": 2026,
-    "isbn": "",
-    "url": "https://example.com",
-    "notes": ""
+    "id": "9784297131302",
+    "title": "令和05年 イメージ＆クレバー方式でよくわかる 栢木先生の基本情報技術者教室",
+    "authors": [
+      "栢木 厚"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "reading",
+      "技術評論社"
+    ],
+    "year": 2022,
+    "isbn": "9784297131302",
+    "url": "https://books.rakuten.co.jp/rb/17305827/",
+    "notes": "publisher=技術評論社; price=1848; readStatus=読書中; registerDate=2023/05/07 20:27:58"
+  },
+  {
+    "id": "9784296000456",
+    "title": "教養としてのコンピューターサイエンス講義 第2版 今こそ知っておくべき「デジタル世界」の基礎知識",
+    "authors": [
+      "ブライアン・カーニハン",
+      "坂村 健"
+    ],
+    "category": "misc",
+    "tags": [
+      "reading",
+      "日経BP"
+    ],
+    "year": 2022,
+    "isbn": "9784296000456",
+    "url": "https://books.rakuten.co.jp/rb/17133922/",
+    "notes": "publisher=日経BP; price=2970; readStatus=読書中; registerDate=2023/05/07 20:29:05"
+  },
+  {
+    "id": "9784296001231",
+    "title": "コンピュータはなぜ動くのか 第2版 知っておきたいハードウエア＆ソフトウエアの基礎知識",
+    "authors": [
+      "矢沢 久雄"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "日経BP"
+    ],
+    "year": 2022,
+    "isbn": "9784296001231",
+    "url": "https://books.rakuten.co.jp/rb/17290850/",
+    "notes": "publisher=日経BP; price=2640; readStatus=既読; finishReadDate=2024/03/18; registerDate=2023/05/07 20:29:41"
+  },
+  {
+    "id": "9784296000197",
+    "title": "プログラムはなぜ動くのか 第3版　知っておきたいプログラミングの基礎知識",
+    "authors": [
+      "矢沢 久雄"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "日経BP"
+    ],
+    "year": 2021,
+    "isbn": "9784296000197",
+    "url": "https://books.rakuten.co.jp/rb/16723741/",
+    "notes": "publisher=日経BP; price=2640; readStatus=既読; finishReadDate=2025/01/18; registerDate=2023/05/07 20:29:53"
+  },
+  {
+    "id": "9784296000180",
+    "title": "オブジェクト指向でなぜつくるのか 第3版　知っておきたいOOP、設計、アジャイル開発の基礎知識",
+    "authors": [
+      "平澤 章"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "done",
+      "日経BP"
+    ],
+    "year": 2021,
+    "isbn": "9784296000180",
+    "url": "https://books.rakuten.co.jp/rb/16711220/",
+    "notes": "publisher=日経BP; price=2640; readStatus=既読; finishReadDate=2024/12/18; registerDate=2023/05/07 20:30:02"
+  },
+  {
+    "id": "9784822283117",
+    "title": "ネットワークはなぜつながるのか第2版",
+    "authors": [
+      "戸根勤",
+      "日経network編集部"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "unread",
+      "日経BP"
+    ],
+    "year": 2007,
+    "isbn": "9784822283117",
+    "url": "https://books.rakuten.co.jp/rb/4312716/",
+    "notes": "publisher=日経BP; price=2640; readStatus=未読; registerDate=2023/05/07 20:30:08"
+  },
+  {
+    "id": "9784798124704",
+    "title": "達人に学ぶDB設計徹底指南書",
+    "authors": [
+      "ミック"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "wishlist",
+      "翔泳社"
+    ],
+    "year": 2012,
+    "isbn": "9784798124704",
+    "url": "https://books.rakuten.co.jp/rb/11582464/",
+    "notes": "publisher=翔泳社; price=2860; readStatus=読みたい; registerDate=2023/05/07 20:30:18"
+  },
+  {
+    "id": "9784798157825",
+    "title": "達人に学ぶSQL徹底指南書 第2版 初級者で終わりたくないあなたへ",
+    "authors": [
+      "ミック"
+    ],
+    "category": "misc",
+    "tags": [
+      "wishlist",
+      "翔泳社"
+    ],
+    "year": 2018,
+    "isbn": "9784798157825",
+    "url": "https://books.rakuten.co.jp/rb/15596931/",
+    "notes": "publisher=翔泳社; price=2750; readStatus=読みたい; registerDate=2023/05/07 20:30:23"
+  },
+  {
+    "id": "9784797380941",
+    "title": "新しいLinuxの教科書",
+    "authors": [
+      "三宅英明",
+      "大角祐介"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2015,
+    "isbn": "9784797380941",
+    "url": "https://books.rakuten.co.jp/rb/13241689/",
+    "notes": "publisher=SBクリエイティブ; price=2970; readStatus=既読; finishReadDate=2024/12/18; registerDate=2023/05/07 20:30:33"
+  },
+  {
+    "id": "9784797388817",
+    "title": "イラスト図解式 この一冊で全部わかるWeb技術の基本",
+    "authors": [
+      "NRIネットコム株式会社",
+      "小林 恭平"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2017,
+    "isbn": "9784797388817",
+    "url": "https://books.rakuten.co.jp/rb/14674807/",
+    "notes": "publisher=SBクリエイティブ; price=1848; readStatus=既読; finishReadDate=2024/12/19; registerDate=2023/05/07 20:30:44"
+  },
+  {
+    "id": "9784774163666",
+    "title": "GitHub実践入門 ～Pull Requestによる開発の変革",
+    "authors": [
+      "大塚弘記"
+    ],
+    "category": "misc",
+    "tags": [
+      "reading",
+      "技術評論社"
+    ],
+    "year": 2014,
+    "isbn": "9784774163666",
+    "url": "https://books.rakuten.co.jp/rb/12688220/",
+    "notes": "publisher=技術評論社; price=2838; readStatus=読書中; registerDate=2023/05/07 20:30:52"
+  },
+  {
+    "id": "9784798046143",
+    "title": "プリンシプル オブ プログラミング 3年目までに身につけたい 一生役立つ101の原理原則",
+    "authors": [
+      "上田　勲"
+    ],
+    "category": "misc",
+    "tags": [
+      "reading",
+      "秀和システム"
+    ],
+    "year": 2016,
+    "isbn": "9784798046143",
+    "url": "https://books.rakuten.co.jp/rb/13785106/",
+    "notes": "publisher=秀和システム; price=2420; readStatus=読書中; registerDate=2023/05/07 20:31:01"
+  },
+  {
+    "id": "9784815604974",
+    "title": "図解入門TCP/IP",
+    "authors": [
+      "みやた ひろし"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "reading",
+      "SBクリエイティブ"
+    ],
+    "year": 2020,
+    "isbn": "9784815604974",
+    "url": "https://books.rakuten.co.jp/rb/16510421/",
+    "notes": "publisher=SBクリエイティブ; price=2640; readStatus=読書中; registerDate=2023/05/07 20:31:10"
+  },
+  {
+    "id": "9784798173269",
+    "title": "スラスラわかるJavaScript 新版",
+    "authors": [
+      "桜庭 洋之",
+      "望月 幸太郎"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2022,
+    "isbn": "9784798173269",
+    "url": "https://books.rakuten.co.jp/rb/17164820/",
+    "notes": "publisher=翔泳社; price=2640; readStatus=既読; finishReadDate=2025/01/18; registerDate=2023/05/07 20:31:44"
+  },
+  {
+    "id": "9784873115658",
+    "title": "リーダブルコード",
+    "authors": [
+      "ダスティン・ボズウェル",
+      "トレバー・フォシェ"
+    ],
+    "category": "misc",
+    "tags": [
+      "unread",
+      "オライリジャパン"
+    ],
+    "year": 2012,
+    "isbn": "9784873115658",
+    "url": "https://books.rakuten.co.jp/rb/11753651/",
+    "notes": "publisher=オライリー・ジャパン; price=2640; readStatus=未読; registerDate=2023/05/07 20:31:49"
+  },
+  {
+    "id": "9784822282516",
+    "title": "はじめて学ぶソフトウェアのテスト技法",
+    "authors": [
+      "リー・コープランド",
+      "宗雅彦"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "日経BP"
+    ],
+    "year": 2005,
+    "isbn": "9784822282516",
+    "url": "https://books.rakuten.co.jp/rb/3675647/",
+    "notes": "publisher=日経BP; price=2640; readStatus=既読; finishReadDate=2025/01/18; registerDate=2023/05/07 20:31:53"
+  },
+  {
+    "id": "9784798144450",
+    "title": "SQL 第2版 ゼロからはじめるデータベース操作",
+    "authors": [
+      "ミック"
+    ],
+    "category": "database",
+    "tags": [
+      "database",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2016,
+    "isbn": "9784798144450",
+    "url": "https://books.rakuten.co.jp/rb/14244722/",
+    "notes": "publisher=翔泳社; price=2068; readStatus=既読; finishReadDate=2025/01/18; registerDate=2023/05/07 20:32:01"
+  },
+  {
+    "id": "9784798178004",
+    "title": "AWSではじめるインフラ構築入門 第2版 安全で堅牢な本番環境のつくり方",
+    "authors": [
+      "中垣 健志"
+    ],
+    "category": "misc",
+    "tags": [
+      "wishlist",
+      "翔泳社"
+    ],
+    "year": 2023,
+    "isbn": "9784798178004",
+    "url": "https://books.rakuten.co.jp/rb/17353100/",
+    "notes": "publisher=翔泳社; price=3300; readStatus=読みたい; registerDate=2023/05/07 20:32:42"
+  },
+  {
+    "id": "9784297114688",
+    "title": "PHP本格入門［上］　～プログラミングとオブジェクト指向の基礎からデータベース連携まで",
+    "authors": [
+      "大家正登"
+    ],
+    "category": "database",
+    "tags": [
+      "database",
+      "reading",
+      "技術評論社"
+    ],
+    "year": 2020,
+    "isbn": "9784297114688",
+    "url": "https://books.rakuten.co.jp/rb/16371381/",
+    "notes": "publisher=技術評論社; price=3938; readStatus=読書中; registerDate=2023/05/07 20:34:03"
+  },
+  {
+    "id": "9784815615741",
+    "title": "イラスト図解式 この一冊で全部わかるサーバーの基本 第2版",
+    "authors": [
+      "きはし まさひろ"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2022,
+    "isbn": "9784815615741",
+    "url": "https://books.rakuten.co.jp/rb/17071297/",
+    "notes": "publisher=SBクリエイティブ; price=1870; readStatus=既読; finishReadDate=2025/01/08; registerDate=2023/08/14 12:25:46"
+  },
+  {
+    "id": "9784163917689",
+    "title": "世界一流エンジニアの思考法",
+    "authors": [
+      "牛尾 剛"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "文藝春秋"
+    ],
+    "year": 2023,
+    "isbn": "9784163917689",
+    "url": "https://books.rakuten.co.jp/rb/17649922/",
+    "notes": "publisher=文藝春秋; price=1760; readStatus=既読; finishReadDate=2024/02/17; registerDate=2024/01/02 00:40:40"
+  },
+  {
+    "id": "9784774142043",
+    "title": "Webを支える技術",
+    "authors": [
+      "山本陽平"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2010,
+    "isbn": "9784774142043",
+    "url": "https://books.rakuten.co.jp/rb/6385779/",
+    "notes": "publisher=技術評論社; price=2827; registerDate=2024/02/24 00:49:04"
+  },
+  {
+    "id": "9784274067938",
+    "title": "情熱プログラマー",
+    "authors": [
+      "チャド・ファウラー",
+      "でびあんぐる"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2010,
+    "isbn": "9784274067938",
+    "url": "https://books.rakuten.co.jp/rb/6395458/",
+    "notes": "publisher=オーム社; price=2640; registerDate=2024/02/24 23:29:24"
+  },
+  {
+    "id": "9784799111208",
+    "title": "何歳からでも結果が出る　本当の勉強法",
+    "authors": [
+      "望月 俊孝"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "done",
+      "すばる舎"
+    ],
+    "year": 2023,
+    "isbn": "9784799111208",
+    "url": "https://books.rakuten.co.jp/rb/17393753/",
+    "notes": "publisher=すばる舎; price=1540; readStatus=既読; finishReadDate=2024/12/14; registerDate=2024/02/24 23:30:18"
+  },
+  {
+    "id": "9784297110611",
+    "title": "ソフトウェアテスト技法練習帳　～知識を経験に変える40問～",
+    "authors": [
+      "梅津正洋",
+      "竹内亜未",
+      "伊藤由貴",
+      "浦山さつき",
+      "佐々木千絵美",
+      "高橋理",
+      "武田春恵",
+      "根本紀之",
+      "藤沢耕助",
+      "真鍋俊之",
+      "山岡悠",
+      "吉田直史［著］"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2020,
+    "isbn": "9784297110611",
+    "url": "https://books.rakuten.co.jp/rb/16157224/",
+    "notes": "publisher=技術評論社; price=2508; registerDate=2024/03/11 13:04:58"
+  },
+  {
+    "id": "9784798160276",
+    "title": "独習JavaScript 新版",
+    "authors": [
+      "CodeMafia 外村 将大"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2021,
+    "isbn": "9784798160276",
+    "url": "https://books.rakuten.co.jp/rb/16903266/",
+    "notes": "publisher=翔泳社; price=3278; registerDate=2024/03/29 19:37:10"
+  },
+  {
+    "id": "9784839977504",
+    "title": "競技プログラミングの鉄則",
+    "authors": [
+      "米田優峻"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "マイナビ出版"
+    ],
+    "year": 2022,
+    "isbn": "9784839977504",
+    "url": "https://books.rakuten.co.jp/rb/17224100/",
+    "notes": "publisher=マイナビ出版; price=3718; registerDate=2024/05/21 16:40:30"
+  },
+  {
+    "id": "9784198949341",
+    "title": "アルゴリズムの乙女たち",
+    "authors": [
+      "明治依吹"
+    ],
+    "category": "algorithms",
+    "tags": [
+      "algorithms",
+      "done",
+      "徳間書店"
+    ],
+    "year": 2024,
+    "isbn": "9784198949341",
+    "url": "https://books.rakuten.co.jp/rb/17778055/",
+    "notes": "publisher=徳間書店; price=902; readStatus=既読; finishReadDate=2024/10/25; registerDate=2024/06/04 19:09:56"
+  },
+  {
+    "id": "9784274064067",
+    "title": "UNIXという考え方",
+    "authors": [
+      "マイク・ギャンカーズ",
+      "芳尾桂"
+    ],
+    "category": "linux",
+    "tags": [
+      "linux",
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2001,
+    "isbn": "9784274064067",
+    "url": "https://books.rakuten.co.jp/rb/1319019/",
+    "notes": "publisher=オーム社; price=1760; registerDate=2024/06/07 09:57:38"
+  },
+  {
+    "id": "9784798068534",
+    "title": "プログラマー脳 ～優れたプログラマーになるための認知科学に基づくアプローチ",
+    "authors": [
+      "Felienne Hermans",
+      "水野貴明",
+      "水野いずみ"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "秀和システム"
+    ],
+    "year": 2023,
+    "isbn": "9784798068534",
+    "url": "https://books.rakuten.co.jp/rb/17390032/",
+    "notes": "publisher=秀和システム; price=3300; registerDate=2024/06/07 09:57:55"
+  },
+  {
+    "id": "9784797393163",
+    "title": "体系的に学ぶ 安全なWebアプリケーションの作り方 第2版",
+    "authors": [
+      "徳丸 浩"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "SBクリエイティブ"
+    ],
+    "year": 2018,
+    "isbn": "9784797393163",
+    "url": "https://books.rakuten.co.jp/rb/15472730/",
+    "notes": "publisher=SBクリエイティブ; price=3520; registerDate=2024/06/20 13:49:11"
+  },
+  {
+    "id": "9784798160498",
+    "title": "Linux教科書 LPICレベル1 Version5.0対応",
+    "authors": [
+      "中島 能和",
+      "濱野 賢一朗"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2019,
+    "isbn": "9784798160498",
+    "url": "https://books.rakuten.co.jp/rb/15831915/",
+    "notes": "publisher=翔泳社; price=4180; readStatus=既読; finishReadDate=2025/01/07; registerDate=2024/06/20 13:49:45"
+  },
+  {
+    "id": "9784822251550",
+    "title": "SOFT　SKILLS",
+    "authors": [
+      "ジョン・Z．ソンメズ",
+      "長尾高弘"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "日経BP"
+    ],
+    "year": 2016,
+    "isbn": "9784822251550",
+    "url": "https://books.rakuten.co.jp/rb/14141677/",
+    "notes": "publisher=日経BP; price=3080; registerDate=2024/07/14 16:20:49"
+  },
+  {
+    "id": "9784798166360",
+    "title": "オラクルマスター教科書 Bronze DBA Oracle Database Fundamentals",
+    "authors": [
+      "渡部 亮太",
+      "岡野 平八郎",
+      "鈴木 俊也",
+      "株式会社コーソル",
+      "日本オラクル株式会社"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "database",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2020,
+    "isbn": "9784798166360",
+    "url": "https://books.rakuten.co.jp/rb/16398506/",
+    "notes": "publisher=翔泳社; price=4180; readStatus=既読; finishReadDate=2025/01/24; registerDate=2024/12/10 19:52:00"
+  },
+  {
+    "id": "9784297132347",
+    "title": "ちょうぜつソフトウェア設計入門ーーPHPで理解するオブジェクト指向の活用",
+    "authors": [
+      "田中 ひさてる"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2022,
+    "isbn": "9784297132347",
+    "url": "https://books.rakuten.co.jp/rb/17347310/",
+    "notes": "publisher=技術評論社; price=3080; registerDate=2024/12/10 19:52:19"
+  },
+  {
+    "id": "9784774190396",
+    "title": "かんたんUML入門改訂2版",
+    "authors": [
+      "竹政昭利",
+      "林田幸司"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2017,
+    "isbn": "9784774190396",
+    "url": "https://books.rakuten.co.jp/rb/15009757/",
+    "notes": "publisher=技術評論社; price=3256; registerDate=2024/12/10 19:52:52"
+  },
+  {
+    "id": "9784274224546",
+    "title": "リファクタリング（第2版）",
+    "authors": [
+      "Martin Fowler 著",
+      "児玉 公信",
+      "友野 晶夫",
+      "平澤　章",
+      "梅澤　真史"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2019,
+    "isbn": "9784274224546",
+    "url": "https://books.rakuten.co.jp/rb/16085666/",
+    "notes": "publisher=オーム社; price=4840; registerDate=2024/12/10 19:53:54"
+  },
+  {
+    "id": "9784839941062",
+    "title": "プログラミングコンテストチャレンジブック第2版",
+    "authors": [
+      "秋葉拓哉",
+      "岩田陽一"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "マイナビ出版"
+    ],
+    "year": 2012,
+    "isbn": "9784839941062",
+    "url": "https://books.rakuten.co.jp/rb/11531089/",
+    "notes": "publisher=マイナビ出版; price=3608; registerDate=2024/12/10 19:56:45"
+  },
+  {
+    "id": "9784295015314",
+    "title": "Docker&仮想サーバー完全入門　Webクリエイター＆エンジニアの作業がはかどる開発環境構築ガイド",
+    "authors": [
+      "リブロワークス"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "インプレス"
+    ],
+    "year": 2022,
+    "isbn": "9784295015314",
+    "url": "https://books.rakuten.co.jp/rb/17239915/",
+    "notes": "publisher=インプレス; price=2420; readStatus=既読; finishReadDate=2025/02/03; registerDate=2024/12/10 19:58:06"
+  },
+  {
+    "id": "9784798160856",
+    "title": "Linux教科書 LPICレベル1 スピードマスター問題集 Version5.0対応",
+    "authors": [
+      "山本 道子",
+      "大竹 龍史"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2019,
+    "isbn": "9784798160856",
+    "url": "https://books.rakuten.co.jp/rb/15976081/",
+    "notes": "publisher=翔泳社; price=2750; readStatus=既読; finishReadDate=2025/01/07; registerDate=2024/12/11 02:40:55"
+  },
+  {
+    "id": "9784815618469",
+    "title": "1冊ですべて身につくHTML & CSSとWebデザイン入門講座［第2版］",
+    "authors": [
+      "Mana"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2024,
+    "isbn": "9784815618469",
+    "url": "https://books.rakuten.co.jp/rb/17749581/",
+    "notes": "publisher=SBクリエイティブ; price=2585; readStatus=既読; finishReadDate=2024/12/12; registerDate=2024/12/11 03:00:29"
+  },
+  {
+    "id": "9784797386479",
+    "title": "ふつうのLinuxプログラミング 第2版",
+    "authors": [
+      "青木 峰郎"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2017,
+    "isbn": "9784797386479",
+    "url": "https://books.rakuten.co.jp/rb/15073689/",
+    "notes": "publisher=SBクリエイティブ; price=3025; readStatus=既読; finishReadDate=2024/12/17; registerDate=2024/12/11 03:02:25"
+  },
+  {
+    "id": "9784815622978",
+    "title": "生成AIで世界はこう変わる",
+    "authors": [
+      "今井翔太"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "SBクリエイティブ"
+    ],
+    "year": 2024,
+    "isbn": "9784815622978",
+    "url": "https://books.rakuten.co.jp/rb/17674330/",
+    "notes": "publisher=SBクリエイティブ; price=990; readStatus=既読; finishReadDate=2024/12/18; registerDate=2024/12/11 03:02:50"
+  },
+  {
+    "id": "9784296112159",
+    "title": "ITエンジニア1年生のための まんがでわかるLinux コマンド＆シェルスクリプト基礎編",
+    "authors": [
+      "Piro",
+      "日経Linux"
+    ],
+    "category": "linux",
+    "tags": [
+      "linux",
+      "done",
+      "日経BP"
+    ],
+    "year": 2022,
+    "isbn": "9784296112159",
+    "url": "https://books.rakuten.co.jp/rb/17106207/",
+    "notes": "publisher=日経BP; price=2420; readStatus=既読; finishReadDate=2022/12/20; registerDate=2024/12/14 19:58:51"
+  },
+  {
+    "id": "9784774180663",
+    "title": "すらすらと手が動くようになるSQL書き方ドリル改訂第3版",
+    "authors": [
+      "羽生章洋",
+      "和田省二"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "技術評論社"
+    ],
+    "year": 2016,
+    "isbn": "9784774180663",
+    "url": "https://books.rakuten.co.jp/rb/13854590/",
+    "notes": "publisher=技術評論社; price=2706; readStatus=既読; finishReadDate=2023/05/20; registerDate=2024/12/14 19:59:28"
+  },
+  {
+    "id": "9784798151250",
+    "title": "Linux教科書 LPICレベル2 Version 4.5対応",
+    "authors": [
+      "中島 能和",
+      "濱野 賢一朗"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2017,
+    "isbn": "9784798151250",
+    "url": "https://books.rakuten.co.jp/rb/14783309/",
+    "notes": "publisher=翔泳社; price=4400; readStatus=既読; finishReadDate=2025/03/19; registerDate=2024/12/15 14:59:59"
+  },
+  {
+    "id": "9784798172361",
+    "title": "オラクルマスター教科書 Silver SQL Oracle Database SQL",
+    "authors": [
+      "株式会社コーソル 企画＆マーケティング部",
+      "渡部 亮太",
+      "舛井 智行",
+      "峯岸 隆一",
+      "日本オラクル株式会社"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "database",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2021,
+    "isbn": "9784798172361",
+    "url": "https://books.rakuten.co.jp/rb/16836961/",
+    "notes": "publisher=翔泳社; price=5280; readStatus=既読; finishReadDate=2025/07/18; registerDate=2024/12/15 15:00:16"
+  },
+  {
+    "id": "9784798157191",
+    "title": "技術者のためのテクニカルライティング入門講座",
+    "authors": [
+      "高橋 慈子"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2018,
+    "isbn": "9784798157191",
+    "url": "https://books.rakuten.co.jp/rb/15654559/",
+    "notes": "publisher=翔泳社; price=2420; registerDate=2024/12/15 15:00:38"
+  },
+  {
+    "id": "9784297146221",
+    "title": "改訂新版　良いコード／悪いコードで学ぶ設計入門 -保守しやすい　成長し続けるコードの書き方",
+    "authors": [
+      "仙塲 大也"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297146221",
+    "url": "https://books.rakuten.co.jp/rb/18048507/",
+    "notes": "publisher=技術評論社; price=3520; registerDate=2024/12/15 15:01:09"
+  },
+  {
+    "id": "9784798116839",
+    "title": "レガシーコード改善ガイド",
+    "authors": [
+      "マイケル・C．フェザーズ",
+      "ウルシステムズ株式会社"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2009,
+    "isbn": "9784798116839",
+    "url": "https://books.rakuten.co.jp/rb/6121689/",
+    "notes": "publisher=翔泳社; price=4620; registerDate=2024/12/16 15:47:55"
+  },
+  {
+    "id": "9784297144845",
+    "title": "コード×AI-ソフトウェア開発者のための生成AI実践入門",
+    "authors": [
+      "服部 佑樹"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297144845",
+    "url": "https://books.rakuten.co.jp/rb/17974210/",
+    "notes": "publisher=技術評論社; price=3300; registerDate=2024/12/19 23:06:21"
+  },
+  {
+    "id": "9784798166391",
+    "title": "プロダクトマネジメントのすべて 事業戦略・IT開発・UXデザイン・マーケティングからチーム・組織運営まで",
+    "authors": [
+      "及川 卓也",
+      "曽根原 春樹",
+      "小城 久美子"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2021,
+    "isbn": "9784798166391",
+    "url": "https://books.rakuten.co.jp/rb/16626149/",
+    "notes": "publisher=翔泳社; price=2970; registerDate=2024/12/19 23:06:39"
+  },
+  {
+    "id": "9784822289799",
+    "title": "Coders（コーダーズ）凄腕ソフトウェア開発者が新しい世界をビルドする",
+    "authors": [
+      "クライブ・トンプソン",
+      "及川 卓也",
+      "井口 耕二"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "日経BP"
+    ],
+    "year": 2020,
+    "isbn": "9784822289799",
+    "url": "https://books.rakuten.co.jp/rb/16450138/",
+    "notes": "publisher=日経BP; price=2640; registerDate=2024/12/20 21:15:49"
+  },
+  {
+    "id": "9784295013570",
+    "title": "1週間でPHPの基礎が学べる本",
+    "authors": [
+      "亀田 健司"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "インプレス"
+    ],
+    "year": 2022,
+    "isbn": "9784295013570",
+    "url": "https://books.rakuten.co.jp/rb/17028359/",
+    "notes": "publisher=インプレス; price=2728; readStatus=既読; finishReadDate=2024/12/22; registerDate=2024/12/22 15:58:01"
+  },
+  {
+    "id": "9784837804871",
+    "title": "最強のエンジニアになるための話し方の教科書",
+    "authors": [
+      "亀山　雅司"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "done",
+      "マネジメント社"
+    ],
+    "year": 2019,
+    "isbn": "9784837804871",
+    "url": "https://books.rakuten.co.jp/rb/15748779/",
+    "notes": "publisher=マネジメント社; price=1760; readStatus=既読; finishReadDate=2024/12/23; registerDate=2024/12/22 16:00:19"
+  },
+  {
+    "id": "9784274065972",
+    "title": "ハッカーと画家",
+    "authors": [
+      "ポール・グレアム",
+      "川合史朗"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2005,
+    "isbn": "9784274065972",
+    "url": "https://books.rakuten.co.jp/rb/1757447/",
+    "notes": "publisher=オーム社; price=2640; registerDate=2024/12/24 16:54:42"
+  },
+  {
+    "id": "9784532323998",
+    "title": "システムを作らせる技術",
+    "authors": [
+      "白川 克",
+      "濱本 佳史"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "日経BP-日本経済新聞出版本部"
+    ],
+    "year": 2021,
+    "isbn": "9784532323998",
+    "url": "https://books.rakuten.co.jp/rb/16715499/",
+    "notes": "publisher=日経BP 日本経済新聞出版本部; price=2860; registerDate=2024/12/24 16:54:59"
+  },
+  {
+    "id": "9784905073413",
+    "title": "なぜ、あなたの仕事は終わらないのか",
+    "authors": [
+      "中島聡"
+    ],
+    "category": "misc",
+    "tags": [
+      "done",
+      "文響社"
+    ],
+    "year": 2016,
+    "isbn": "9784905073413",
+    "url": "https://books.rakuten.co.jp/rb/14254055/",
+    "notes": "publisher=文響社; price=1518; readStatus=既読; finishReadDate=2024/12/26; registerDate=2024/12/25 14:52:16"
+  },
+  {
+    "id": "9784815618025",
+    "title": "これからのJavaScriptの教科書",
+    "authors": [
+      "狩野 祐東"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "unspecified",
+      "SBクリエイティブ"
+    ],
+    "year": 2024,
+    "isbn": "9784815618025",
+    "url": "https://books.rakuten.co.jp/rb/17798873/",
+    "notes": "publisher=SBクリエイティブ; price=3520; registerDate=2024/12/29 06:57:29"
+  },
+  {
+    "id": "9784798151236",
+    "title": "Linux教科書 LPICレベル2 スピードマスター問題集 Version4.5対応",
+    "authors": [
+      "有限会社ナレッジデザイン 大竹 龍史"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "done",
+      "翔泳社"
+    ],
+    "year": 2017,
+    "isbn": "9784798151236",
+    "url": "https://books.rakuten.co.jp/rb/15084918/",
+    "notes": "publisher=翔泳社; price=3300; readStatus=既読; finishReadDate=2025/03/19; registerDate=2024/12/31 13:02:23"
+  },
+  {
+    "id": "9784297141738",
+    "title": "GitHub CI/CD実践ガイドーー持続可能なソフトウェア開発を支えるGitHub Actionsの設計と運用",
+    "authors": [
+      "野村 友規"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297141738",
+    "url": "https://books.rakuten.co.jp/rb/17829467/",
+    "notes": "publisher=技術評論社; price=3740; registerDate=2025/01/03 15:03:39"
+  },
+  {
+    "id": "9784798071503",
+    "title": "開発系エンジニアのためのDocker絵とき入門",
+    "authors": [
+      "鈴木亮"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "秀和システム"
+    ],
+    "year": 2024,
+    "isbn": "9784798071503",
+    "url": "https://books.rakuten.co.jp/rb/17676426/",
+    "notes": "publisher=秀和システム; price=3080; registerDate=2025/01/06 14:42:30"
+  },
+  {
+    "id": "9784274217883",
+    "title": "テスト駆動開発",
+    "authors": [
+      "Kent Beck",
+      "和田 卓人"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "株式会社オム社"
+    ],
+    "year": 2017,
+    "isbn": "9784274217883",
+    "url": "https://books.rakuten.co.jp/rb/14869144/",
+    "notes": "publisher=株式会社オーム社; price=3080; registerDate=2025/01/08 03:41:40"
+  },
+  {
+    "id": "9784407361179",
+    "title": "情報セキュリティ読本 六訂版",
+    "authors": [
+      "独立行政法人 情報処理推進機構（IPA）"
+    ],
+    "category": "security",
+    "tags": [
+      "security",
+      "unspecified",
+      "実教出版"
+    ],
+    "year": 2022,
+    "isbn": "9784407361179",
+    "url": "https://books.rakuten.co.jp/rb/17266378/",
+    "notes": "publisher=実教出版; price=660; registerDate=2025/01/09 14:57:34"
+  },
+  {
+    "id": "9784798185187",
+    "title": "ソフトウェア開発現場の「失敗」集めてみた。 42の失敗事例で学ぶチーム開発のうまい進めかた",
+    "authors": [
+      "出石 聡史"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2024,
+    "isbn": "9784798185187",
+    "url": "https://books.rakuten.co.jp/rb/17852417/",
+    "notes": "publisher=翔泳社; price=2420; registerDate=2025/01/09 14:57:48"
+  },
+  {
+    "id": "9784844329039",
+    "title": "1週間でORACLE　MASTERの基礎が学べる本",
+    "authors": [
+      "森下泰子",
+      "ソキウス・ジャパン"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "database",
+      "done",
+      "インプレスジャパン"
+    ],
+    "year": 2010,
+    "isbn": "9784844329039",
+    "url": "https://books.rakuten.co.jp/rb/6602142/",
+    "notes": "publisher=インプレスジャパン; price=2640; readStatus=既読; finishReadDate=2025/01/13; registerDate=2025/01/14 15:51:24"
+  },
+  {
+    "id": "9784297114701",
+    "title": "PHP本格入門［下］　～オブジェクト指向設計、セキュリティ、現場で使える実践ノウハウまで",
+    "authors": [
+      "大家正登"
+    ],
+    "category": "security",
+    "tags": [
+      "security",
+      "architecture",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2020,
+    "isbn": "9784297114701",
+    "url": "https://books.rakuten.co.jp/rb/16371382/",
+    "notes": "publisher=技術評論社; price=3938; registerDate=2025/01/18 03:47:12"
+  },
+  {
+    "id": "9784873116860",
+    "title": "Web　API：The　Good　Parts",
+    "authors": [
+      "水野貴明"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オライリジャパン"
+    ],
+    "year": 2014,
+    "isbn": "9784873116860",
+    "url": "https://books.rakuten.co.jp/rb/13028363/",
+    "notes": "publisher=オライリー・ジャパン; price=2420; registerDate=2025/01/22 10:05:20"
+  },
+  {
+    "id": "9784797382228",
+    "title": "暗号技術入門第3版",
+    "authors": [
+      "結城浩"
+    ],
+    "category": "security",
+    "tags": [
+      "security",
+      "unspecified",
+      "SBクリエイティブ"
+    ],
+    "year": 2015,
+    "isbn": "9784797382228",
+    "url": "https://books.rakuten.co.jp/rb/13306240/",
+    "notes": "publisher=SBクリエイティブ; price=3300; registerDate=2025/01/31 05:45:13"
+  },
+  {
+    "id": "9784873115894",
+    "title": "SQLアンチパターン",
+    "authors": [
+      "Bill Karwin",
+      "和田　卓人",
+      "和田　省二",
+      "児島　修"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オライリジャパン"
+    ],
+    "year": 2013,
+    "isbn": "9784873115894",
+    "url": "https://books.rakuten.co.jp/rb/12185610/",
+    "notes": "publisher=オライリー・ジャパン; price=3520; registerDate=2025/01/31 05:45:52"
+  },
+  {
+    "id": "9784873114798",
+    "title": "プログラマが知るべき97のこと",
+    "authors": [
+      "ケブリン・ヘニー",
+      "夏目大"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2010,
+    "isbn": "9784873114798",
+    "url": "https://books.rakuten.co.jp/rb/6907852/",
+    "notes": "publisher=オーム社; price=2090; registerDate=2025/02/10 02:51:23"
+  },
+  {
+    "id": "9784866367026",
+    "title": "コンピュータ ノスタルジア",
+    "authors": [
+      "長澤 均",
+      "テクノタク飯塚",
+      "standards"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "スタンダズ"
+    ],
+    "year": 2024,
+    "isbn": "9784866367026",
+    "url": "https://books.rakuten.co.jp/rb/18022326/",
+    "notes": "publisher=スタンダーズ; price=2860; registerDate=2025/02/15 19:38:15"
+  },
+  {
+    "id": "9784815609801",
+    "title": "Java言語で学ぶデザインパターン入門第3版",
+    "authors": [
+      "結城 浩"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "SBクリエイティブ"
+    ],
+    "year": 2021,
+    "isbn": "9784815609801",
+    "url": "https://books.rakuten.co.jp/rb/16908395/",
+    "notes": "publisher=SBクリエイティブ; price=4290; registerDate=2025/02/18 16:04:57"
+  },
+  {
+    "id": "9784295018438",
+    "title": "生成AI時代の新プログラミング実践ガイド Pythonで学ぶGPTとCopilotの活用ベストプラクティス",
+    "authors": [
+      "松本 直樹"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2024,
+    "isbn": "9784295018438",
+    "url": "https://books.rakuten.co.jp/rb/17725382/",
+    "notes": "publisher=インプレス; price=3300; registerDate=2025/02/18 16:39:21"
+  },
+  {
+    "id": "9784798068169",
+    "title": "Good Code、 Bad Code ～持続可能な開発のためのソフトウェアエンジニア的思考",
+    "authors": [
+      "Tom Long",
+      "秋勇紀",
+      "高田新山",
+      "山本大祐"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "秀和システム"
+    ],
+    "year": 2023,
+    "isbn": "9784798068169",
+    "url": "https://books.rakuten.co.jp/rb/17364788/",
+    "notes": "publisher=秀和システム; price=3960; registerDate=2025/04/04 02:52:33"
+  },
+  {
+    "id": "9784295020325",
+    "title": "徹底攻略Java SE 17 Silver問題集［1Z0-825］対応",
+    "authors": [
+      "志賀 澄人"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2024,
+    "isbn": "9784295020325",
+    "url": "https://books.rakuten.co.jp/rb/17960486/",
+    "notes": "publisher=インプレス; price=4180; registerDate=2025/04/09 22:54:52"
+  },
+  {
+    "id": "9784798165776",
+    "title": "シスコ技術者認定教科書 CCNA 完全合格テキスト＆問題集［対応試験］200-301",
+    "authors": [
+      "林口 裕志",
+      "浦川 晃",
+      "中道 賢"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2020,
+    "isbn": "9784798165776",
+    "url": "https://books.rakuten.co.jp/rb/16310122/",
+    "notes": "publisher=翔泳社; price=4268; registerDate=2025/04/18 05:33:35"
+  },
+  {
+    "id": "9784798172958",
+    "title": "Figma for UIデザイン［日本語版対応］ アプリ開発のためのデザイン、プロトタイプ、ハンドオフ",
+    "authors": [
+      "沢田 俊介"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2022,
+    "isbn": "9784798172958",
+    "url": "https://books.rakuten.co.jp/rb/17303794/",
+    "notes": "publisher=翔泳社; price=2750; registerDate=2025/04/30 10:01:41"
+  },
+  {
+    "id": "9784065301951",
+    "title": "ゼロから学ぶRust　システムプログラミングの基礎から線形型システムまで",
+    "authors": [
+      "高野 祐輝"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "講談社"
+    ],
+    "year": 2022,
+    "isbn": "9784065301951",
+    "url": "https://books.rakuten.co.jp/rb/17331114/",
+    "notes": "publisher=講談社; price=3520; registerDate=2025/04/30 10:02:13"
+  },
+  {
+    "id": "9784798188706",
+    "title": "本当に役立つAIの作り方・使い方 ChatGPT×GPTsカスタマイズ大全",
+    "authors": [
+      "武井 一巳"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2024,
+    "isbn": "9784798188706",
+    "url": "https://books.rakuten.co.jp/rb/17996491/",
+    "notes": "publisher=翔泳社; price=2200; registerDate=2025/04/30 10:02:31"
+  },
+  {
+    "id": "9784046053558",
+    "title": "AWSコスト最適化ガイドブック",
+    "authors": [
+      "門畑　顕博",
+      "仁戸　潤一郎",
+      "柳　嘉起",
+      "杉　達也",
+      "小野　俊樹",
+      "藤本　剛志"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "KADOKAWA"
+    ],
+    "year": 2023,
+    "isbn": "9784046053558",
+    "url": "https://books.rakuten.co.jp/rb/17421643/",
+    "notes": "publisher=KADOKAWA; price=3080; registerDate=2025/04/30 10:03:00"
+  },
+  {
+    "id": "9784046057549",
+    "title": "シリコンバレー一流プログラマーが教える　Pythonプロフェッショナル大全",
+    "authors": [
+      "酒井　潤"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "KADOKAWA"
+    ],
+    "year": 2022,
+    "isbn": "9784046057549",
+    "url": "https://books.rakuten.co.jp/rb/17201602/",
+    "notes": "publisher=KADOKAWA; price=2860; registerDate=2025/05/06 13:02:24"
+  },
+  {
+    "id": "9784297145460",
+    "title": "［作って学ぶ］ブラウザのしくみ──HTTP、HTML、CSS、JavaScriptの裏側",
+    "authors": [
+      "土井 麻未"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297145460",
+    "url": "https://books.rakuten.co.jp/rb/18013706/",
+    "notes": "publisher=技術評論社; price=3740; registerDate=2025/05/14 10:02:51"
+  },
+  {
+    "id": "9784065128442",
+    "title": "問題解決力を鍛える！アルゴリズムとデータ構造",
+    "authors": [
+      "大槻 兼資",
+      "秋葉 拓哉"
+    ],
+    "category": "algorithms",
+    "tags": [
+      "algorithms",
+      "unspecified",
+      "講談社"
+    ],
+    "year": 2020,
+    "isbn": "9784065128442",
+    "url": "https://books.rakuten.co.jp/rb/16417829/",
+    "notes": "publisher=講談社; price=3300; registerDate=2025/05/24 09:59:48"
+  },
+  {
+    "id": "9784297142858",
+    "title": "VTuberサプーが教える！　Python　初心者のコード／プロのコード",
+    "authors": [
+      "サプー"
+    ],
+    "category": "python",
+    "tags": [
+      "python",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297142858",
+    "url": "https://books.rakuten.co.jp/rb/17880195/",
+    "notes": "publisher=技術評論社; price=2860; registerDate=2025/05/25 12:28:55"
+  },
+  {
+    "id": "9784297144746",
+    "title": "キタミ式イラストIT塾 応用情報技術者 令和07年",
+    "authors": [
+      "きたみりゅうじ"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297144746",
+    "url": "https://books.rakuten.co.jp/rb/18021958/",
+    "notes": "publisher=技術評論社; price=3630; registerDate=2025/06/04 16:42:27"
+  },
+  {
+    "id": "9784295021322",
+    "title": "1週間でGoogle Apps Scriptの基礎が学べる本",
+    "authors": [
+      "亀田 健司"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2025,
+    "isbn": "9784295021322",
+    "url": "https://books.rakuten.co.jp/rb/18116077/",
+    "notes": "publisher=インプレス; price=2860; registerDate=2025/06/04 16:42:45"
+  },
+  {
+    "id": "9784296080243",
+    "title": "CODE コードから見たコンピュータのからくり 第2版",
+    "authors": [
+      "Charles Petzold",
+      "酒匂 寛"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "日経BP"
+    ],
+    "year": 2024,
+    "isbn": "9784296080243",
+    "url": "https://books.rakuten.co.jp/rb/17781548/",
+    "notes": "publisher=日経BP; price=5060; registerDate=2025/06/04 16:43:04"
+  },
+  {
+    "id": "9784839984274",
+    "title": "現場で使えるTypeScript 詳解実践ガイド",
+    "authors": [
+      "菅原浩之",
+      "CodeMafia 外村将大"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "unspecified",
+      "マイナビ出版"
+    ],
+    "year": 2024,
+    "isbn": "9784839984274",
+    "url": "https://books.rakuten.co.jp/rb/17784389/",
+    "notes": "publisher=マイナビ出版; price=2948; registerDate=2025/06/10 21:14:27"
+  },
+  {
+    "id": "9784297148591",
+    "title": "［作って学ぶ］OSのしくみ1──メモリ管理、マルチタスク、ハードウェア制御",
+    "authors": [
+      "hikalium"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2025,
+    "isbn": "9784297148591",
+    "url": "https://books.rakuten.co.jp/rb/18172740/",
+    "notes": "publisher=技術評論社; price=3520; registerDate=2025/06/17 22:55:19"
+  },
+  {
+    "id": "9784274226298",
+    "title": "達人プログラマー（第2版）",
+    "authors": [
+      "Andrew Hunt",
+      "David Thomas",
+      "村上雅章"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オム社"
+    ],
+    "year": 2020,
+    "isbn": "9784274226298",
+    "url": "https://books.rakuten.co.jp/rb/16481114/",
+    "notes": "publisher=オーム社; price=3520; registerDate=2025/06/23 14:10:55"
+  },
+  {
+    "id": "9784295021285",
+    "title": "CSSとJavaScriptで作る動くUIアイデアレシピ",
+    "authors": [
+      "Mana"
+    ],
+    "category": "network",
+    "tags": [
+      "network",
+      "javascript",
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2025,
+    "isbn": "9784295021285",
+    "url": "https://books.rakuten.co.jp/rb/18139891/",
+    "notes": "publisher=インプレス; price=2860; registerDate=2025/07/26 02:48:37"
+  },
+  {
+    "id": "9784048930659",
+    "title": "Clean Architecture 達人に学ぶソフトウェアの構造と設計",
+    "authors": [
+      "Robert　C．Martin",
+      "角　征典",
+      "高木　正弘"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "ドワンゴ"
+    ],
+    "year": 2018,
+    "isbn": "9784048930659",
+    "url": "https://books.rakuten.co.jp/rb/15544237/",
+    "notes": "publisher=ドワンゴ; price=3520; registerDate=2025/08/05 20:07:26"
+  },
+  {
+    "id": "9784873119823",
+    "title": "ソフトウェアアーキテクチャの基礎",
+    "authors": [
+      "Mark Richards",
+      "Neal Ford",
+      "島田浩二"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "オライリジャパン"
+    ],
+    "year": 2022,
+    "isbn": "9784873119823",
+    "url": "https://books.rakuten.co.jp/rb/17029495/",
+    "notes": "publisher=オライリー・ジャパン; price=4180; registerDate=2025/08/05 20:07:45"
+  },
+  {
+    "id": "9784802614061",
+    "title": "システム設計の面接試験",
+    "authors": [
+      "アレックス・シュウ"
+    ],
+    "category": "architecture",
+    "tags": [
+      "architecture",
+      "unspecified",
+      "ソシム"
+    ],
+    "year": 2023,
+    "isbn": "9784802614061",
+    "url": "https://books.rakuten.co.jp/rb/17423047/",
+    "notes": "publisher=ソシム; price=3080; registerDate=2025/08/09 01:27:37"
+  },
+  {
+    "id": "9784798189925",
+    "title": "現場の「あるある」から学んだ 今すぐ使える「UIデザイン」41の法則",
+    "authors": [
+      "佐々木 祐真",
+      "直原 杏花",
+      "岩本 あかり",
+      "大林 志帆",
+      "株式会社アイスリーデザイン"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2025,
+    "isbn": "9784798189925",
+    "url": "https://books.rakuten.co.jp/rb/18261202/",
+    "notes": "publisher=翔泳社; price=2640; registerDate=2025/08/18 01:01:18"
+  },
+  {
+    "id": "9784297142209",
+    "title": "［入門］Webフロントエンド E2E テストーーPlaywrightによるWebアプリの自動テストから良いテストの書き方まで",
+    "authors": [
+      "渋川 よしき",
+      "武田 大輝",
+      "枇榔 晃裕",
+      "木戸 俊輔",
+      "藤戸 四恩",
+      "小澤 泰河"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297142209",
+    "url": "https://books.rakuten.co.jp/rb/17862274/",
+    "notes": "publisher=技術評論社; price=3520; registerDate=2025/08/23 18:51:07"
+  },
+  {
+    "id": "9784621303252",
+    "title": "Effective Java",
+    "authors": [
+      "Joshua Bloch",
+      "柴田　芳樹"
+    ],
+    "category": "java",
+    "tags": [
+      "java",
+      "unspecified",
+      "丸善出版"
+    ],
+    "year": 2018,
+    "isbn": "9784621303252",
+    "url": "https://books.rakuten.co.jp/rb/15652954/",
+    "notes": "publisher=丸善出版; price=4400; registerDate=2025/08/26 23:54:18"
+  },
+  {
+    "id": "9784798166353",
+    "title": "オラクルマスター教科書 Silver DBA Oracle Database Administration I",
+    "authors": [
+      "株式会社コーソル",
+      "渡部 亮太",
+      "舛井 智行",
+      "杉本 篤信",
+      "西田 幸平",
+      "日本オラクル株式会社"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "database",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2021,
+    "isbn": "9784798166353",
+    "url": "https://books.rakuten.co.jp/rb/16698499/",
+    "notes": "publisher=翔泳社; price=5500; registerDate=2025/08/27 14:23:29"
+  },
+  {
+    "id": "9784800590831",
+    "title": "エンジニアのためのドキュメントライティング",
+    "authors": [
+      "ジャレッド・バーディ",
+      "ザッカリー・サラ・コーライセン",
+      "ジェン・ランボーン",
+      "デービッド・ヌーニェス",
+      "ハイディ・ウォーターハウス",
+      "岩瀬 義昌"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "unspecified",
+      "日本能率協会マネジメントセンタ"
+    ],
+    "year": 2023,
+    "isbn": "9784800590831",
+    "url": "https://books.rakuten.co.jp/rb/17436552/",
+    "notes": "publisher=日本能率協会マネジメントセンター; price=2860; registerDate=2025/08/30 00:44:48"
+  },
+  {
+    "id": "9784820729938",
+    "title": "図解 DX時代のPLM/BOMプロセス改善入門",
+    "authors": [
+      "三河 進"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "unspecified",
+      "日本能率協会マネジメントセンタ"
+    ],
+    "year": 2022,
+    "isbn": "9784820729938",
+    "url": "https://books.rakuten.co.jp/rb/17018649/",
+    "notes": "publisher=日本能率協会マネジメントセンター; price=2530; registerDate=2025/09/02 16:05:51"
+  },
+  {
+    "id": "9784295020929",
+    "title": "いちばんやさしいGit&GitHubの教本 第3版 人気講師が教えるバージョン管理＆共有入門",
+    "authors": [
+      "横田紋奈",
+      "宇賀神みずき"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2025,
+    "isbn": "9784295020929",
+    "url": "https://books.rakuten.co.jp/rb/18061200/",
+    "notes": "publisher=インプレス; price=2420; registerDate=2025/09/07 01:27:42"
+  },
+  {
+    "id": "9784798189666",
+    "title": "エンジニア育成現場の「失敗」集めてみた。 42の失敗事例で学ぶマネジメントのうまい進めかた",
+    "authors": [
+      "出石 聡史"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2025,
+    "isbn": "9784798189666",
+    "url": "https://books.rakuten.co.jp/rb/18210950/",
+    "notes": "publisher=翔泳社; price=2420; registerDate=2025/09/21 03:48:00"
+  },
+  {
+    "id": "9784295016403",
+    "title": "コンテナセキュリティ　コンテナ化されたアプリケーションを保護する要素技術",
+    "authors": [
+      "Liz Rice",
+      "株式会社スリーシェイク",
+      "水元 恭平",
+      "生賀 一輝",
+      "戸澤 涼"
+    ],
+    "category": "security",
+    "tags": [
+      "security",
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2023,
+    "isbn": "9784295016403",
+    "url": "https://books.rakuten.co.jp/rb/17433288/",
+    "notes": "publisher=インプレス; price=3520; registerDate=2025/12/08 21:58:36"
+  },
+  {
+    "id": "9784297135195",
+    "title": "基本情報技術者【科目B】アルゴリズム×擬似言語 トレーニングブック",
+    "authors": [
+      "大滝 みや子"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "algorithms",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2023,
+    "isbn": "9784297135195",
+    "url": "https://books.rakuten.co.jp/rb/17477699/",
+    "notes": "publisher=技術評論社; price=2200; registerDate=2025/12/08 22:00:53"
+  },
+  {
+    "id": "9784798182520",
+    "title": "情報処理教科書 出るとこだけ！基本情報技術者［科目B］第4版",
+    "authors": [
+      "橋本 祐史"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2023,
+    "isbn": "9784798182520",
+    "url": "https://books.rakuten.co.jp/rb/17615511/",
+    "notes": "publisher=翔泳社; price=1980; registerDate=2025/12/08 22:01:37"
+  },
+  {
+    "id": "9784295019848",
+    "title": "データ分析に強くなるSQLレシピ　小規模データの前処理・分析の書き方＆テクニック",
+    "authors": [
+      "増井 敏克"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2024,
+    "isbn": "9784295019848",
+    "url": "https://books.rakuten.co.jp/rb/17895018/",
+    "notes": "publisher=インプレス; price=2970; registerDate=2025/12/08 22:02:22"
+  },
+  {
+    "id": "9784046070890",
+    "title": "シリコンバレー一流プログラマーが教える　Goプロフェッショナル大全",
+    "authors": [
+      "酒井　潤"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "KADOKAWA"
+    ],
+    "year": 2024,
+    "isbn": "9784046070890",
+    "url": "https://books.rakuten.co.jp/rb/18050922/",
+    "notes": "publisher=KADOKAWA; price=4290; registerDate=2025/12/08 22:02:51"
+  },
+  {
+    "id": "9784774143071",
+    "title": "Web開発者のための大規模サービス技術入門",
+    "authors": [
+      "伊藤直也",
+      "田中慎司"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2010,
+    "isbn": "9784774143071",
+    "url": "https://books.rakuten.co.jp/rb/6504086/",
+    "notes": "publisher=技術評論社; price=2838; registerDate=2025/12/22 08:51:52"
+  },
+  {
+    "id": "9784046076083",
+    "title": "シリコンバレー一流プログラマーが教える　Javaプロフェッショナル大全",
+    "authors": [
+      "酒井　潤"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "KADOKAWA"
+    ],
+    "year": 2025,
+    "isbn": "9784046076083",
+    "url": "https://books.rakuten.co.jp/rb/18428010/",
+    "notes": "publisher=KADOKAWA; price=3300; registerDate=2025/12/22 18:52:18"
+  },
+  {
+    "id": "9784788920347",
+    "title": "基礎からわかる！CCNA最短合格講義",
+    "authors": [
+      "ウズウズカレッジ",
+      "河合　大輔",
+      "浦川　晃"
+    ],
+    "category": "certification",
+    "tags": [
+      "certification",
+      "unspecified",
+      "実務教育出版"
+    ],
+    "year": 2023,
+    "isbn": "9784788920347",
+    "url": "https://books.rakuten.co.jp/rb/17536950/",
+    "notes": "publisher=実務教育出版; price=3080; registerDate=2025/12/29 06:10:51"
+  },
+  {
+    "id": "9784297142919",
+    "title": "マンガ＋図解で基礎がよくわかる　情報セキュリティの教科書",
+    "authors": [
+      "左門 至峰",
+      "厚焼 サネ太"
+    ],
+    "category": "security",
+    "tags": [
+      "security",
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2024,
+    "isbn": "9784297142919",
+    "url": "https://books.rakuten.co.jp/rb/17886811/",
+    "notes": "publisher=技術評論社; price=1980; registerDate=2025/12/29 21:02:53"
+  },
+  {
+    "id": "9784798192123",
+    "title": "実務で役立つ ログの教科書 基礎知識から収集方法・分析手法・トラブルシューティング・パフォーマンス最適化・機械学習での活用まで",
+    "authors": [
+      "増井 敏克"
+    ],
+    "category": "productivity",
+    "tags": [
+      "productivity",
+      "unspecified",
+      "翔泳社"
+    ],
+    "year": 2025,
+    "isbn": "9784798192123",
+    "url": "https://books.rakuten.co.jp/rb/18387583/",
+    "notes": "publisher=翔泳社; price=2618; registerDate=2026/01/03 19:25:52"
+  },
+  {
+    "id": "9784798075730",
+    "title": "やさしいMCP入門",
+    "authors": [
+      "御田稔",
+      "大坪悠"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "秀和システム"
+    ],
+    "year": 2025,
+    "isbn": "9784798075730",
+    "url": "https://books.rakuten.co.jp/rb/18238575/",
+    "notes": "publisher=秀和システム; price=1760; registerDate=2026/01/06 12:31:34"
+  },
+  {
+    "id": "9784295018957",
+    "title": "ホワイトハッカー入門 第2版",
+    "authors": [
+      "阿部 ひろき"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "インプレス"
+    ],
+    "year": 2024,
+    "isbn": "9784295018957",
+    "url": "https://books.rakuten.co.jp/rb/17799908/",
+    "notes": "publisher=インプレス; price=2860; registerDate=2026/01/09 08:07:11"
+  },
+  {
+    "id": "9784297153540",
+    "title": "実践Claude Code入門ー現場で活用するためのAIコーディングの思考法",
+    "authors": [
+      "西見 公宏",
+      "吉田 真吾",
+      "大嶋 勇樹"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "技術評論社"
+    ],
+    "year": 2025,
+    "isbn": "9784297153540",
+    "url": "https://books.rakuten.co.jp/rb/18439208/",
+    "notes": "publisher=技術評論社; price=3300; registerDate=2026/01/10 22:42:31"
+  },
+  {
+    "id": "9784814400874",
+    "title": "コンピュータシステムの理論と実装 第2版",
+    "authors": [
+      "Noam Nisan",
+      "Shimon Schocken",
+      "斎藤 康毅"
+    ],
+    "category": "misc",
+    "tags": [
+      "unspecified",
+      "オライリジャパン"
+    ],
+    "year": 2024,
+    "isbn": "9784814400874",
+    "url": "https://books.rakuten.co.jp/rb/18030506/",
+    "notes": "publisher=オライリー・ジャパン; price=4400; registerDate=2026/01/15 13:00:03"
   }
 ]
