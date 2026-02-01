@@ -1,8 +1,7 @@
 ---
-title: "Hello, Astro Blog"
-pubDate: 2026-01-11
-description: "Astro + GitHub Pages でブログを動かす最小構成。"
-tags: ["astro", "blog"]
+title: "Hello"
+description: "プロフィールページ"
+pubDate: 2026-02-01
 ---
 
 これは最初の記事。

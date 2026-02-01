@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const [library] = await getCollection('books');
+  const books = (library?.data ?? []) as Array<{ category: string }>;
+
+  const categories = Array.from(new Set(books.map((b) => b.category)))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, 'ja'));
+
+  return categories.map((category) => ({
+    params: { category },
+  }));
+}
+
+const category = Astro.params.category ?? '';
+
+const [library] = await getCollection('books');
+const books = (library?.data ?? []) as Array<{
+  id: string;
+  title: string;
+  authors: string[];
+  category: string;
+  tags: string[];
+  year?: number;
+  isbn?: string;
+  url?: string;
+  notes?: string;
+}>;
+
+const booksInCategory = books
+  .filter((b) => b.category === category)
+  .sort((a, b) => (a.title ?? '').localeCompare(b.title ?? '', 'ja'));
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Books: {category}</title>
+  </head>
+  <body>
+    <main style="max-width: 960px; margin: 0 auto; padding: 24px;">
+      <p><a href="/books/">← Books</a></p>
+
+      <h1>カテゴリ: {category}</h1>
+      <p>
+        件数: <strong>{booksInCategory.length}</strong>
+      </p>
+
+      {booksInCategory.length === 0 ? (
+        <p>このカテゴリにはまだ本がありません。</p>
+      ) : (
+        <ul>
+          {booksInCategory.map((b) => (
+            <li style="margin: 12px 0;">
+              <div>
+                <strong>{b.title}</strong>
+                {typeof b.year === 'number' ? <span>（{b.year}）</span> : null}
+              </div>
+
+              {b.authors?.length ? (
+                <div style="opacity: 0.8;">著者: {b.authors.join(', ')}</div>
+              ) : null}
+
+              {b.tags?.length ? (
+                <div style="opacity: 0.8;">タグ: {b.tags.join(', ')}</div>
+              ) : null}
+
+              {b.url ? (
+                <div>
+                  <a href={b.url} target="_blank" rel="noreferrer">リンク</a>
+                </div>
+              ) : null}
+
+              {b.notes ? <div style="opacity: 0.8;">{b.notes}</div> : null}
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  </body>
+</html>

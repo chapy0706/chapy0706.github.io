@@ -1,0 +1,40 @@
+---
+/* src/components/BookCard.astro */
+export type Book = {
+  id: string;
+  title: string;
+  authors?: string[];
+  categories?: string[];
+  tags?: string[];
+  purchasedAt?: string;
+  status?: 'unread' | 'reading' | 'done' | 'reference';
+  notes?: string;
+  links?: Record<string, string>;
+};
+
+const { book } = Astro.props as { book: Book };
+---
+
+<article style="border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 12px;">
+  <h3 style="margin: 0 0 0.25rem 0;">{book.title}</h3>
+
+  {book.authors?.length ? (
+    <p style="margin: 0.25rem 0; opacity: 0.85;">{book.authors.join(', ')}</p>
+  ) : null}
+
+  {book.categories?.length ? (
+    <p style="margin: 0.25rem 0; opacity: 0.75;">
+      {book.categories.join(' / ')}
+    </p>
+  ) : null}
+
+  {book.status ? (
+    <p style="margin: 0.25rem 0; opacity: 0.75;">status: {book.status}</p>
+  ) : null}
+
+  {book.notes ? (
+    <p style="margin: 0.5rem 0 0 0; opacity: 0.85; white-space: pre-wrap;">
+      {book.notes}
+    </p>
+  ) : null}
+</article>

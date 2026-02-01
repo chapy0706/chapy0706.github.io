@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+
+const [library] = await getCollection('books');
+const books = (library?.data ?? []) as Array<{
+  id: string;
+  title: string;
+  authors: string[];
+  category: string;
+  tags: string[];
+  year?: number;
+  isbn?: string;
+  url?: string;
+  notes?: string;
+}>;
+
+const categoryCounts = new Map<string, number>();
+for (const b of books) {
+  categoryCounts.set(b.category, (categoryCounts.get(b.category) ?? 0) + 1);
+}
+
+const categories = Array.from(categoryCounts.entries())
+  .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
+  .map(([category, count]) => ({ category, count }));
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Books</title>
+  </head>
+  <body>
+    <main style="max-width: 960px; margin: 0 auto; padding: 24px;">
+      <h1>Books</h1>
+
+      <p>
+        登録冊数: <strong>{books.length}</strong>
+      </p>
+
+      <h2>カテゴリ</h2>
+      {categories.length === 0 ? (
+        <p>まだ本データがありません。</p>
+      ) : (
+        <ul>
+          {categories.map(({ category, count }) => (
+            <li>
+              <a href={`/books/${encodeURIComponent(category)}/`}>{category}</a> ({count})
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "example",
+    "title": "サンプル本",
+    "authors": ["著者名"],
+    "category": "sample",
+    "tags": ["tag1"],
+    "year": 2026,
+    "isbn": "",
+    "url": "https://example.com",
+    "notes": ""
+  }
+]
