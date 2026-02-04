@@ -1,0 +1,135 @@
+---
+import { Code } from 'astro:components';
+
+const terminal = String.raw`$ pwd
+/home/chapy/portfolio
+
+$ pnpm -v
+9.12.2
+
+$ docker compose up -d
+[+] Running 2/2
+ ✔ Network app_default  Created
+ ✔ Container app-web    Started
+
+$ pnpm dev
+astro dev  --host 0.0.0.0
+Local:   http://localhost:4321/
+`;
+
+const snippet = String.raw`type Stack = {
+  frontend: ['Astro', 'TypeScript', 'CSS'];
+  backend: ['Node.js', 'Java', 'Spring Boot'];
+  infra: ['Docker', 'GitHub Actions'];
+};
+
+export const stack: Stack = {
+  frontend: ['Astro', 'TypeScript', 'CSS'],
+  backend: ['Node.js', 'Java', 'Spring Boot'],
+  infra: ['Docker', 'GitHub Actions'],
+};`;
+---
+
+<section class="hero">
+  <div class="grid">
+    <div class="pane">
+      <div class="chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">~/portfolio  —  zsh</span>
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
+      <Code lang="shellsession" code={terminal} theme="kanagawa-dragon" />
+    </div>
+
+    <div class="pane">
+      <div class="chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">stack.ts</span>
+      </div>
+      <Code lang="ts" code={snippet} theme="kanagawa-dragon" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero{
+    /* “鮮やかなのに静か”の核：深い背景＋微細な光 */
+    --bg0:#0f0f10;
+    --bg1:#181616;
+    --ink:#dcd7ba;
+    --line: color-mix(in oklab, var(--ink), transparent 88%);
+
+    padding: 3rem 1rem;
+    background:
+      radial-gradient(1000px 500px at 10% 10%, color-mix(in oklab, #8ea4a2, transparent 85%), transparent 60%),
+      radial-gradient(900px 450px at 90% 30%, color-mix(in oklab, #957fb8, transparent 86%), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1));
+  }
+
+  .grid{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 900px){
+    .grid{ grid-template-columns: 1fr 1fr; }
+  }
+
+  .pane{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    position: relative;
+  }
+
+  .chrome{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    padding:.6rem .8rem;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg1), transparent 10%);
+    color: color-mix(in oklab, var(--ink), transparent 25%);
+    font: 500 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+  .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; opacity:.9; }
+  .dot.r{ background:#ff5d62; }
+  .dot.y{ background:#e6c384; }
+  .dot.g{ background:#8a9a7b; }
+
+  .title{ margin-left:.25rem; }
+  .cursor{
+    margin-left:auto;
+    width:10px; height:14px;
+    background: color-mix(in oklab, #c8c093, transparent 20%);
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* Shikiが付ける背景を“pane側”に寄せたいときの保険 */
+  :global(pre.astro-code){
+    margin: 0;
+    padding: 1rem;
+    background: transparent !important;
+  }
+
+  /* 走査線：やりすぎるとダサいので薄く */
+  .pane::after{
+    content:"";
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.03) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+    opacity: .12;
+    pointer-events:none;
+    mix-blend-mode: overlay;
+  }
+</style>
