@@ -1,3 +1,4 @@
+# .github/workflows/ci.yml
 name: CI
 
 on:
@@ -17,10 +18,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
       - name: Enable corepack
         run: corepack enable
+
+      # corepack が pnpm を用意できているか確認（ここで失敗するなら別問題）
+      - name: Verify pnpm
+        run: pnpm --version
 
       # 実行権限をgitで管理してない場合の保険
       - name: Ensure scripts are executable
