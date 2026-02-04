@@ -1,6 +1,12 @@
-<!-- articles/etl-regression-test-archaeology.md -->
+---
+title: "現場のリアル物語①"
+pubDate: 2026-02-04
+updatedDate: 2026-02-04
+description: "2012年の仕様書と失われたエビデンスたち"
+tags: ["経歴"]
+---
 
-# 現場のリアル物語①：2012年の仕様書と失われたエビデンスたち
+# 現場のリアル物語①: 2012年の仕様書と失われたエビデンスたち
 
 ## TL;DR
 

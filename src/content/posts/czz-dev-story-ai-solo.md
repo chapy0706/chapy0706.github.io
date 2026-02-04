@@ -1,4 +1,10 @@
-<!-- articles/czz-dev-story-ai-solo.md -->
+---
+title: "生成AIと個人開発"
+pubDate: 2026-02-04
+updatedDate: 2026-02-04
+description: "czzアプリ を形にするまでの奮闘記"
+tags: ["経歴"]
+---
 
 # 生成AIと個人開発で czzアプリ を形にするまで  
 Linuxを「怖いもの」から「触りたいもの」へ。UNIX哲学を“体験”にするための開発戦記。
