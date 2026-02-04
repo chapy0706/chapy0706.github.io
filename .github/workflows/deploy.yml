@@ -33,7 +33,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm run build
+        run: make verify
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
