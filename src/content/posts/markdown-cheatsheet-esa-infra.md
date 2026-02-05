@@ -1,11 +1,10 @@
-<!-- src/content/posts/markdown-cheatsheet-esa-infra.md -->
 ---
-title: Markdownチートシート（LPIC / DB / インフラ文脈版・esa docsベース）
-description: Markdownを忘れたときに最短で思い出すためのメモ。例文はLPIC学習者（Linux / DB / インフラ）向け。
+title: Markdownチートシート
+description: Markdownを忘れたときに最短で思い出すためのメモ。
 pubDate: 2026-02-05
 ---
 
-# Markdownチートシート（LPIC / DB / インフラ文脈版・esa docsベース）
+# Markdownチートシート
 
 このページは「Markdownを忘れたときに、最短で思い出す」ためのメモ。  
 例文は LPIC 学習者（Linux / DB / インフラ）向けに寄せてある。
