@@ -1,82 +1,170 @@
 ---
-import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
-import heroBgImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
+import HeroTerminalCode from '../HeroTerminalCode.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const postCount = posts.length;
+
+const pubDates = posts
+  .map((p) => p.data?.pubDate)
+  .filter((d): d is Date => d instanceof Date);
+
+pubDates.sort((a, b) => b.getTime() - a.getTime());
+
+const latest = pubDates[0];
+const oldest = pubDates[pubDates.length - 1];
+
+const toYmd = (d?: Date) =>
+  d
+    ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+    : '—';
+
+const latestYmd = toYmd(latest);
+
+const daysRunning = (() => {
+  if (!oldest) return 0;
+  const ms = Date.now() - oldest.getTime();
+  const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+  return Math.max(1, days + 1);
+})();
 ---
 
-<section class="relative h-screen min-h-[600px] flex items-center overflow-hidden">
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0">
-    <Image 
-      src={heroBgImg}
-      alt="Modern logistics warehouse with advanced automation"
-      class="w-full h-full object-cover"
-      width={2070}
-      height={1380}
-      decoding="async"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/50"></div>
-  </div>
+<section class="hero relative min-h-[720px] md:min-h-[760px] flex items-center overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 hero-bg" aria-hidden="true"></div>
 
-  <!-- Content -->
   <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl">
-      <div class="inline-flex items-center px-4 py-2 mb-6 bg-linear-to-r from-blue-600 to-teal-600 text-white text-sm font-semibold rounded-full shadow-lg">
-        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-        </svg>
-        今日も一歩ずつ進んでる？
-      </div>
-      
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-        今日もまったりちょっとずつ
-        <span class="block text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-teal-400 to-blue-400 mt-2">
-          日々精進
-        </span>
-      </h1>
-      
-      <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-2xl leading-relaxed">
-        このサイトは私の日常を呟いたり、ポートフォリオを置いてみたりと小さな挑戦をする場所。
-        IT技術に触れたり技術書読んだり、時々立ち止まって空を眺めたり...そんなゆるい感じのサイト。
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        <Button href="/posts" size="lg" class="bg-blue-600! hover:bg-blue-700! text-white! shadow-2xl!">
-          ブログページ
-        </Button>
-        <Button href="/use-cases" size="lg" variant="outline" class="border-2! border-white! text-white! hover:bg-white/10! shadow-2xl!">
-          ポートフォリオ一覧
-        </Button>
+    <div class="grid gap-10 lg:gap-12 items-center lg:grid-cols-2">
+      <!-- Left -->
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center px-4 py-2 mb-6 hero-pill">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          今日も一歩ずつ進んでる？
+        </div>
+
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          小さく作って
+          <span class="block hero-gradient mt-2">少しずつ良くする</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-slate-200 mb-8 leading-relaxed">
+          学習ログ・制作メモ・ポートフォリオをまとめた場所。
+          試して、壊して、直して、また試す。そんな記録を置いてるよ。
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <Button href="/posts" size="lg" class="bg-blue-600! hover:bg-blue-700! text-white! shadow-2xl!">
+            ブログを読む
+          </Button>
+
+          <Button
+            href="/use-cases"
+            size="lg"
+            variant="outline"
+            class="border-2! border-white! text-white! hover:bg-white/10! shadow-2xl!"
+          >
+            ポートフォリオを見る
+          </Button>
+
+          <!-- ghost の代替：outline + border透明 で“文字だけボタン”っぽく -->
+          <Button
+            href="/about"
+            size="lg"
+            variant="outline"
+            class="border-transparent! text-white! hover:bg-white/10! hover:border-white/20!"
+          >
+            このサイトについて
+          </Button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/20">
+          <div class="group">
+            <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">
+              {postCount}
+            </div>
+            <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">記事</div>
+          </div>
+
+          <div class="group">
+            <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">
+              {daysRunning}
+            </div>
+            <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">運用日数</div>
+          </div>
+
+          <div class="group">
+            <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">
+              {latestYmd}
+            </div>
+            <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">最終更新</div>
+          </div>
+
+          <div class="group">
+            <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">
+              Astro
+            </div>
+            <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">静的サイト</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Quick Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/20">
-        <div class="group">
-          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">500+</div>
-          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Global Clients</div>
-        </div>
-        <div class="group">
-          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">50M+</div>
-          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Units Shipped</div>
-        </div>
-        <div class="group">
-          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">99.9%</div>
-          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">On-Time</div>
-        </div>
-        <div class="group">
-          <div class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white to-blue-200 mb-1">15+</div>
-          <div class="text-sm text-slate-300 group-hover:text-teal-300 transition-colors">Facilities</div>
-        </div>
+      <!-- Right (PC only) -->
+      <div class="hidden lg:block">
+        <HeroTerminalCode />
       </div>
     </div>
   </div>
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>
   </div>
-</section>
 
+  <style>
+    .hero {
+      background: #0b0f14;
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(34, 211, 238, 0.18), transparent 60%),
+        radial-gradient(900px 700px at 70% 20%, rgba(96, 165, 250, 0.22), transparent 55%),
+        radial-gradient(800px 600px at 45% 80%, rgba(168, 85, 247, 0.16), transparent 55%),
+        linear-gradient(90deg, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 0.55));
+      filter: saturate(1.05);
+    }
+
+    .hero-pill {
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.92), rgba(13, 148, 136, 0.92));
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-gradient {
+      display: block;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(90deg, #60a5fa, #22d3ee, #60a5fa);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero :global(.animate-bounce) {
+        animation: none !important;
+      }
+    }
+  </style>
+</section>
