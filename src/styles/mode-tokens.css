@@ -3,26 +3,40 @@
   --font-ui: system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
+  /* base tokens */
   --bg: #0f0f10;
   --panel: rgba(12, 14, 22, 0.72);
   --text: #dcd7ba;
+  --text-muted: color-mix(in oklab, var(--text), transparent 35%);
   --line: color-mix(in oklab, var(--text), transparent 88%);
   --radius: 14px;
-  --shadow: 0 20px 60px rgba(0,0,0,.35);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   --motion: 1;
+
+  /* accents (Markdown吹き出し等で使う) */
+  --accent-note: #7aa2f7;
+  --accent-tip: #9ece6a;
+  --accent-important: #bb9af7;
+  --accent-warning: #e0af68;
+  --accent-caution: #f7768e;
+
+  --link: #7aa2f7;
 }
 
+/* “unixモード”として少しだけ質感調整（好みで） */
 :root[data-mode="unix"] {
-  /* Kanagawa Dragon っぽい“深くて彩度がある”寄せ */
   --bg: #0f0f10;
   --panel: rgba(24, 22, 22, 0.72);
   --text: #dcd7ba;
+  --text-muted: color-mix(in oklab, var(--text), transparent 38%);
   --line: color-mix(in oklab, var(--text), transparent 86%);
-  --radius: 12px;         /* 少し硬めに */
-  --shadow: 0 22px 70px rgba(0,0,0,.45);
-  --motion: 0.85;         /* 動きを少し抑える */
+  --radius: 12px;
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+  --motion: 0.85;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root { --motion: 0; }
+  :root {
+    --motion: 0;
+  }
 }

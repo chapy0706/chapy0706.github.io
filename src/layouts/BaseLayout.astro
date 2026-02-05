@@ -1,8 +1,11 @@
 ---
-import '../styles/global.css';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import { SITE } from '@config/site';
+// src/layouts/BaseLayout.astro
+import "../styles/mode-tokens.css";
+import "../styles/global.css";
+
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { SITE } from "@config/site";
 
 interface Props {
   title?: string;
@@ -11,36 +14,38 @@ interface Props {
 
 const currentPathname = Astro.url.pathname;
 
-const { 
-  title = SITE.title, 
-  description = SITE.description 
-} = Astro.props;
+const { title = SITE.title, description = SITE.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja" data-mode="unix">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/chapy.jpg" />
     <meta name="generator" content={Astro.generator} />
-    
+
+    <!-- OS/ブラウザに「暗めテーマ」を示す（フォーム等の見た目が馴染みやすい） -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f0f10" />
+
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
   </head>
-  <body class="flex min-h-screen flex-col bg-white font-sans text-neutral-900 antialiased">
+
+  <body class="flex min-h-screen flex-col antialiased">
     <Header currentPathname={currentPathname} />
     <main class="flex-1">
       <slot />
@@ -48,4 +53,3 @@ const {
     <Footer />
   </body>
 </html>
-

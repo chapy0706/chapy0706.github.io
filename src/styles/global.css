@@ -6,6 +6,26 @@ html {
   @apply scroll-smooth;
 }
 
+/* ベース（フォント・背景・文字色を tokens へ寄せる） */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+}
+
+/* 等幅フォントの統一 */
+:where(code, pre, kbd, samp) {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 /* 見出しジャンプ時に、固定ヘッダーで隠れがちなら入れる（任意） */
 /*
 :where(h2, h3, h4) {
@@ -17,56 +37,132 @@ html {
   @apply after:content-[""] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-blue-300 hover:after:bg-transparent after:rounded-full;
 }
 
-/* ===== Markdown Alerts (GitHub-style) ===== */
+/* ===== Markdown（記事本文） =====
+   posts 側で <article class="markdown"> を付けて、影響範囲を閉じる */
+.markdown {
+  line-height: 1.85;
+}
+
+.markdown :where(p) {
+  margin: 1rem 0;
+  color: var(--text);
+}
+
+.markdown :where(h1, h2, h3) {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.markdown :where(h2) {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.6rem;
+}
+
+.markdown :where(h3) {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.markdown :where(ul, ol) {
+  margin: 1rem 0 1rem 1.25rem;
+}
+.markdown :where(li) {
+  margin: 0.35rem 0;
+}
+
+.markdown :where(hr) {
+  border-color: var(--line);
+  margin: 2rem 0;
+}
+
+.markdown :where(pre) {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel), transparent 10%);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.markdown :where(:not(pre) > code) {
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel), transparent 20%);
+  font-size: 0.95em;
+}
+
+/* ===== Markdown Alerts（吹き出し化） =====
+   すでに .markdown-alert* は入ってるので（現状）
+   ここを“見た目だけ”差し替えるのが一番安全 */
 .markdown-alert {
-  @apply relative my-6 rounded-xl border px-4 py-3;
+  /* typeごとに上書きする */
+  --_accent: var(--accent-note);
+  --_bg: color-mix(in oklab, var(--panel), transparent 8%);
+  --_border: color-mix(in oklab, var(--_accent), var(--line) 65%);
+
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem 1rem 1rem 1.1rem;
+
+  border: 1px solid var(--_border);
+  border-radius: calc(var(--radius) + 2px);
+  background: var(--_bg);
+  box-shadow: var(--shadow);
+}
+
+.markdown-alert::before {
+  /* 吹き出しの“しっぽ”（左下） */
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  bottom: -0.55rem;
+  width: 1.05rem;
+  height: 1.05rem;
+
+  background: var(--_bg);
+  border-left: 1px solid var(--_border);
+  border-bottom: 1px solid var(--_border);
+
+  transform: rotate(45deg);
 }
 
 .markdown-alert-title {
-  @apply mb-2 flex items-center gap-2 font-semibold;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: var(--_accent);
 }
 
-/* NOTE */
+.markdown-alert-title :where(svg) {
+  width: 1.1em;
+  height: 1.1em;
+  opacity: 0.95;
+}
+
+/* type別アクセント */
 .markdown-alert-note {
-  @apply border-blue-200 bg-blue-50/60 text-slate-900 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-slate-100;
+  --_accent: var(--accent-note);
 }
-.markdown-alert-note .markdown-alert-title {
-  @apply text-blue-800 dark:text-blue-200;
-}
-
-/* TIP */
 .markdown-alert-tip {
-  @apply border-emerald-200 bg-emerald-50/60 text-slate-900 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-slate-100;
+  --_accent: var(--accent-tip);
 }
-.markdown-alert-tip .markdown-alert-title {
-  @apply text-emerald-800 dark:text-emerald-200;
-}
-
-/* IMPORTANT */
 .markdown-alert-important {
-  @apply border-violet-200 bg-violet-50/60 text-slate-900 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-slate-100;
+  --_accent: var(--accent-important);
 }
-.markdown-alert-important .markdown-alert-title {
-  @apply text-violet-800 dark:text-violet-200;
-}
-
-/* WARNING */
 .markdown-alert-warning {
-  @apply border-amber-200 bg-amber-50/60 text-slate-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-slate-100;
+  --_accent: var(--accent-warning);
 }
-.markdown-alert-warning .markdown-alert-title {
-  @apply text-amber-800 dark:text-amber-200;
-}
-
-/* CAUTION (もし使うなら) */
 .markdown-alert-caution {
-  @apply border-rose-200 bg-rose-50/60 text-slate-900 dark:border-rose-900/60 dark:bg-rose-950/30 dark:text-slate-100;
-}
-.markdown-alert-caution .markdown-alert-title {
-  @apply text-rose-800 dark:text-rose-200;
+  --_accent: var(--accent-caution);
 }
 
-/* Animations */
+/* Animations（既存維持） */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -88,11 +184,11 @@ html {
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp calc(0.6s * var(--motion)) ease-out forwards;
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn calc(0.4s * var(--motion)) ease-out forwards;
 }
 
 .gradient-text {
