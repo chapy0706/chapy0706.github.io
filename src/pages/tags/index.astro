@@ -1,0 +1,48 @@
+---
+// src/pages/tags/index.astro
+import Layout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const normalize = (t: string) => t.trim().toLowerCase();
+
+const posts = (await getCollection("posts"))
+  .filter((p) => !p.data.draft);
+
+const tagCount = new Map<string, number>();
+for (const p of posts) {
+  for (const t of (p.data.tags ?? []).map(normalize)) {
+    if (!t) continue;
+    tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagCount.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([tag, count]) => ({ tag, count }));
+---
+
+<Layout title="Tags">
+  <main class="container mx-auto px-4 py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Tags</h1>
+      <p class="text-sm opacity-70">記事タグの一覧。</p>
+    </header>
+
+    {tags.length === 0 ? (
+      <p class="opacity-70">タグがまだないみたい。</p>
+    ) : (
+      <ul class="flex flex-wrap gap-2">
+        {tags.map(({ tag, count }) => (
+          <li>
+            <a
+              class="rounded-lg border border-white/10 px-3 py-2 text-sm text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors"
+              href={`/tags/${encodeURIComponent(tag)}/`}
+            >
+              #{tag} <span class="opacity-70">({count})</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>

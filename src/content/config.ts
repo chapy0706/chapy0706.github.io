@@ -1,6 +1,15 @@
 // src/content/config.ts
 import { defineCollection, z } from 'astro:content';
 
+const normalizeTags = z
+  .array(z.string())
+  .default([])
+  .transform((tags) =>
+    tags
+      .map((t) => t.trim())
+      .filter(Boolean)
+  );
+
 const posts = defineCollection({
   type: 'content',
   schema: z.object({
@@ -10,7 +19,8 @@ const posts = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     draft: z.boolean().optional(),
-    tags: z.array(z.string()).optional(),
+    // tags は「無い記事」も想定して default([]) に寄せる
+    tags: normalizeTags,
   }),
 });
 
