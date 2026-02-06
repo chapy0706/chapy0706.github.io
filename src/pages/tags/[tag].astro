@@ -3,10 +3,11 @@
 import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const normalize = (t: string) => t.trim().toLowerCase();
 const toYmd = (d: Date) => d.toISOString().slice(0, 10);
 
 export async function getStaticPaths() {
+  const normalize = (t: string) => t.trim().toLowerCase();
+
   const posts = (await getCollection("posts")).filter((p) => !p.data.draft);
 
   const set = new Set<string>();
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
   }));
 }
 
+const normalize = (t: string) => t.trim().toLowerCase();
 const { tag } = Astro.props as { tag: string };
 
 const posts = (await getCollection("posts"))
