@@ -1,5 +1,4 @@
 ---
-// src/pages/posts/[...slug].astro
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/BaseLayout.astro";
@@ -20,7 +19,7 @@ const { post } = Astro.props as Props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} showHeader={false} showFooter={false}>
   <main class="container mx-auto px-4 py-10">
     <a class="text-sm opacity-70 hover:opacity-100" href="/posts/">← Posts</a>
 

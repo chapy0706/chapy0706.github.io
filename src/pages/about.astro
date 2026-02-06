@@ -1,0 +1,46 @@
+---
+// src/pages/about.astro
+import Layout from "../layouts/BaseLayout.astro";
+import { SITE, SOCIAL_LINKS } from "@config/site";
+
+const links = [
+  { name: "Blog", href: "/posts" },
+  { name: "Portfolio", href: "/use-cases" },
+  { name: "GitHub", href: SOCIAL_LINKS.github },
+].filter((l) => typeof l.href === "string" && l.href.length > 0);
+---
+
+<Layout title={`About - ${SITE.title}`} description={SITE.description}>
+  <main class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <header class="max-w-2xl">
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100">About</h1>
+      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
+        このサイトは、ブログ（学習ログ・制作メモ）とポートフォリオをまとめた個人サイト。
+        小さく作って、少しずつ良くしていくための記録を置いている。
+      </p>
+    </header>
+
+    <section class="mt-10 max-w-2xl">
+      <h2 class="text-lg font-semibold text-slate-100">Links</h2>
+      <ul class="mt-4 flex flex-wrap gap-3">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="rounded-lg border border-white/10 px-4 py-2 text-sm text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors"
+            >
+              {l.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-10 max-w-2xl">
+      <h2 class="text-lg font-semibold text-slate-100">Tech</h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
+        Astro / Content Collections / pnpm / GitHub Actions / GitHub Pages.
+      </p>
+    </section>
+  </main>
+</Layout>

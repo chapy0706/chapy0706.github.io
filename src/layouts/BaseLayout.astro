@@ -10,11 +10,20 @@ import { SITE } from "@config/site";
 interface Props {
   title?: string;
   description?: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  bodyClass?: string;
 }
 
 const currentPathname = Astro.url.pathname;
 
-const { title = SITE.title, description = SITE.description } = Astro.props;
+const {
+  title = SITE.title,
+  description = SITE.description,
+  showHeader = true,
+  showFooter = true,
+  bodyClass = "",
+} = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -22,9 +31,11 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+
     <meta name="generator" content={Astro.generator} />
 
     <!-- OS/ブラウザに「暗めテーマ」を示す（フォーム等の見た目が馴染みやすい） -->
@@ -36,7 +47,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
     <meta name="title" content={title} />
     <meta name="description" content={description} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -47,11 +58,20 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
     <meta property="twitter:description" content={description} />
   </head>
 
-  <body class="flex min-h-screen flex-col antialiased">
-    <Header currentPathname={currentPathname} />
-    <main class="flex-1">
+  <body class={`flex min-h-screen flex-col antialiased ${bodyClass}`.trim()}>
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[999] focus:rounded-lg focus:bg-slate-950 focus:px-4 focus:py-2 focus:text-slate-100 focus:shadow-2xl"
+    >
+      本文へスキップ
+    </a>
+
+    {showHeader && <Header currentPathname={currentPathname} />}
+
+    <main id="content" class="flex-1">
       <slot />
     </main>
-    <Footer />
+
+    {showFooter && <Footer />}
   </body>
 </html>
