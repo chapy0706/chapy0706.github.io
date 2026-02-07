@@ -7,6 +7,8 @@ type Props = {
   post: CollectionEntry<"posts">;
 };
 
+const normalize = (t: string) => t.trim().toLowerCase();
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
@@ -17,9 +19,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as Props;
 const { Content } = await post.render();
+
+const tags = (post.data.tags ?? []).map(normalize).filter(Boolean);
 ---
 
-<Layout title={post.data.title} showHeader={false} showFooter={false}>
+<Layout title={post.data.title}>
   <main class="container mx-auto px-4 py-10">
     <a class="text-sm opacity-70 hover:opacity-100" href="/posts/">← Posts</a>
 
@@ -29,6 +33,19 @@ const { Content } = await post.render();
       <div class="mt-2 text-sm opacity-70">
         {post.data.pubDate.toISOString().slice(0, 10)}
       </div>
+
+      {tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <a
+              class="inline-flex items-center rounded-full border px-3 py-1 text-xs opacity-80 hover:opacity-100 transition"
+              href={`/tags/${encodeURIComponent(tag)}/`}
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+      )}
 
       {post.data.description && (
         <p class="mt-4 text-base opacity-80">{post.data.description}</p>

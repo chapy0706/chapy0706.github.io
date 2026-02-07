@@ -27,33 +27,58 @@ const tags = [...tagCount.entries()]
   <main class="container mx-auto px-4 py-10">
     <header class="mb-8">
       <h1 class="text-3xl font-bold">Posts</h1>
-      <p class="text-sm opacity-70">書いたもの一覧。</p>
+      <p class="text-sm opacity-70">書いたものの一覧。</p>
 
       {tags.length > 0 && (
-        <div class="mt-5">
-          <div class="flex flex-wrap gap-2 items-center">
-            <button
-              type="button"
-              class="tag-chip tag-chip--active"
-              data-tag="__all__"
-              aria-pressed="true"
-            >
-              全部
-            </button>
+        <div class="mt-6">
+          <details class="tag-panel" id="tagPanel">
+            <summary class="tag-panel__summary">
+              <span class="tag-panel__label">タグで絞り込み</span>
+              <span class="tag-panel__state" id="tagPanelState">全部</span>
+              <svg class="tag-panel__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
 
-            {tags.map(({ tag, count }) => (
-              <a
-                class="tag-chip"
-                href={`/tags/${encodeURIComponent(tag)}/`}
-                data-tag={tag}
-              >
-                #{tag} <span class="tag-chip__count">({count})</span>
-              </a>
-            ))}
-          </div>
+            <div class="tag-panel__body">
+              <div class="tag-panel__row">
+                <label class="tag-toggle">
+                  <input id="inlineFilterToggle" type="checkbox" />
+                  <span>このページ内で絞る（ON）</span>
+                </label>
+                <span class="tag-toggle__hint">OFFのときはタグページへ移動</span>
+              </div>
+
+              <div class="tag-panel__search">
+                <label class="sr-only" for="tagSearch">タグ検索</label>
+                <input id="tagSearch" class="tag-panel__input" type="search" placeholder="タグ検索（例: astro, lpic）" />
+              </div>
+
+              <div class="tag-panel__chips" id="tagChips">
+                <button type="button" class="tag-chip tag-chip--active" data-tag="__all__" aria-pressed="true">
+                  全部
+                </button>
+
+                {tags.map(({ tag, count }) => (
+                  <a
+                    class="tag-chip"
+                    href={`/tags/${encodeURIComponent(tag)}/`}
+                    data-tag={tag}
+                    aria-pressed="false"
+                  >
+                    #{tag} <span class="tag-chip__count">({count})</span>
+                  </a>
+                ))}
+              </div>
+
+              <div class="tag-panel__footer">
+                <a class="tag-panel__link" href="/tags/">タグ一覧へ</a>
+              </div>
+            </div>
+          </details>
 
           <p class="mt-2 text-xs opacity-70">
-            クリックで絞り込み（JSなしでもタグページに移動できる）。
+            タグが増えても画面を圧迫しないよう、パネルに畳んでる。
           </p>
         </div>
       )}
@@ -72,15 +97,18 @@ const tags = [...tagCount.entries()]
             {post.data.description && (
               <p class="mt-2 text-sm opacity-80">{post.data.description}</p>
             )}
-
-            {(post.data.tags?.length ?? 0) > 0 && (
-              <div class="mt-4 flex flex-wrap gap-2">
-                {post.data.tags.map((t) => (
-                  <span class="post-tag">#{normalize(t)}</span>
-                ))}
-              </div>
-            )}
           </a>
+
+          {(post.data.tags?.length ?? 0) > 0 && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {post.data.tags.map((t) => {
+                const tag = normalize(t);
+                return (
+                  <a class="post-tag" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>
+                );
+              })}
+            </div>
+          )}
         </li>
       ))}
     </ul>
@@ -92,8 +120,15 @@ const tags = [...tagCount.entries()]
         const grid = document.getElementById('posts-grid');
         if (!grid) return;
 
-        const chipSelector = '[data-tag]';
-        const chips = Array.from(document.querySelectorAll(chipSelector));
+        const panel = document.getElementById('tagPanel');
+        const chipsRoot = document.getElementById('tagChips');
+        const search = document.getElementById('tagSearch');
+        const state = document.getElementById('tagPanelState');
+        const toggle = document.getElementById('inlineFilterToggle');
+
+        if (!chipsRoot || !search || !state || !toggle) return;
+
+        const chips = Array.from(chipsRoot.querySelectorAll('[data-tag]'));
         const cards = Array.from(grid.querySelectorAll('[data-tags]'));
 
         const setActive = (activeTag) => {
@@ -108,6 +143,7 @@ const tags = [...tagCount.entries()]
         const apply = (tag) => {
           const t = String(tag || '');
           setActive(t);
+          state.textContent = (t === '__all__') ? '全部' : ('#' + t);
 
           for (const card of cards) {
             const list = (card.getAttribute('data-tags') || '').split(',').filter(Boolean);
@@ -116,57 +152,86 @@ const tags = [...tagCount.entries()]
           }
         };
 
+        const resetAll = () => {
+          // 戻る/パンくず/履歴復元でも “必ず全部表示” に戻す
+          search.value = '';
+          for (const chip of chips) chip.classList.remove('is-hidden');
+          toggle.checked = false;
+          apply('__all__');
+          if (panel && panel.tagName.toLowerCase() === 'details') panel.open = false;
+        };
+
+        const allBtn = chipsRoot.querySelector('[data-tag="__all__"]');
+        if (allBtn) allBtn.addEventListener('click', () => apply('__all__'));
+
         for (const chip of chips) {
+          if (chip.getAttribute('data-tag') === '__all__') continue;
           chip.addEventListener('click', (e) => {
+            if (!toggle.checked) return; // 通常遷移
+            e.preventDefault();
             const tag = chip.getAttribute('data-tag');
-            if (chip.tagName.toLowerCase() === 'a') e.preventDefault();
             if (!tag) return;
             apply(tag);
           });
         }
 
-        apply('__all__');
+        const n = (s) => String(s || '').trim().toLowerCase();
+        search.addEventListener('input', () => {
+          const q = n(search.value);
+          for (const chip of chips) {
+            const tag = n(chip.getAttribute('data-tag'));
+            const show = tag === '__all__' || q === '' || tag.includes(q);
+            chip.classList.toggle('is-hidden', !show);
+          }
+        });
+
+        toggle.addEventListener('change', () => {
+          if (!toggle.checked) apply('__all__');
+        });
+
+        // ★bfcache復元でも確実に初期化
+        window.addEventListener('pageshow', resetAll, { passive: true });
+        window.addEventListener('popstate', resetAll, { passive: true });
+
+        resetAll();
       })();
     `}
   </script>
 
   <style>
-    .tag-chip{
-      display: inline-flex;
-      align-items: center;
-      gap: .25rem;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 9999px;
-      padding: .4rem .7rem;
-      font-size: .85rem;
-      text-decoration: none;
-      color: rgba(255,255,255,.78);
-      background: rgba(255,255,255,.03);
-      transition: background .15s ease, color .15s ease, border-color .15s ease;
-      cursor: pointer;
-    }
-    .tag-chip:hover{
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.92);
-      border-color: rgba(255,255,255,.18);
-    }
-    .tag-chip--active{
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.96);
-      border-color: rgba(96,165,250,.55);
-      box-shadow: 0 0 0 1px rgba(96,165,250,.25) inset;
-    }
-    .tag-chip__count{ opacity: .75; }
+    .tag-panel{ border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(255,255,255,.03); overflow:hidden; }
+    .tag-panel__summary{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.85rem 1rem; cursor:pointer; user-select:none; list-style:none; }
+    .tag-panel__summary::-webkit-details-marker{ display:none; }
+    .tag-panel__label{ font-size:.9rem; color:rgba(255,255,255,.82); font-weight:600; }
+    .tag-panel__state{ margin-left:auto; font-size:.85rem; color:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.10); padding:.2rem .55rem; border-radius:9999px; background:rgba(255,255,255,.02); }
+    .tag-panel__chev{ color:rgba(255,255,255,.75); transition:transform .15s ease; flex:0 0 auto; }
+    details[open] .tag-panel__chev{ transform:rotate(180deg); }
+    .tag-panel__body{ border-top:1px solid rgba(255,255,255,.10); padding:.9rem 1rem 1rem; }
 
-    .post-tag{
-      display: inline-flex;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 9999px;
-      padding: .18rem .55rem;
-      font-size: .75rem;
-      color: rgba(255,255,255,.72);
-      background: rgba(255,255,255,.02);
-    }
-    .is-hidden{ display:none; }
+    .tag-panel__row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-bottom:.75rem; }
+    .tag-toggle{ display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:rgba(255,255,255,.82); user-select:none; }
+    .tag-toggle input{ width:18px; height:18px; accent-color:rgb(96 165 250); }
+    .tag-toggle__hint{ font-size:.75rem; color:rgba(255,255,255,.55); }
+
+    .tag-panel__search{ margin-bottom:.75rem; }
+    .tag-panel__input{ width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:.65rem .8rem; color:rgba(255,255,255,.9); outline:none; }
+    .tag-panel__input::placeholder{ color:rgba(255,255,255,.45); }
+    .tag-panel__input:focus{ border-color:rgba(96,165,250,.55); box-shadow:0 0 0 2px rgba(96,165,250,.20); }
+
+    .tag-panel__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+    .tag-chip{ display:inline-flex; align-items:center; gap:.25rem; border:1px solid rgba(255,255,255,.12); border-radius:9999px; padding:.42rem .7rem; font-size:.85rem; color:rgba(255,255,255,.78); background:rgba(255,255,255,.02); transition:background .15s ease, color .15s ease, border-color .15s ease; cursor:pointer; white-space:nowrap; text-decoration:none; }
+    .tag-chip:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
+    .tag-chip--active{ background:rgba(255,255,255,.08); color:rgba(255,255,255,.96); border-color:rgba(96,165,250,.55); box-shadow:0 0 0 1px rgba(96,165,250,.25) inset; }
+    .tag-chip__count{ opacity:.75; }
+
+    .tag-panel__footer{ margin-top:.9rem; padding-top:.75rem; border-top:1px dashed rgba(255,255,255,.12); display:flex; justify-content:flex-end; }
+    .tag-panel__link{ font-size:.85rem; color:rgba(255,255,255,.78); text-decoration:none; border:1px solid rgba(255,255,255,.10); padding:.35rem .6rem; border-radius:9999px; background:rgba(255,255,255,.02); }
+    .tag-panel__link:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
+
+    .post-tag{ display:inline-flex; border:1px solid rgba(255,255,255,.10); border-radius:9999px; padding:.18rem .55rem; font-size:.75rem; color:rgba(255,255,255,.72); background:rgba(255,255,255,.02); text-decoration:none; }
+    .post-tag:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
+
+    .is-hidden{ display:none !important; }
+    @media (prefers-reduced-motion: reduce){ .tag-panel__chev{ transition:none; } }
   </style>
 </Layout>
