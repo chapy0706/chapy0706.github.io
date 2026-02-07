@@ -1,7 +1,7 @@
 ---
 # src/content/posts/etl-regression-test-archaeology-3.md
-title: "現場リアル物語③：祈りの角度と、httpという名の怪異"
-description: "現新比較テストのはずが、データ不備からhttp化、ログ未出力、本番向き実行まで、現場の「あるある」が連鎖する話。〜こうならないための最低限の設計・運用メモも添えて〜"
+title: "現場リアル物語③：過去の惨劇を超えて"
+description: "現場の「あるある」が連鎖する話。〜こうならないための最低限の設計・運用メモも添えて〜"
 pubDate: "2026-02-06T00:00:00+09:00"
 updatedDate: "2026-02-06T00:00:00+09:00"
 slug: "genba-real-story-3"
