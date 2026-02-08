@@ -9,19 +9,20 @@ SHELL := /usr/bin/env bash
 
 PNPM ?= pnpm
 
-.PHONY: help install typecheck build verify dev preview clean ci
+.PHONY: help install typecheck build verify dev preview clean ci evidence evidence-verify
 
 help:
-	@printf "%s\n" \
-	"Targets:" \
-	"  make install     - Install dependencies (local)" \
-	"  make dev         - Start dev server" \
-	"  make preview     - Preview production build" \
-	"  make typecheck   - Run astro/type checks" \
-	"  make build       - Build (dist/)" \
-	"  make verify      - typecheck + build (quality gate)" \
-	"  make ci          - CI gate (frozen install + verify)" \
-	"  make clean       - Remove build artifacts (.astro/, dist/)"
+	@echo "Targets:"
+	@echo "  make install         - Install dependencies (local)"
+	@echo "  make dev             - Start dev server"
+	@echo "  make preview         - Preview production build"
+	@echo "  make typecheck       - Run astro/type checks"
+	@echo "  make build           - Build (dist/)"
+	@echo "  make verify          - typecheck + build (quality gate)"
+	@echo "  make ci              - CI gate (frozen install + verify)"
+	@echo "  make evidence        - Run CI gate and save log to out/evidence/"
+	@echo "  make evidence-verify - Run verify and save log to out/evidence/"
+	@echo "  make clean           - Remove build artifacts (.astro/, dist/)"
 
 install:
 	@command -v corepack >/dev/null 2>&1 && corepack enable >/dev/null 2>&1 || true
@@ -44,6 +45,12 @@ verify:
 
 ci:
 	@./scripts/ci.sh
+
+evidence:
+	@./scripts/evidence.sh ci
+
+evidence-verify:
+	@./scripts/evidence.sh verify
 
 clean:
 	@rm -rf dist .astro
