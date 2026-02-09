@@ -25,7 +25,6 @@ esac
 
 mkdir -p out/evidence
 
-# Use UTC for filenames (stable across machines) + keep local timestamp in the log.
 file_ts="$(date -u +'%Y%m%d-%H%M%S')"
 utc_ts="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 local_ts="$(date +'%Y-%m-%dT%H:%M:%S%z')"
@@ -55,7 +54,6 @@ fi
 
 log="out/evidence/${file_ts}_${shortsha}_${cmd}.log"
 
-# Write metadata header first.
 {
   echo "timestamp_utc: ${utc_ts}"
   echo "timestamp_local: ${local_ts}"
@@ -70,7 +68,6 @@ log="out/evidence/${file_ts}_${shortsha}_${cmd}.log"
   echo "==> run: ${runner[*]}"
 } > "${log}"
 
-# Run and capture full output (stdout+stderr) into the log.
 set +e
 {
   "${runner[@]}"

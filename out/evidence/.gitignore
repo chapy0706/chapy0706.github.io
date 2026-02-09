@@ -1,0 +1,3 @@
+# out/evidence/.gitignore
+*
+!.gitignore
