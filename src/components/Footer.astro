@@ -2,10 +2,10 @@
 import { SITE, SOCIAL_LINKS } from "@config/site";
 
 const NAV = [
-  { name: "Home", href: "/" },
-  { name: "Blog", href: "/posts" },
-  { name: "Portfolio", href: "/use-cases" },
-  { name: "About", href: "/about" },
+  { name: "ホーム", href: "/" },
+  { name: "ブログ", href: "/posts" },
+  { name: "ポートフォリオ", href: "/use-cases" },
+  { name: "自己紹介", href: "/about" },
 ] as const;
 
 const SOCIAL = [
@@ -49,7 +49,7 @@ const SOCIAL = [
 
       <!-- Navigation -->
       <div class="lg:col-span-2">
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-100 mb-4">Navigation</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-100 mb-4">リンク一覧</h3>
         <ul class="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {NAV.map((item) => (
             <li>

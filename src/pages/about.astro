@@ -4,8 +4,8 @@ import Layout from "../layouts/BaseLayout.astro";
 import { SITE, SOCIAL_LINKS } from "@config/site";
 
 const links = [
-  { name: "Blog", href: "/posts" },
-  { name: "Portfolio", href: "/use-cases" },
+  { name: "ブログ", href: "/posts" },
+  { name: "ポートフォリオ", href: "/use-cases" },
   { name: "GitHub", href: SOCIAL_LINKS.github },
 ].filter((l) => typeof l.href === "string" && l.href.length > 0);
 ---
@@ -13,7 +13,7 @@ const links = [
 <Layout title={`About - ${SITE.title}`} description={SITE.description}>
   <main class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
     <header class="max-w-2xl">
-      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100">About</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100">自己紹介</h1>
       <p class="mt-4 text-base leading-relaxed text-slate-200/80">
         このサイトは、ブログ（学習ログ・制作メモ）とポートフォリオをまとめた個人サイト。
         小さく作って、少しずつ良くしていくための記録を置いている。
@@ -21,7 +21,7 @@ const links = [
     </header>
 
     <section class="mt-10 max-w-2xl">
-      <h2 class="text-lg font-semibold text-slate-100">Links</h2>
+      <h2 class="text-lg font-semibold text-slate-100">リンク一覧</h2>
       <ul class="mt-4 flex flex-wrap gap-3">
         {links.map((l) => (
           <li>
@@ -37,10 +37,22 @@ const links = [
     </section>
 
     <section class="mt-10 max-w-2xl">
-      <h2 class="text-lg font-semibold text-slate-100">Tech</h2>
+      <h2 class="text-lg font-semibold text-slate-100">技術スタック</h2>
       <p class="mt-4 text-base leading-relaxed text-slate-200/80">
         Astro / Content Collections / pnpm / GitHub Actions / GitHub Pages.
       </p>
     </section>
+
+    <section class="mt-10 max-w-2xl">
+      <h2 class="text-lg font-semibold text-slate-100">特技</h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
+        タロットカード占い
+      </p>
+      <a href="https://www.uranai.org/tarot/" target="_parent"><img src="https://www.uranai.org/proof/tarot.png" width="40%" alt="タロットカード士®資格資格証明"></a>
+    </section>
+    <p class="text-xs text-slate-400/80">
+        ※タロットカード士®は、一般社団法人日本占い師協会の登録商標です。<br>  
+        ※このロゴは、一般社団法人日本占い師協会の許可を得て使用しています。
+      </p>
   </main>
 </Layout>

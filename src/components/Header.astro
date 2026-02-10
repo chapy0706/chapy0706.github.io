@@ -8,9 +8,9 @@ type Props = {
 const { currentPathname } = Astro.props as Props;
 
 const NAV = [
-  { name: "Blog", href: "/posts" },
-  { name: "Portfolio", href: "/use-cases" },
-  { name: "About", href: "/about" },
+  { name: "ブログ", href: "/posts" },
+  { name: "ポートフォリオ", href: "/use-cases" },
+  { name: "自己紹介", href: "/about" },
 ] as const;
 
 const isActive = (href: string): boolean => {
