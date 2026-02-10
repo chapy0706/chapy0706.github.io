@@ -1,24 +1,365 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PremiumHero from '../components/home/PremiumHero.astro';
-import ServiceHighlights from '../components/home/ServiceHighlights.astro';
-import ImageGrid from '../components/home/ImageGrid.astro';
-import StatsShowcase from '../components/home/StatsShowcase.astro';
-import IndustriesServed from '../components/home/IndustriesServed.astro';
-import TechnologyInnovation from '../components/home/TechnologyInnovation.astro';
-import ProcessWorkflow from '../components/home/ProcessWorkflow.astro';
-import Testimonials from '../components/home/Testimonials.astro';
-import PremiumCTA from '../components/home/PremiumCTA.astro';
+import HeroTerminalCode from '../components/HeroTerminalCode.astro';
+import { getCollection } from 'astro:content';
+import { PORTFOLIO_ITEMS } from '../config/site';
+
+const allPosts = (await getCollection('posts')).filter((p) => !p.data.draft);
+const sortedPosts = [...allPosts].sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const posts = sortedPosts.slice(0, 3);
+
+const postCount = allPosts.length;
+const pubDates = allPosts
+  .map((p) => p.data?.pubDate)
+  .filter((d): d is Date => d instanceof Date)
+  .sort((a, b) => b.getTime() - a.getTime());
+
+const latest = pubDates[0];
+const oldest = pubDates[pubDates.length - 1];
+
+const toYmd = (d?: Date) =>
+  d
+    ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+    : '—';
+
+const latestYmd = toYmd(latest);
+
+const daysRunning = (() => {
+  if (!oldest) return 0;
+  const ms = Date.now() - oldest.getTime();
+  const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+  return Math.max(1, days + 1);
+})();
 ---
 
 <BaseLayout>
-  <PremiumHero />
-  <ServiceHighlights />
-  <ImageGrid />
-  <IndustriesServed />
-  <TechnologyInnovation />
-  <ProcessWorkflow />
-  <StatsShowcase />
-  <Testimonials />
-  <PremiumCTA />
+  <section class="home-hero">
+    <div class="container mx-auto px-4 py-16 lg:py-24">
+      <div class="home-hero__grid">
+        <div class="home-hero__content">
+          <p class="home-eyebrow">ポートフォリオとブログの拠点</p>
+          <h1 class="home-title">作ったものと学びの記録を、ひと目で。</h1>
+          <p class="home-lead">
+            制作物のプレビューと、実務・学習の記録をまとめています。気になるところから覗いてください。
+          </p>
+          <div class="home-actions">
+            <a class="home-btn home-btn--primary" href="#portfolio">ポートフォリオを見る</a>
+            <a class="home-btn home-btn--ghost" href="#blog">ブログを読む</a>
+            <a class="home-btn home-btn--ghost" href="/about">自己紹介</a>
+          </div>
+          <div class="home-hero__stats">
+            <div>
+              <div class="home-stat__value">{postCount}</div>
+              <div class="home-stat__label">記事</div>
+            </div>
+            <div>
+              <div class="home-stat__value">{daysRunning}</div>
+              <div class="home-stat__label">運用日数</div>
+            </div>
+            <div>
+              <div class="home-stat__value">{latestYmd}</div>
+              <div class="home-stat__label">最終更新</div>
+            </div>
+          </div>
+        </div>
+        <div class="home-hero__terminal">
+          <HeroTerminalCode />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="home-section">
+    <div class="container mx-auto px-4 py-12 lg:py-16">
+      <div class="home-section__head">
+        <div>
+          <h2 class="home-section__title">ポートフォリオ・プレビュー</h2>
+          <p class="home-section__desc">いまの制作物を抜粋して紹介します。スクショは順次差し替え予定。</p>
+        </div>
+        <a class="home-link" href="/about">自己紹介へ</a>
+      </div>
+      <ul class="home-grid">
+        {PORTFOLIO_ITEMS.slice(0, 6).map((item) => (
+          <li class="home-card">
+            <a class="home-card__link" href={item.href}>
+              <figure class="home-card__media">
+                <img src={item.image} alt={`${item.title}のイメージ`} loading="lazy" />
+              </figure>
+              <div class="home-card__body">
+                <h3 class="home-card__title">{item.title}</h3>
+                <p class="home-card__desc">{item.description}</p>
+                {(item.tags?.length ?? 0) > 0 && (
+                  <div class="home-tags">
+                    {item.tags.map((tag) => (
+                      <span class="home-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="blog" class="home-section home-section--dim">
+    <div class="container mx-auto px-4 py-12 lg:py-16">
+      <div class="home-section__head">
+        <div>
+          <h2 class="home-section__title">ブログ最新記事</h2>
+          <p class="home-section__desc">最近書いた 3 件を表示しています。</p>
+        </div>
+        <a class="home-link" href="/posts">一覧へ</a>
+      </div>
+      <ul class="home-grid">
+        {posts.map((post) => (
+          <li class="home-card">
+            <a class="home-card__link" href={`/posts/${post.slug}/`}>
+              <div class="home-card__body">
+                <div class="home-date">{toYmd(post.data.pubDate)}</div>
+                <h3 class="home-card__title">{post.data.title}</h3>
+                {post.data.description && (
+                  <p class="home-card__desc">{post.data.description}</p>
+                )}
+                {(post.data.tags?.length ?? 0) > 0 && (
+                  <div class="home-tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="home-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="container mx-auto px-4 py-12 lg:py-16">
+      <div class="home-about">
+        <div>
+          <h2 class="home-section__title">自己紹介</h2>
+          <p class="home-section__desc">
+            テスターとして働きながら、Web 開発やテスト設計の学びを積み重ねています。興味のある領域や経歴の詳細はプロフィールにまとめました。
+          </p>
+        </div>
+        <a class="home-btn home-btn--ghost" href="/about">プロフィールを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .home-hero {
+      background: radial-gradient(circle at top right, rgba(122, 162, 247, 0.16), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(158, 206, 106, 0.12), transparent 50%);
+    }
+    .home-hero__grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      .home-hero__grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+    }
+    .home-hero__terminal {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .home-hero__terminal {
+        display: block;
+      }
+      .home-hero__terminal :global(.hero) {
+        padding: 0;
+        background: transparent;
+      }
+      .home-hero__terminal :global(.grid) {
+        max-width: 100%;
+      }
+    }
+    .home-eyebrow {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .home-title {
+      margin-top: 0.75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .home-lead {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 42rem;
+    }
+    .home-actions {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      padding: 0.6rem 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .home-btn--primary {
+      background: #7aa2f7;
+      color: #0f0f10;
+      box-shadow: 0 10px 24px rgba(122, 162, 247, 0.3);
+    }
+    .home-btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(122, 162, 247, 0.4);
+      text-decoration: none;
+    }
+    .home-btn--ghost {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: color-mix(in oklab, var(--panel), transparent 30%);
+    }
+    .home-btn--ghost:hover {
+      background: color-mix(in oklab, var(--panel), transparent 10%);
+      text-decoration: none;
+    }
+    .home-hero__stats {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+    .home-stat__value {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .home-stat__label {
+      margin-top: 0.35rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .home-section {
+      border-top: 1px solid var(--line);
+    }
+    .home-section--dim {
+      background: color-mix(in oklab, var(--panel), transparent 20%);
+    }
+    .home-section__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .home-section__title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .home-section__desc {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+    .home-link {
+      color: var(--link);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .home-link:hover {
+      text-decoration: underline;
+    }
+    .home-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .home-card {
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background: color-mix(in oklab, var(--panel), transparent 10%);
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .home-card:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in oklab, var(--text), transparent 70%);
+    }
+    .home-card__link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      height: 100%;
+    }
+    .home-card__media {
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .home-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .home-card__body {
+      padding: 1.2rem 1.3rem 1.4rem;
+    }
+    .home-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .home-card__title {
+      margin-top: 0.4rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .home-card__desc {
+      margin-top: 0.6rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .home-tags {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .home-tag {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid var(--line);
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .home-about {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 1.8rem;
+      border-radius: calc(var(--radius) + 4px);
+      border: 1px solid var(--line);
+      background: color-mix(in oklab, var(--panel), transparent 15%);
+    }
+  </style>
 </BaseLayout>

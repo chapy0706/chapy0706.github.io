@@ -22,3 +22,26 @@ export const SOCIAL_LINKS = {
   facebook: 'https://facebook.com/yourcompany',
 } as const;
 
+export const PORTFOLIO_ITEMS = [
+  {
+    title: '学習ログサイトの再設計',
+    description: '静的サイト構成を見直して、ブログの導線と読みやすさを改善。',
+    image: '/diagrams/skill-map.svg',
+    tags: ['設計', '導線', '読みやすさ'],
+    href: '/posts',
+  },
+  {
+    title: 'テスト設計メモの体系化',
+    description: '業務知見を体系化したドキュメントとチェックリストを整備。',
+    image: '/diagrams/skill-map.svg',
+    tags: ['テスト', '設計', 'ドキュメント'],
+    href: '/about',
+  },
+  {
+    title: '学習の見える化',
+    description: 'スキルマップと学習履歴をまとめ、次の学びを計画しやすく。',
+    image: '/diagrams/skill-map.svg',
+    tags: ['可視化', '計画', '学習'],
+    href: '/about',
+  },
+] as const;
