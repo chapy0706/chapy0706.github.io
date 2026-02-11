@@ -1,0 +1,140 @@
+<!-- public/diagrams/skill-map.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="スキルマップ（CS大分類 × 技術スタック × テスト軸）">
+  <defs>
+    <style>
+      .bg { fill: #0b0f17; }
+      .panel { fill: #111a2b; stroke: #273550; stroke-width: 2; rx: 18; ry: 18; }
+      .title { fill: #e7eefc; font: 22px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; font-weight: 700; }
+      .sub { fill: #b7c4dd; font: 14px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; }
+      .h { fill: #e7eefc; font: 16px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; font-weight: 700; }
+      .t { fill: #e7eefc; font: 14px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; }
+      .muted { fill: #b7c4dd; font: 12px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; }
+      .barbg { fill: #0f1626; stroke: #273550; stroke-width: 1; rx: 10; ry: 10; }
+      .bar { fill: #1a2a46; rx: 10; ry: 10; }
+      .badge { fill: #0f1626; stroke: #2b3a55; stroke-width: 1; rx: 12; ry: 12; }
+      .badgeText { fill: #e7eefc; font: 13px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; }
+      .pill { fill: #0b0f17; stroke: #2b3a55; stroke-width: 1; rx: 14; ry: 14; }
+      .pillText { fill: #b7c4dd; font: 12px system-ui, -apple-system, "Noto Sans JP", Segoe UI, Roboto, sans-serif; }
+      .line { stroke: #3a4f77; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1200" height="700" rx="26" ry="26" />
+
+  <!-- Header -->
+  <text class="title" x="42" y="52">スキルマップ（営業向け要約）</text>
+  <text class="sub" x="42" y="78">CS大分類（横の射程）＋ 技術スタック（具体）＋ テスト/品質（縦の主軸）</text>
+
+  <!-- Left panel: CS categories -->
+  <rect class="panel" x="32" y="110" width="560" height="560" />
+  <text class="h" x="58" y="148">コンピュータサイエンスの大分類（理解の射程）</text>
+  <text class="muted" x="58" y="170">※ “できる/触れた” ではなく、説明・設計・運用判断に使える領域を可視化</text>
+
+  <!-- CS Bars (0-100 scale) -->
+  <!-- 1: テスト/品質 -->
+  <text class="t" x="58" y="214">テスト / 品質（主軸）</text>
+  <rect class="barbg" x="250" y="200" width="310" height="18" />
+  <rect class="bar" x="250" y="200" width="285" height="18" />
+  <text class="pillText" x="568" y="214" text-anchor="end">深め中</text>
+
+  <!-- 2: Webアーキテクチャ -->
+  <text class="t" x="58" y="252">Webアーキテクチャ（境界/設計）</text>
+  <rect class="barbg" x="250" y="238" width="310" height="18" />
+  <rect class="bar" x="250" y="238" width="248" height="18" />
+  <text class="pillText" x="568" y="252" text-anchor="end">実装経験</text>
+
+  <!-- 3: DB -->
+  <text class="t" x="58" y="290">データベース（設計/運用）</text>
+  <rect class="barbg" x="250" y="276" width="310" height="18" />
+  <rect class="bar" x="250" y="276" width="220" height="18" />
+  <text class="pillText" x="568" y="290" text-anchor="end">実務寄り</text>
+
+  <!-- 4: ネットワーク/OS -->
+  <text class="t" x="58" y="328">OS / ネットワーク（基礎）</text>
+  <rect class="barbg" x="250" y="314" width="310" height="18" />
+  <rect class="bar" x="250" y="314" width="210" height="18" />
+  <text class="pillText" x="568" y="328" text-anchor="end">資格/学習</text>
+
+  <!-- 5: セキュリティ -->
+  <text class="t" x="58" y="366">セキュリティ（権限/改ざん/境界）</text>
+  <rect class="barbg" x="250" y="352" width="310" height="18" />
+  <rect class="bar" x="250" y="352" width="230" height="18" />
+  <text class="pillText" x="568" y="366" text-anchor="end">設計判断</text>
+
+  <!-- 6: アルゴリズム/データ構造 -->
+  <text class="t" x="58" y="404">アルゴリズム / データ構造</text>
+  <rect class="barbg" x="250" y="390" width="310" height="18" />
+  <rect class="bar" x="250" y="390" width="180" height="18" />
+  <text class="pillText" x="568" y="404" text-anchor="end">継続中</text>
+
+  <!-- 7: DevOps/運用 -->
+  <text class="t" x="58" y="442">DevOps / 運用（CI/CD・ログ）</text>
+  <rect class="barbg" x="250" y="428" width="310" height="18" />
+  <rect class="bar" x="250" y="428" width="215" height="18" />
+  <text class="pillText" x="568" y="442" text-anchor="end">個人運用</text>
+
+  <!-- 8: クラウド -->
+  <text class="t" x="58" y="480">クラウド（デプロイ/ホスティング）</text>
+  <rect class="barbg" x="250" y="466" width="310" height="18" />
+  <rect class="bar" x="250" y="466" width="210" height="18" />
+  <text class="pillText" x="568" y="480" text-anchor="end">実装経験</text>
+
+  <!-- Footnote -->
+  <rect class="pill" x="58" y="512" width="502" height="44" />
+  <text class="pillText" x="74" y="538">縦の主軸：</text>
+  <text class="pillText" x="150" y="538">「テストを中心に、設計・運用までつなげる」</text>
+
+  <rect class="pill" x="58" y="564" width="502" height="84" />
+  <text class="pillText" x="74" y="590">裏付け（例）：</text>
+  <text class="pillText" x="170" y="590">基本情報 / LPIC系学習、czz（Next.js + Drizzle + Postgres）</text>
+  <text class="pillText" x="170" y="612">Astroポートフォリオ運用、GitHub Actions、make verify/ci の整備</text>
+
+  <!-- Right panel: Tech stack -->
+  <rect class="panel" x="608" y="110" width="560" height="560" />
+  <text class="h" x="634" y="148">経験してきた言語 / FW / ツール（案件に紐づく粒度）</text>
+  <text class="muted" x="634" y="170">※ “触った” ではなく「作って運用し、改善した」寄りを優先</text>
+
+  <!-- Section: Languages -->
+  <text class="t" x="634" y="210">言語</text>
+  <rect class="badge" x="634" y="226" width="122" height="34" /><text class="badgeText" x="650" y="249">TypeScript</text>
+  <rect class="badge" x="762" y="226" width="92" height="34" /><text class="badgeText" x="778" y="249">Java</text>
+  <rect class="badge" x="860" y="226" width="78" height="34" /><text class="badgeText" x="876" y="249">PHP</text>
+  <rect class="badge" x="944" y="226" width="90" height="34" /><text class="badgeText" x="960" y="249">Shell</text>
+
+  <!-- Section: Frontend -->
+  <text class="t" x="634" y="292">フロントエンド</text>
+  <rect class="badge" x="634" y="308" width="86" height="34" /><text class="badgeText" x="650" y="331">Astro</text>
+  <rect class="badge" x="726" y="308" width="92" height="34" /><text class="badgeText" x="742" y="331">React</text>
+  <rect class="badge" x="824" y="308" width="102" height="34" /><text class="badgeText" x="840" y="331">Next.js</text>
+  <rect class="badge" x="932" y="308" width="142" height="34" /><text class="badgeText" x="948" y="331">Tailwind CSS</text>
+
+  <!-- Section: Backend / Data -->
+  <text class="t" x="634" y="374">バックエンド / データ</text>
+  <rect class="badge" x="634" y="390" width="138" height="34" /><text class="badgeText" x="650" y="413">Next.js API</text>
+  <rect class="badge" x="778" y="390" width="92" height="34" /><text class="badgeText" x="794" y="413">Zod</text>
+  <rect class="badge" x="876" y="390" width="104" height="34" /><text class="badgeText" x="892" y="413">Drizzle</text>
+  <rect class="badge" x="986" y="390" width="128" height="34" /><text class="badgeText" x="1002" y="413">PostgreSQL</text>
+
+  <!-- Section: Testing / Quality -->
+  <text class="t" x="634" y="456">テスト / 品質（主軸）</text>
+  <rect class="badge" x="634" y="472" width="92" height="34" /><text class="badgeText" x="650" y="495">Vitest</text>
+  <rect class="badge" x="732" y="472" width="124" height="34" /><text class="badgeText" x="748" y="495">Playwright</text>
+  <rect class="badge" x="862" y="472" width="156" height="34" /><text class="badgeText" x="878" y="495">TDD（方針）</text>
+  <rect class="badge" x="1024" y="472" width="144" height="34" /><text class="badgeText" x="1040" y="495">make verify/ci</text>
+
+  <!-- Section: DevOps / Ops -->
+  <text class="t" x="634" y="538">運用 / デプロイ</text>
+  <rect class="badge" x="634" y="554" width="158" height="34" /><text class="badgeText" x="650" y="577">GitHub Actions</text>
+  <rect class="badge" x="798" y="554" width="82" height="34" /><text class="badgeText" x="814" y="577">Vercel</text>
+  <rect class="badge" x="886" y="554" width="142" height="34" /><text class="badgeText" x="902" y="577">Cloudflare Pages</text>
+  <rect class="badge" x="1034" y="554" width="74" height="34" /><text class="badgeText" x="1050" y="577">Docker</text>
+
+  <!-- Section: AI -->
+  <text class="t" x="634" y="620">生成AIを用いた開発（縦を伸ばす）</text>
+  <rect class="pill" x="634" y="636" width="514" height="30" />
+  <text class="pillText" x="650" y="656">観点列挙・テスト雛形・失敗ログ整理・設計の言語化（最終判断と責任は人）</text>
+
+  <!-- Divider line between panels -->
+  <line class="line" x1="600" y1="120" x2="600" y2="664" />
+</svg>
