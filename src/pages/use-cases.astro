@@ -5,6 +5,8 @@ import Button from '@components/ui/Button.astro';
 import TestimonialCard from '@components/ui/TestimonialCard.astro';
 import UseCaseTabs from '@components/react/UseCaseTabs';
 import StatsCards from '@components/react/StatsCards';
+import ProjectGrid from '@components/projects/ProjectGrid.astro';
+import { projects } from '@config/projects';
 import { Image } from 'astro:assets';
 
 import ecommerceImg from '@assets/photo-1607082349566-187342175e2f.jpg';
@@ -166,6 +168,23 @@ const testimonials:any[] = [
     </div>
   </section>
 
+  <!-- Projects Section -->
+  <Section background="white" id="projects">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+        Portfolio
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Recent <span class="gradient-text">Projects</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        既存の構成を保ちながら、制作物をデータ駆動で追加できるように整理しています。
+      </p>
+    </div>
+
+    <ProjectGrid projects={projects} />
+  </Section>
+
   <!-- Use Cases with Tabs -->
   <Section background="gray">
     <UseCaseTabs useCases={useCases} client:load />
@@ -253,4 +272,3 @@ const testimonials:any[] = [
     </div>
   </section>
 </BaseLayout>
-
