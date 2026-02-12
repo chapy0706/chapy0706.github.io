@@ -1,0 +1,80 @@
+---
+import type { TechLogo } from '@config/tech-logos';
+
+interface Props {
+  logos: TechLogo[];
+}
+
+const { logos } = Astro.props;
+const logoSize = 96;
+---
+
+<div class="tech-logo-grid">
+  {logos.map((logo) => (
+    <div class="tech-logo-item" title={logo.label}>
+      {logo.href ? (
+        <a
+          class="tech-logo-link"
+          href={logo.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={logo.label}
+        >
+          <img
+            src={logo.file}
+            alt={logo.label}
+            loading="lazy"
+            decoding="async"
+            width={logoSize}
+            height={logoSize}
+          />
+        </a>
+      ) : (
+        <img
+          src={logo.file}
+          alt={logo.label}
+          loading="lazy"
+          decoding="async"
+          width={logoSize}
+          height={logoSize}
+        />
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .tech-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .tech-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--text), transparent 85%);
+    background: color-mix(in oklab, var(--panel), transparent 70%);
+  }
+
+  .tech-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  .tech-logo-link:hover {
+    transform: translateY(-2px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+</style>

@@ -2,6 +2,8 @@
 // src/pages/about.astro
 import Layout from "../layouts/BaseLayout.astro";
 import { SITE, SOCIAL_LINKS } from "@config/site";
+import TechLogoGrid from "@components/tech/TechLogoGrid.astro";
+import { techLogos } from "@config/tech-logos";
 
 const links = [
   { name: "ブログ", href: "/posts" },
@@ -39,7 +41,11 @@ const links = [
     <section class="mt-10 max-w-2xl">
       <h2 class="text-lg font-semibold text-slate-100">技術スタック</h2>
       <p class="mt-4 text-base leading-relaxed text-slate-200/80">
-        Astro / Content Collections / pnpm / GitHub Actions / GitHub Pages.
+        Next.js / React / TypeScript / Tailwind CSS / GitHub / etc.
+      </p>
+      <TechLogoGrid logos={techLogos} />
+      <p class="mt-3 text-xs text-slate-400/80">
+        Tech logos inspired by <a href="https://github.com/SAWARATSUKI/KawaiiLogos" target="_blank" rel="noreferrer">KawaiiLogos by SAWARATSUKI</a>
       </p>
     </section>
 
