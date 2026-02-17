@@ -1,8 +1,8 @@
 ---
 title: "開発秘話②: 指示厨ゲーム"
-description: "czz開発で make evidence を通すだけのはずが、Biomeの設定スキーマ差分・pnpm lockfile mismatch・React型不整合が連鎖して、開発速度より精神HPが削れた記録。"
+description: "czz開発でAI大暴走による大量破壊行為の記録。"
 pubDate: "2026-02-08T00:00:00+09:00"
-updatedDate: "2026-02-08T00:00:00+09:00"
+updatedDate: "2026-02-17T00:00:00+09:00"
 tags: ["czz", "開発日記"]
 draft: false
 ------------
