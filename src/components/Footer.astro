@@ -10,9 +10,16 @@ const NAV = [
 ] as const;
 
 const SOCIAL = [
-  { name: "GitHub", href: SOCIAL_LINKS.github },
-  { name: "Twitter", href: SOCIAL_LINKS.twitter },
-  { name: "Facebook", href: SOCIAL_LINKS.facebook },
+  {
+    name: "GitHub",
+    href: SOCIAL_LINKS.github,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>`,
+  },
+  {
+    name: "Reads",
+    href: SOCIAL_LINKS.reads,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5C10.55 4.9 8.45 4.5 6.5 4.5c-1.95 0-4.05.4-5.5 1.5v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>`,
+  },
 ].filter((s) => typeof s.href === "string" && s.href.length > 0);
 ---
 
@@ -37,11 +44,12 @@ const SOCIAL = [
             {SOCIAL.map((s) => (
               <a
                 href={s.href}
-                class="rounded-lg border border-white/10 px-3 py-2 text-sm text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors"
+                aria-label={s.name}
+                class="rounded-lg border border-white/10 p-2 text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors inline-flex items-center justify-center"
                 target="_blank"
                 rel="noreferrer"
               >
-                {s.name}
+                <span class="w-5 h-5" set:html={s.icon} />
               </a>
             ))}
           </div>

@@ -17,9 +17,7 @@ export const NAVIGATION = [
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/chapy0706',
-  linkedin: 'https://linkedin.com/company/yourcompany',
-  twitter: 'https://twitter.com/yourcompany',
-  facebook: 'https://facebook.com/yourcompany',
+  reads: 'https://reads.jp/u/chapy',
 } as const;
 
 export const PORTFOLIO_ITEMS = [
