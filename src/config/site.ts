@@ -6,6 +6,7 @@ export const SITE = {
   author: 'ちゃぴぃ',
 } as const;
 
+// 旧ナビゲーション定義。Header/Footer では未使用
 export const NAVIGATION = [
   { name: 'TOP', href: '/' },
   { name: 'ブログ', href: '/posts' },
