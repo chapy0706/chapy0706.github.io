@@ -1,0 +1,172 @@
+<article class="czz-showcase" aria-labelledby="czz-showcase-title">
+  <header class="czz-showcase__header">
+    <h3 id="czz-showcase-title">指示厨ゲーム（czz）</h3>
+    <p>
+      Linux コマンドをゲーム感覚で学べる学習アプリです。課題に応じてコマンド列を組み立て、
+      実行結果とテストケースで理解を深めながら進められます。
+    </p>
+  </header>
+
+  <div class="czz-showcase__gallery-wrap">
+    <div class="czz-showcase__gallery" aria-label="指示厨ゲームの画面ギャラリー">
+      <figure id="czz-slide-top" class="czz-showcase__shot">
+        <img
+          src="/images/czz/TOP.png"
+          alt="指示厨ゲームのTOPページ画面"
+          loading="lazy"
+          decoding="async"
+          width="386"
+          height="836"
+        />
+        <figcaption>TOP</figcaption>
+      </figure>
+      <figure id="czz-slide-tasks" class="czz-showcase__shot">
+        <img
+          src="/images/czz/Tasks.png"
+          alt="指示厨ゲームの課題一覧画面"
+          loading="lazy"
+          decoding="async"
+          width="388"
+          height="842"
+        />
+        <figcaption>課題一覧</figcaption>
+      </figure>
+      <figure id="czz-slide-results" class="czz-showcase__shot">
+        <img
+          src="/images/czz/Results.png"
+          alt="指示厨ゲームの実行結果画面"
+          loading="lazy"
+          decoding="async"
+          width="386"
+          height="846"
+        />
+        <figcaption>実行結果</figcaption>
+      </figure>
+    </div>
+    <nav class="czz-showcase__dots" aria-label="スクリーンショットのスライド移動">
+      <a href="#czz-slide-top" aria-label="TOPへ移動"></a>
+      <a href="#czz-slide-tasks" aria-label="課題一覧へ移動"></a>
+      <a href="#czz-slide-results" aria-label="実行結果へ移動"></a>
+    </nav>
+  </div>
+
+  <div class="czz-showcase__cta">
+    <a href="https://github.com/chapy0706/czz" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <!-- TODO: デモ公開後に href を差し替え -->
+    <a href="#" target="_blank" rel="noopener noreferrer">デモ</a>
+    <!-- TODO: 記事公開後に href を差し替え -->
+    <a href="#" target="_blank" rel="noopener noreferrer">記事</a>
+  </div>
+</article>
+
+<style>
+  .czz-showcase {
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 28px;
+    background: linear-gradient(160deg, #020617 0%, #0f172a 55%, #111827 100%);
+    box-shadow: 0 12px 34px rgba(2, 6, 23, 0.32);
+    padding: 1.1rem;
+    color: #e2e8f0;
+  }
+
+  .czz-showcase__header h3 {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .czz-showcase__header p {
+    margin: 0.65rem 0 0;
+    line-height: 1.75;
+    color: #cbd5e1;
+  }
+
+  .czz-showcase__gallery {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .czz-showcase__gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .czz-showcase__gallery-wrap {
+    max-width: calc(560px / 4);
+    margin: 0 auto;
+  }
+
+  .czz-showcase__shot {
+    margin: 0;
+    flex: 0 0 100%;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 28px;
+    overflow: hidden;
+    background: #020617;
+    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.28);
+    scroll-snap-align: start;
+  }
+
+  .czz-showcase__shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .czz-showcase__shot figcaption {
+    padding: 0.65rem 0.8rem 0.8rem;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+  }
+
+  .czz-showcase__dots {
+    margin-top: 0.65rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .czz-showcase__dots a {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: rgba(203, 213, 225, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+  }
+
+  .czz-showcase__cta {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .czz-showcase__cta a {
+    border: 1px solid rgba(148, 163, 184, 0.34);
+    border-radius: 9999px;
+    background: rgba(15, 23, 42, 0.8);
+    color: #e2e8f0;
+    padding: 0.45rem 0.85rem;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .czz-showcase__cta a:hover {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(148, 163, 184, 0.52);
+  }
+
+  @media (min-width: 768px) {
+    .czz-showcase {
+      padding: 1.5rem;
+    }
+  }
+</style>

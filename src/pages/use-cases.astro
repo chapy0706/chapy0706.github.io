@@ -6,6 +6,7 @@ import TestimonialCard from '@components/ui/TestimonialCard.astro';
 import UseCaseTabs from '@components/react/UseCaseTabs';
 import StatsCards from '@components/react/StatsCards';
 import ProjectGrid from '@components/projects/ProjectGrid.astro';
+import CzzShowcase from '@components/portfolio/CzzShowcase.astro';
 import { projects } from '@config/projects';
 import { Image } from 'astro:assets';
 
@@ -15,14 +16,14 @@ const useCases:any[] = [
   {
     industry: '指示厨(czz)アプリ',
     iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: '主にAI駆動開発を用いて簡易DDDとミニTDDを土台にしたLinux学習向けのコマンド構築ゲーム(現在開発中)',
-    solution: 'フレームワークにNext.js、バックエンドはTypeScript、フロントはTailwind CSS、shadcn/uiなどを利用',
+    image: { src: '/images/czz/TOP.png' },
+    challenge: 'Linux コマンドをゲーム感覚で学べるアプリ。課題に対してコマンド列を組み立て、実行結果とテストケースで即フィードバックを受ける。',
+    solution: 'Next.js (App Router) + TypeScript + Drizzle ORM で構築。簡易 DDD / ミニ TDD を軸に monorepo で分離。',
     results: [
-      '40% LPIC-1 合格率向上を目指してます',
-      '99.5% 満足度を目指してます',
-      '3ヶ月 制作期間延長してます',
-      '25% エラーが残っています'
+      'LPIC-1 合格率向上を目標に開発中',
+      '課題 DSL でステージを柔軟に追加可能',
+      'Vitest + Playwright でユニット/E2E を整備',
+      'AI 駆動開発（Claude Code / Codex）でフル実装'
     ]
   },
   {
@@ -172,6 +173,10 @@ const testimonials:any[] = [
     </div>
 
     <ProjectGrid projects={projects} />
+  </Section>
+
+  <Section background="gray" id="czz-showcase" class="bg-transparent">
+    <CzzShowcase />
   </Section>
 
   <!-- Use Cases with Tabs -->

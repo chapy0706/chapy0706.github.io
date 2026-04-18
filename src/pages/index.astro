@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroTerminalCode from '../components/HeroTerminalCode.astro';
+import CzzShowcase from '../components/portfolio/CzzShowcase.astro';
 import { getCollection } from 'astro:content';
 import { PORTFOLIO_ITEMS } from '../config/site';
 
@@ -102,6 +103,7 @@ const daysRunning = (() => {
           </li>
         ))}
       </ul>
+      <CzzShowcase />
     </div>
   </section>
 

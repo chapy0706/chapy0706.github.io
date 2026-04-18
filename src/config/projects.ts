@@ -1,6 +1,7 @@
 export type Project = {
   name: string;
   summary: string;
+  image?: string;
   links: {
     repo: string;
     production?: string;
@@ -15,6 +16,7 @@ export const projects: Project[] = [
   {
     name: 'czz',
     summary: 'AI駆動のLinux学習向けコマンド構築ゲーム。簡易DDDとミニTDDで進行中。',
+    image: '/images/czz/TOP.png',
     links: {
       repo: 'https://github.com/chapy0706/czz',
       // TODO: set production URL when ready
