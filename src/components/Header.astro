@@ -20,13 +20,13 @@ const isActive = (href: string): boolean => {
 };
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-md">
+<header class="header">
   <nav class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center gap-3 rounded-lg px-2 py-1 hover:bg-white/5 transition-colors">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-blue-600 to-teal-600 text-white font-mono text-sm">
+    <a href="/" class="header__logo">
+      <span class="header__logo-icon">
         {"</>"}
       </span>
-      <span class="text-base sm:text-lg font-bold text-slate-100">{SITE.title}</span>
+      <span class="header__logo-name">{SITE.title}</span>
     </a>
 
     <!-- Desktop nav -->
@@ -36,51 +36,209 @@ const isActive = (href: string): boolean => {
         return (
           <a
             href={item.href}
-            class={`relative rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              active ? "text-white" : "text-slate-200/80 hover:text-slate-100"
-            } hover:bg-white/5`}
+            class={`header__nav-item ${active ? "header__nav-item--active" : ""}`}
             aria-current={active ? "page" : undefined}
           >
             {item.name}
-            {active && (
-              <span class="absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-300"></span>
-            )}
+            {active && <span class="header__nav-dot"></span>}
           </a>
         );
       })}
     </div>
 
-    <!-- Mobile nav (JS不要) -->
-    <details class="relative lg:hidden">
-      <summary
-        class="list-none rounded-lg p-2 text-slate-100 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-400/60"
-        aria-label="メニューを開く"
+    <div class="flex items-center gap-2">
+      <!-- テーマトグルボタン -->
+      <button
+        id="theme-toggle"
+        class="header__icon-btn"
+        aria-label="ライトモードに切り替え"
+        type="button"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="opacity-90" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <!-- 月アイコン（ダーク時に表示） -->
+        <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </summary>
+        <!-- 太陽アイコン（ライト時に表示） -->
+        <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
 
-      <div class="absolute right-0 mt-3 w-56 overflow-hidden rounded-xl border border-white/10 bg-slate-950/95 shadow-2xl">
-        <div class="p-2">
-          {NAV.map((item) => {
-            const active = isActive(item.href);
-            return (
-              <a
-                href={item.href}
-                class={`block rounded-lg px-3 py-2 text-sm ${
-                  active
-                    ? "bg-white/5 text-white"
-                    : "text-slate-200/80 hover:bg-white/5 hover:text-slate-100"
-                } transition-colors`}
-                aria-current={active ? "page" : undefined}
-              >
-                {item.name}
-              </a>
-            );
-          })}
+      <!-- Mobile nav (JS不要) -->
+      <details class="relative lg:hidden">
+        <summary
+          class="header__icon-btn"
+          style="list-style:none"
+          aria-label="メニューを開く"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+
+        <div class="header__mobile-menu">
+          <div class="p-2">
+            {NAV.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class={`header__mobile-item ${active ? "header__mobile-item--active" : ""}`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {item.name}
+                </a>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
+    </div>
   </nav>
 </header>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const moon = document.getElementById('icon-moon');
+  const sun = document.getElementById('icon-sun');
+  const html = document.documentElement;
+
+  function applyTheme(mode: string) {
+    html.dataset.mode = mode;
+    localStorage.setItem('theme', mode);
+    const isLight = mode === 'light';
+    moon!.style.display = isLight ? 'none' : '';
+    sun!.style.display = isLight ? '' : 'none';
+    toggle!.setAttribute('aria-label', isLight ? 'ダークモードに切り替え' : 'ライトモードに切り替え');
+  }
+
+  // 初期状態をアイコンに反映
+  applyTheme(html.dataset.mode ?? 'unix');
+
+  toggle?.addEventListener('click', () => {
+    const next = html.dataset.mode === 'light' ? 'unix' : 'light';
+    applyTheme(next);
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg), transparent 30%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .header__logo:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    text-decoration: none;
+  }
+
+  .header__logo-icon {
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: linear-gradient(to bottom right, #2563eb, #0d9488);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .header__logo-name {
+    font-size: clamp(0.95rem, 2vw, 1.125rem);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .header__nav-item {
+    position: relative;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .header__nav-item:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .header__nav-item--active {
+    color: var(--text);
+  }
+
+  .header__nav-dot {
+    position: absolute;
+    bottom: -0.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0.25rem;
+    width: 0.25rem;
+    border-radius: 9999px;
+    background: var(--accent-note);
+  }
+
+  .header__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .header__icon-btn:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    color: var(--text);
+  }
+
+  .header__mobile-menu {
+    position: absolute;
+    right: 0;
+    margin-top: 0.75rem;
+    width: 14rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg), transparent 5%);
+    box-shadow: var(--shadow);
+  }
+
+  .header__mobile-item {
+    display: block;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .header__mobile-item:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .header__mobile-item--active {
+    background: color-mix(in oklab, var(--text), transparent 92%);
+    color: var(--text);
+  }
+</style>

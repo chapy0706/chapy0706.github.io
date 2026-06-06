@@ -35,6 +35,25 @@
   --motion: 0.85;
 }
 
+:root[data-mode="light"] {
+  --bg: #f2e9d0;
+  --panel: rgba(226, 216, 191, 0.80);
+  --text: #1f1f28;
+  --text-muted: color-mix(in oklab, var(--text), transparent 40%);
+  --line: color-mix(in oklab, var(--text), transparent 82%);
+  --radius: 14px;
+  --shadow: 0 20px 60px rgba(150, 130, 100, 0.18);
+  --motion: 1;
+
+  --accent-note: #2952a3;
+  --accent-tip: #4a7c23;
+  --accent-important: #6e3fa3;
+  --accent-warning: #8c5a00;
+  --accent-caution: #a01535;
+
+  --link: #2952a3;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion: 0;

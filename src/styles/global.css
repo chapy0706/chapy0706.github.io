@@ -6,6 +6,17 @@ html {
   @apply scroll-smooth;
 }
 
+/* カラーモード切り替えトランジション */
+*,
+*::before,
+*::after {
+  transition:
+    background-color calc(0.5s * var(--motion)) ease,
+    color calc(0.5s * var(--motion)) ease,
+    border-color calc(0.5s * var(--motion)) ease,
+    box-shadow calc(0.5s * var(--motion)) ease;
+}
+
 /* ベース（フォント・背景・文字色を tokens へ寄せる） */
 body {
   background: var(--bg);
