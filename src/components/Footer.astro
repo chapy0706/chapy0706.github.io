@@ -23,21 +23,17 @@ const SOCIAL = [
 ].filter((s) => typeof s.href === "string" && s.href.length > 0);
 ---
 
-<footer class="border-t border-white/10 bg-slate-950 text-slate-300">
+<footer class="footer">
   <div class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-3">
       <!-- Summary -->
       <div class="space-y-4">
-        <a href="/" class="inline-flex items-center gap-3 rounded-lg px-2 py-1 hover:bg-white/5 transition-colors">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-blue-600 to-teal-600 text-white font-mono text-sm">
-            {"</>"}
-          </span>
-          <span class="text-lg font-bold text-slate-100">{SITE.title}</span>
+        <a href="/" class="footer__logo">
+          <span class="footer__logo-icon">{"</>"}</span>
+          <span class="footer__logo-name">{SITE.title}</span>
         </a>
 
-        <p class="text-sm leading-relaxed text-slate-300/80 max-w-md">
-          {SITE.description}
-        </p>
+        <p class="footer__desc">{SITE.description}</p>
 
         {SOCIAL.length > 0 && (
           <div class="flex flex-wrap gap-3">
@@ -45,7 +41,7 @@ const SOCIAL = [
               <a
                 href={s.href}
                 aria-label={s.name}
-                class="rounded-lg border border-white/10 p-2 text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors inline-flex items-center justify-center"
+                class="footer__social-btn"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -58,26 +54,126 @@ const SOCIAL = [
 
       <!-- Navigation -->
       <div class="lg:col-span-2">
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-100 mb-4">リンク一覧</h3>
+        <h3 class="footer__nav-heading">リンク一覧</h3>
         <ul class="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {NAV.map((item) => (
             <li>
-              <a href={item.href} class="text-sm text-slate-300/80 hover:text-slate-100 transition-colors">
-                {item.name}
-              </a>
+              <a href={item.href} class="footer__nav-link">{item.name}</a>
             </li>
           ))}
         </ul>
 
-        <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p class="text-xs text-slate-400/80">
-            &copy; {new Date().getFullYear()} {SITE.author}. All rights reserved.
-          </p>
-          <p class="text-xs text-slate-400/80">
-            Built with Astro.
-          </p>
+        <div class="footer__bottom">
+          <p class="footer__copy">&copy; {new Date().getFullYear()} {SITE.author}. All rights reserved.</p>
+          <p class="footer__copy">Built with Astro.</p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    background: color-mix(in oklab, var(--bg), transparent 5%);
+    color: var(--text-muted);
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .footer__logo:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    text-decoration: none;
+  }
+
+  .footer__logo-icon {
+    display: inline-flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: linear-gradient(to bottom right, #2563eb, #0d9488);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .footer__logo-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .footer__desc {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 28rem;
+    margin: 0;
+  }
+
+  .footer__social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 1px solid var(--line);
+    padding: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer__social-btn:hover {
+    background: color-mix(in oklab, var(--text), transparent 90%);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer__nav-heading {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin: 0 0 1rem;
+  }
+
+  .footer__nav-link {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer__nav-link:hover {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer__bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media (min-width: 640px) {
+    .footer__bottom {
+      flex-direction: row;
+    }
+  }
+
+  .footer__copy {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

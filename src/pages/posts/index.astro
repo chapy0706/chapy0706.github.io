@@ -199,37 +199,37 @@ const tags = [...tagCount.entries()]
   </script>
 
   <style>
-    .tag-panel{ border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(255,255,255,.03); overflow:hidden; }
+    .tag-panel{ border:1px solid var(--line); border-radius:16px; background:color-mix(in oklab,var(--panel),transparent 10%); overflow:hidden; }
     .tag-panel__summary{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.85rem 1rem; cursor:pointer; user-select:none; list-style:none; }
     .tag-panel__summary::-webkit-details-marker{ display:none; }
-    .tag-panel__label{ font-size:.9rem; color:rgba(255,255,255,.82); font-weight:600; }
-    .tag-panel__state{ margin-left:auto; font-size:.85rem; color:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.10); padding:.2rem .55rem; border-radius:9999px; background:rgba(255,255,255,.02); }
-    .tag-panel__chev{ color:rgba(255,255,255,.75); transition:transform .15s ease; flex:0 0 auto; }
+    .tag-panel__label{ font-size:.9rem; color:var(--text); font-weight:600; }
+    .tag-panel__state{ margin-left:auto; font-size:.85rem; color:var(--text-muted); border:1px solid var(--line); padding:.2rem .55rem; border-radius:9999px; background:color-mix(in oklab,var(--panel),transparent 20%); }
+    .tag-panel__chev{ color:var(--text-muted); transition:transform .15s ease; flex:0 0 auto; }
     details[open] .tag-panel__chev{ transform:rotate(180deg); }
-    .tag-panel__body{ border-top:1px solid rgba(255,255,255,.10); padding:.9rem 1rem 1rem; }
+    .tag-panel__body{ border-top:1px solid var(--line); padding:.9rem 1rem 1rem; }
 
     .tag-panel__row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-bottom:.75rem; }
-    .tag-toggle{ display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:rgba(255,255,255,.82); user-select:none; }
-    .tag-toggle input{ width:18px; height:18px; accent-color:rgb(96 165 250); }
-    .tag-toggle__hint{ font-size:.75rem; color:rgba(255,255,255,.55); }
+    .tag-toggle{ display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--text); user-select:none; }
+    .tag-toggle input{ width:18px; height:18px; accent-color:var(--accent-note); }
+    .tag-toggle__hint{ font-size:.75rem; color:var(--text-muted); }
 
     .tag-panel__search{ margin-bottom:.75rem; }
-    .tag-panel__input{ width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:.65rem .8rem; color:rgba(255,255,255,.9); outline:none; }
-    .tag-panel__input::placeholder{ color:rgba(255,255,255,.45); }
-    .tag-panel__input:focus{ border-color:rgba(96,165,250,.55); box-shadow:0 0 0 2px rgba(96,165,250,.20); }
+    .tag-panel__input{ width:100%; border-radius:12px; border:1px solid var(--line); background:color-mix(in oklab,var(--panel),transparent 15%); padding:.65rem .8rem; color:var(--text); outline:none; }
+    .tag-panel__input::placeholder{ color:var(--text-muted); }
+    .tag-panel__input:focus{ border-color:var(--accent-note); box-shadow:0 0 0 2px color-mix(in oklab,var(--accent-note),transparent 75%); }
 
     .tag-panel__chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
-    .tag-chip{ display:inline-flex; align-items:center; gap:.25rem; border:1px solid rgba(255,255,255,.12); border-radius:9999px; padding:.42rem .7rem; font-size:.85rem; color:rgba(255,255,255,.78); background:rgba(255,255,255,.02); transition:background .15s ease, color .15s ease, border-color .15s ease; cursor:pointer; white-space:nowrap; text-decoration:none; }
-    .tag-chip:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
-    .tag-chip--active{ background:rgba(255,255,255,.08); color:rgba(255,255,255,.96); border-color:rgba(96,165,250,.55); box-shadow:0 0 0 1px rgba(96,165,250,.25) inset; }
+    .tag-chip{ display:inline-flex; align-items:center; gap:.25rem; border:1px solid var(--line); border-radius:9999px; padding:.42rem .7rem; font-size:.85rem; color:var(--text-muted); background:color-mix(in oklab,var(--panel),transparent 20%); transition:background .15s ease, color .15s ease, border-color .15s ease; cursor:pointer; white-space:nowrap; text-decoration:none; }
+    .tag-chip:hover{ background:color-mix(in oklab,var(--panel),transparent 5%); color:var(--text); border-color:color-mix(in oklab,var(--text),transparent 70%); }
+    .tag-chip--active{ background:color-mix(in oklab,var(--accent-note),transparent 85%); color:var(--text); border-color:var(--accent-note); box-shadow:0 0 0 1px color-mix(in oklab,var(--accent-note),transparent 65%) inset; }
     .tag-chip__count{ opacity:.75; }
 
-    .tag-panel__footer{ margin-top:.9rem; padding-top:.75rem; border-top:1px dashed rgba(255,255,255,.12); display:flex; justify-content:flex-end; }
-    .tag-panel__link{ font-size:.85rem; color:rgba(255,255,255,.78); text-decoration:none; border:1px solid rgba(255,255,255,.10); padding:.35rem .6rem; border-radius:9999px; background:rgba(255,255,255,.02); }
-    .tag-panel__link:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
+    .tag-panel__footer{ margin-top:.9rem; padding-top:.75rem; border-top:1px dashed var(--line); display:flex; justify-content:flex-end; }
+    .tag-panel__link{ font-size:.85rem; color:var(--text-muted); text-decoration:none; border:1px solid var(--line); padding:.35rem .6rem; border-radius:9999px; background:color-mix(in oklab,var(--panel),transparent 20%); }
+    .tag-panel__link:hover{ background:color-mix(in oklab,var(--panel),transparent 5%); color:var(--text); border-color:color-mix(in oklab,var(--text),transparent 70%); }
 
-    .post-tag{ display:inline-flex; border:1px solid rgba(255,255,255,.10); border-radius:9999px; padding:.18rem .55rem; font-size:.75rem; color:rgba(255,255,255,.72); background:rgba(255,255,255,.02); text-decoration:none; }
-    .post-tag:hover{ background:rgba(255,255,255,.06); color:rgba(255,255,255,.92); border-color:rgba(255,255,255,.18); }
+    .post-tag{ display:inline-flex; border:1px solid var(--line); border-radius:9999px; padding:.18rem .55rem; font-size:.75rem; color:var(--text-muted); background:color-mix(in oklab,var(--panel),transparent 20%); text-decoration:none; }
+    .post-tag:hover{ background:color-mix(in oklab,var(--panel),transparent 5%); color:var(--text); border-color:color-mix(in oklab,var(--text),transparent 70%); }
 
     .is-hidden{ display:none !important; }
     @media (prefers-reduced-motion: reduce){ .tag-panel__chev{ transition:none; } }

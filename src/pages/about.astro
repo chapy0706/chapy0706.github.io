@@ -13,52 +13,110 @@ const links = [
 ---
 
 <Layout title={`About - ${SITE.title}`} description={SITE.description}>
-  <main class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-    <header class="max-w-2xl">
-      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100">自己紹介</h1>
-      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
+  <main class="about-main">
+    <header class="about-header">
+      <h1 class="about-h1">自己紹介</h1>
+      <p class="about-lead">
         このサイトは、ブログ（学習ログ・制作メモ）とポートフォリオをまとめた個人サイト。
         小さく作って、少しずつ良くしていくための記録を置いている。
       </p>
     </header>
 
-    <section class="mt-10 max-w-2xl">
-      <h2 class="text-lg font-semibold text-slate-100">リンク一覧</h2>
+    <section class="about-section">
+      <h2 class="about-h2">リンク一覧</h2>
       <ul class="mt-4 flex flex-wrap gap-3">
         {links.map((l) => (
           <li>
-            <a
-              href={l.href}
-              class="rounded-lg border border-white/10 px-4 py-2 text-sm text-slate-200/80 hover:bg-white/5 hover:text-slate-100 transition-colors"
-            >
-              {l.name}
-            </a>
+            <a href={l.href} class="about-link-btn">{l.name}</a>
           </li>
         ))}
       </ul>
     </section>
 
-    <section class="mt-10 max-w-2xl">
-      <h2 class="text-lg font-semibold text-slate-100">技術スタック</h2>
-      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
-        Next.js / React / TypeScript / Tailwind CSS / GitHub / etc.
-      </p>
+    <section class="about-section">
+      <h2 class="about-h2">技術スタック</h2>
+      <p class="about-body">Next.js / React / TypeScript / Tailwind CSS / GitHub / etc.</p>
       <TechLogoGrid logos={techLogos} />
-      <p class="mt-3 text-xs text-slate-400/80">
+      <p class="about-caption">
         Tech logos inspired by <a href="https://github.com/SAWARATSUKI/KawaiiLogos" target="_blank" rel="noreferrer">KawaiiLogos by SAWARATSUKI</a>
       </p>
     </section>
 
-    <section class="mt-10 max-w-2xl">
-      <h2 class="text-lg font-semibold text-slate-100">特技</h2>
-      <p class="mt-4 text-base leading-relaxed text-slate-200/80">
-        タロットカード占い
-      </p>
-      <a href="https://www.uranai.org/tarot/" target="_parent"><img src="https://www.uranai.org/proof/tarot.png" width="40%" alt="タロットカード士®資格資格証明"></a>
+    <section class="about-section">
+      <h2 class="about-h2">特技</h2>
+      <p class="about-body">タロットカード占い</p>
+      <a href="https://www.uranai.org/tarot/" target="_parent">
+        <img src="https://www.uranai.org/proof/tarot.png" style="width:40%;height:auto;" alt="タロットカード士®資格資格証明">
+      </a>
     </section>
-    <p class="text-xs text-slate-400/80">
-        ※タロットカード士®は、一般社団法人日本占い師協会の登録商標です。<br>  
-        ※このロゴは、一般社団法人日本占い師協会の許可を得て使用しています。
-      </p>
+    <p class="about-caption">
+      ※タロットカード士®は、一般社団法人日本占い師協会の登録商標です。<br>
+      ※このロゴは、一般社団法人日本占い師協会の許可を得て使用しています。
+    </p>
   </main>
+
+  <style>
+    .about-main {
+      container-type: inline-size;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+    @media (min-width: 640px) { .about-main { padding-left: 1.5rem; padding-right: 1.5rem; } }
+    @media (min-width: 1024px) { .about-main { padding-left: 2rem; padding-right: 2rem; } }
+
+    .about-header { max-width: 42rem; }
+
+    .about-h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .about-lead {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .about-section {
+      margin-top: 2.5rem;
+      max-width: 42rem;
+    }
+
+    .about-h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .about-body {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .about-caption {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .about-link-btn {
+      display: inline-block;
+      border-radius: 0.5rem;
+      border: 1px solid var(--line);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .about-link-btn:hover {
+      background: color-mix(in oklab, var(--text), transparent 90%);
+      color: var(--text);
+      text-decoration: none;
+    }
+  </style>
 </Layout>
