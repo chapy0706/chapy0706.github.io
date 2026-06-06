@@ -309,17 +309,18 @@ const daysRunning = (() => {
       height: 100%;
     }
     .home-card__media {
-      aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.03);
+      aspect-ratio: 4 / 3;
+      background: color-mix(in oklab, var(--panel), transparent 5%);
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--line);
+      overflow: hidden;
     }
     .home-card__media img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
     .home-card__body {
       padding: 1.2rem 1.3rem 1.4rem;
