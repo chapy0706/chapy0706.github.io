@@ -79,11 +79,15 @@ a:hover {
 
 .markdown :where(img) {
   display: block;
-  max-width: 380px;
+  max-width: min(480px, 100%);
   width: 100%;
   height: auto;
   margin: 1.5rem 0;
   border-radius: var(--radius);
+}
+
+.markdown img.wide {
+  max-width: 100%;
 }
 
 .markdown :where(pre) {
