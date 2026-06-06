@@ -99,7 +99,8 @@
   }
 
   .czz-showcase__gallery-wrap {
-    max-width: calc(560px / 4);
+    width: 100%;
+    max-width: 220px;
     margin: 0 auto;
   }
 
@@ -112,6 +113,28 @@
     background: #020617;
     box-shadow: 0 8px 22px rgba(2, 6, 23, 0.28);
     scroll-snap-align: start;
+  }
+
+  @media (min-width: 768px) {
+    .czz-showcase__gallery-wrap {
+      max-width: 100%;
+    }
+
+    .czz-showcase__gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+      scroll-snap-type: none;
+      padding-bottom: 0;
+    }
+
+    .czz-showcase__shot {
+      flex: unset;
+    }
+
+    .czz-showcase__dots {
+      display: none;
+    }
   }
 
   .czz-showcase__shot img {
