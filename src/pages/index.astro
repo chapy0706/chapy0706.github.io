@@ -56,7 +56,13 @@ const daysRunning = (() => {
               <div class="home-stat__label">記事</div>
             </div>
             <div>
-              <div class="home-stat__value">{daysRunning}</div>
+              <div
+                class="home-stat__value"
+                id="days-running"
+                data-since={oldest ? oldest.toISOString() : undefined}
+              >
+                {daysRunning}
+              </div>
               <div class="home-stat__label">運用日数</div>
             </div>
             <div>
@@ -154,6 +160,19 @@ const daysRunning = (() => {
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    // 運用日数はビルド時点で固定されないよう、表示時にクライアントで再計算する
+    (function () {
+      var el = document.getElementById('days-running');
+      if (!el || !el.dataset.since) return;
+      var since = new Date(el.dataset.since);
+      if (isNaN(since.getTime())) return;
+      var ms = Date.now() - since.getTime();
+      var days = Math.max(1, Math.floor(ms / 86400000) + 1);
+      el.textContent = String(days);
+    })();
+  </script>
 
   <style>
     .home-hero {
