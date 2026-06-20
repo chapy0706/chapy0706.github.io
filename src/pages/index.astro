@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroTerminalCode from '../components/HeroTerminalCode.astro';
 import CzzShowcase from '../components/portfolio/CzzShowcase.astro';
 import { getCollection } from 'astro:content';
-import { PORTFOLIO_ITEMS } from '../config/site';
 
 const allPosts = (await getCollection('posts')).filter((p) => !p.data.draft);
 const sortedPosts = [...allPosts].sort(
@@ -85,30 +84,8 @@ const daysRunning = (() => {
           <h2 class="home-section__title">ポートフォリオ・プレビュー</h2>
           <p class="home-section__desc">いまの制作物を抜粋して紹介します。スクショは順次差し替え予定。</p>
         </div>
-        <a class="home-link" href="/about">自己紹介へ</a>
+        <a class="home-link" href="/portfolio">ポートフォリオへ</a>
       </div>
-      <ul class="home-grid">
-        {PORTFOLIO_ITEMS.slice(0, 6).map((item) => (
-          <li class="home-card">
-            <a class="home-card__link" href={item.href}>
-              <figure class="home-card__media">
-                <img src={item.image} alt={`${item.title}のイメージ`} loading="lazy" />
-              </figure>
-              <div class="home-card__body">
-                <h3 class="home-card__title">{item.title}</h3>
-                <p class="home-card__desc">{item.description}</p>
-                {(item.tags?.length ?? 0) > 0 && (
-                  <div class="home-tags">
-                    {item.tags.map((tag) => (
-                      <span class="home-tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
       <CzzShowcase />
     </div>
   </section>
@@ -124,7 +101,7 @@ const daysRunning = (() => {
       </div>
       <ul class="home-grid">
         {posts.map((post) => (
-          <li class="home-card">
+          <li class="home-card" data-reveal>
             <a class="home-card__link" href={`/posts/${post.slug}/`}>
               <div class="home-card__body">
                 <div class="home-date">{toYmd(post.data.pubDate)}</div>

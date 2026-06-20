@@ -36,6 +36,8 @@ const {
       (function () {
         var saved = localStorage.getItem('theme');
         document.documentElement.dataset.mode = saved ?? 'unix';
+        // JS有効時のみスクロール表示アニメの初期状態を適用（描画前に付与）
+        document.documentElement.classList.add('js-anim');
       })();
     </script>
 
@@ -87,5 +89,49 @@ const {
     </main>
 
     {showFooter && <Footer />}
+
+    <!-- スクロールで [data-reveal] 要素をふわっと表示（全ページ共通） -->
+    <script is:inline>
+      (function () {
+        var els = Array.prototype.slice.call(
+          document.querySelectorAll('[data-reveal]')
+        );
+        if (!els.length) return;
+
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) {
+          els.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        // 同じ親に並ぶカードは少しずつ遅延させてスタッガー表示にする
+        var counts = new Map();
+        els.forEach(function (el) {
+          var parent = el.parentElement;
+          var n = counts.get(parent) || 0;
+          if (!el.style.getPropertyValue('--reveal-delay')) {
+            el.style.setProperty('--reveal-delay', Math.min(n, 6) * 80 + 'ms');
+          }
+          counts.set(parent, n + 1);
+        });
+
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        els.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

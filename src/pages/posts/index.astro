@@ -89,6 +89,7 @@ const tags = [...tagCount.entries()]
         <li
           class="post-card rounded-2xl border p-5 hover:shadow-sm transition"
           data-tags={(post.data.tags ?? []).map(normalize).join(",")}
+          data-reveal
         >
           <a class="block" href={`/posts/${post.slug}/`}>
             <div class="text-sm opacity-70">{toYmd(post.data.pubDate)}</div>
