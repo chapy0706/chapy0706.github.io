@@ -10,10 +10,8 @@ export const SITE = {
 export const NAVIGATION = [
   { name: 'TOP', href: '/' },
   { name: 'ブログ', href: '/posts' },
-  { name: 'Use Cases', href: '/use-cases' },
-  { name: 'Facilities', href: '/facilities' },
-  { name: 'Request Quote', href: '/rfq' },
-  { name: 'Documentation', href: '/documentation' },
+  { name: 'ポートフォリオ', href: '/portfolio' },
+  { name: '自己紹介', href: '/about' },
 ] as const;
 
 export const SOCIAL_LINKS = {
