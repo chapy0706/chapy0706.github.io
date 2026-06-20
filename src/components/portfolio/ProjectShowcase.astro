@@ -1,0 +1,466 @@
+---
+import type { Project } from '@config/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { slug, name, tagline, status, description, screenshots, structure, techStack, highlights, links } =
+  project;
+
+const detailGroups = [
+  { label: '構成', items: structure },
+  { label: '技術', items: techStack },
+  { label: '見どころ', items: highlights },
+];
+---
+
+<article class="showcase" id={slug} data-reveal aria-labelledby={`${slug}-title`}>
+  <div class="showcase__top">
+    <!-- スクリーンショットギャラリー -->
+    <div class="showcase__gallery-col">
+      <div class="showcase__gallery" data-gallery>
+        <div class="showcase__viewport" data-gallery-track>
+          {screenshots.map((shot, i) => (
+            <figure class="showcase__slide" id={`${slug}-shot-${i}`} data-gallery-slide data-index={i}>
+              <div class="showcase__device">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={shot.width}
+                  height={shot.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>{shot.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        {screenshots.length > 1 && (
+          <>
+            <button type="button" class="showcase__arrow showcase__arrow--prev" data-gallery-prev aria-label="前の画面">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button type="button" class="showcase__arrow showcase__arrow--next" data-gallery-next aria-label="次の画面">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+            <nav class="showcase__dots" aria-label={`${name} のスクリーンショット切り替え`}>
+              {screenshots.map((shot, i) => (
+                <a
+                  href={`#${slug}-shot-${i}`}
+                  class="showcase__dot"
+                  data-gallery-dot
+                  data-index={i}
+                  aria-label={`${shot.caption}へ移動`}
+                ></a>
+              ))}
+            </nav>
+          </>
+        )}
+      </div>
+    </div>
+
+    <!-- 概要 -->
+    <div class="showcase__intro">
+      <div class="showcase__eyebrow">
+        <span>Project</span>
+        {status && <span class="showcase__status">{status}</span>}
+      </div>
+      <h3 id={`${slug}-title`} class="showcase__name">{name}</h3>
+      <p class="showcase__tagline">{tagline}</p>
+      <p class="showcase__desc">{description}</p>
+
+      <div class="showcase__links">
+        {links.map((link) =>
+          link.href ? (
+            <a class="showcase__link" href={link.href} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          ) : (
+            <span class="showcase__link showcase__link--tbd">{link.label}（準備中）</span>
+          )
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- 詳細（構成 / 技術 / 見どころ） -->
+  <div class="showcase__details">
+    {detailGroups.map((group, gi) => (
+      <div class="showcase__detail" style={`--reveal-delay:${gi * 90}ms`}>
+        <p class="showcase__detail-label">{group.label}</p>
+        <ul class="showcase__list">
+          {group.items.map((item) => (
+            <li class="showcase__list-item">
+              <span class="showcase__bullet"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</article>
+
+<style>
+  .showcase {
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: color-mix(in oklab, var(--panel), transparent 10%);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  }
+  .showcase.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .showcase:hover {
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
+  }
+
+  .showcase__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: center;
+  }
+
+  /* ===== ギャラリー ===== */
+  .showcase__gallery {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .showcase__viewport {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .showcase__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .showcase__slide {
+    margin: 0;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+
+  /* 縦長スクショが崩れないよう端末フレームでアスペクト比を固定 */
+  .showcase__device {
+    aspect-ratio: 386 / 836;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--bg), transparent 5%);
+    box-shadow: var(--shadow);
+  }
+  .showcase__device img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+  .showcase__slide:hover .showcase__device img {
+    transform: scale(1.03);
+  }
+
+  .showcase__slide figcaption {
+    margin-top: 0.6rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .showcase__arrow {
+    position: absolute;
+    top: calc(50% - 1.2rem);
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background: color-mix(in oklab, var(--panel), transparent 5%);
+    color: var(--text);
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .showcase__arrow:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .showcase__arrow--prev { left: -10px; }
+  .showcase__arrow--next { right: -10px; }
+
+  .showcase__dots {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .showcase__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--text), transparent 70%);
+    border: 1px solid var(--line);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .showcase__dot.is-active {
+    background: var(--accent, #38bdf8);
+    transform: scale(1.25);
+  }
+
+  /* ===== 概要 ===== */
+  .showcase__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .showcase__status {
+    letter-spacing: 0.05em;
+    text-transform: none;
+    font-size: 0.72rem;
+    padding: 0.18rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in oklab, var(--accent, #38bdf8), transparent 55%);
+    color: color-mix(in oklab, var(--accent, #38bdf8), var(--text) 25%);
+    background: color-mix(in oklab, var(--accent, #38bdf8), transparent 88%);
+  }
+
+  .showcase__name {
+    margin: 0.6rem 0 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .showcase__tagline {
+    margin: 0.4rem 0 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--text), transparent 15%);
+  }
+  .showcase__desc {
+    margin: 0.9rem 0 0;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .showcase__links {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .showcase__link {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background: color-mix(in oklab, var(--panel), transparent 20%);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .showcase__link:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--text), transparent 55%);
+    background: color-mix(in oklab, var(--panel), transparent 5%);
+    text-decoration: none;
+  }
+  .showcase__link--tbd {
+    border-style: dashed;
+    color: var(--text-muted);
+    cursor: default;
+  }
+  .showcase__link--tbd:hover {
+    transform: none;
+    border-color: var(--line);
+    background: color-mix(in oklab, var(--panel), transparent 20%);
+  }
+
+  /* ===== 詳細 ===== */
+  .showcase__details {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .showcase__detail {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .showcase.is-visible .showcase__detail {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .showcase__detail-label {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .showcase__list {
+    margin: 0.85rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .showcase__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  .showcase__bullet {
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--accent, #38bdf8), transparent 30%);
+  }
+
+  /* ===== レスポンシブ ===== */
+  @media (min-width: 768px) {
+    .showcase {
+      padding: 2.25rem;
+    }
+    .showcase__top {
+      grid-template-columns: minmax(240px, 300px) 1fr;
+      gap: 2.5rem;
+    }
+    .showcase__gallery {
+      margin: 0;
+    }
+  }
+  @media (min-width: 1024px) {
+    .showcase__details {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showcase,
+    .showcase__detail,
+    .showcase__device img,
+    .showcase__link,
+    .showcase__arrow {
+      transition: none;
+    }
+    .showcase {
+      opacity: 1;
+      transform: none;
+    }
+    .showcase__viewport {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+<script>
+  // 複数の ProjectShowcase をまとめて制御（このモジュールは一度だけバンドルされる）
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // スクロールで各カードをフェードイン
+  const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  if (revealEls.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  }
+
+  // ギャラリー（ドット同期・矢印ナビ）
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+    const track = gallery.querySelector<HTMLElement>('[data-gallery-track]');
+    const slides = Array.from(gallery.querySelectorAll<HTMLElement>('[data-gallery-slide]'));
+    const dots = Array.from(gallery.querySelectorAll<HTMLAnchorElement>('[data-gallery-dot]'));
+    if (!track || slides.length <= 1) return;
+
+    let current = 0;
+    const setActive = (index: number) => {
+      current = index;
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+    };
+    setActive(0);
+
+    // 表示中スライドを検出してドットを同期
+    const slideIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number((entry.target as HTMLElement).dataset.index ?? 0);
+            setActive(idx);
+          }
+        });
+      },
+      { root: track, threshold: 0.6 }
+    );
+    slides.forEach((slide) => slideIo.observe(slide));
+
+    const goTo = (index: number) => {
+      const clamped = (index + slides.length) % slides.length;
+      slides[clamped].scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    };
+
+    gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => goTo(current - 1));
+    gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) =>
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        goTo(i);
+      })
+    );
+  });
+</script>

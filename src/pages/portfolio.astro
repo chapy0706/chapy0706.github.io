@@ -1,121 +1,12 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Section from '@components/ui/Section.astro';
-import Button from '@components/ui/Button.astro';
-import TestimonialCard from '@components/ui/TestimonialCard.astro';
-import UseCaseTabs from '@components/react/UseCaseTabs';
-import StatsCards from '@components/react/StatsCards';
-import ProjectGrid from '@components/projects/ProjectGrid.astro';
-import CzzShowcase from '@components/portfolio/CzzShowcase.astro';
+import ProjectShowcase from '@components/portfolio/ProjectShowcase.astro';
 import { projects } from '@config/projects';
 import { Image } from 'astro:assets';
 
 import skillMapImg from '@assets/skill-map.svg';
 
-const useCases:any[] = [
-  {
-    industry: '指示厨(czz)アプリ',
-    iconName: 'Laptop',
-    image: { src: '/images/czz/TOP.png' },
-    challenge: 'Linux コマンドをゲーム感覚で学べるアプリ。課題に対してコマンド列を組み立て、実行結果とテストケースで即フィードバックを受ける。',
-    solution: 'Next.js (App Router) + TypeScript + Drizzle ORM で構築。簡易 DDD / ミニ TDD を軸に monorepo で分離。',
-    results: [
-      'LPIC-1 合格率向上を目標に開発中',
-      '課題 DSL でステージを柔軟に追加可能',
-      'Vitest + Playwright でユニット/E2E を整備',
-      'AI 駆動開発（Claude Code / Codex）でフル実装'
-    ]
-  },
-  {
-    industry: 'To Be Continued...',
-    iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: 'Maintaining strict temperature controls, regulatory compliance, and chain of custody for sensitive medical products and pharmaceuticals.',
-    solution: 'FDA-compliant climate-controlled facilities with validated cold chain logistics, real-time monitoring, and full audit trails.',
-    results: [
-      '100% regulatory compliance',
-      'Zero temperature excursions',
-      'Complete lot traceability',
-      'Reduced waste by 30%'
-    ]
-  },
-  {
-    industry: 'To Be Continued...',
-    iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: 'Coordinating just-in-time delivery of components across multiple manufacturing plants while minimizing inventory holding costs.',
-    solution: 'Strategic distribution centers near production facilities, milk-run logistics, and predictive inventory management.',
-    results: [
-      '50% reduction in inventory costs',
-      '99.8% on-time delivery',
-      'Zero production line stoppages',
-      'Improved cash flow'
-    ]
-  },
-  {
-    industry: 'To Be Continued...',
-    iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: 'Secure handling of high-value electronics, efficient reverse logistics for returns, and rapid product lifecycle management.',
-    solution: 'ESD-protected environments, secure chain of custody, streamlined returns processing, and asset recovery programs.',
-    results: [
-      'Zero security incidents',
-      '48-hour return processing',
-      '85% asset recovery rate',
-      'Reduced shrinkage by 60%'
-    ]
-  },
-  {
-    industry: 'To Be Continued...',
-    iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: 'Managing diverse product portfolios with varying shelf lives, promotional campaigns, and seasonal demand fluctuations.',
-    solution: 'Multi-client warehousing, FEFO inventory management, promotional labeling services, and demand-driven distribution.',
-    results: [
-      '35% improvement in stock turnover',
-      'Reduced spoilage by 45%',
-      '3-day promo turnaround time',
-      'Flexible capacity scaling'
-    ]
-  },
-  {
-    industry: 'To Be Continued...',
-    iconName: 'Laptop',
-    image: skillMapImg,
-    challenge: 'Maintaining food safety standards, managing perishables, and ensuring compliance with HACCP and FDA regulations.',
-    solution: 'FSMA-compliant facilities, temperature-zoned warehousing, lot tracking, and specialized refrigerated transport.',
-    results: [
-      '100% food safety compliance',
-      '2% product loss rate',
-      'Full batch recall capability',
-      'Extended product freshness'
-    ]
-  }
-];
-
-const testimonials:any[] = [
-  {
-    quote: "AstroFlow's automated warehousing solution transformed our e-commerce operations. We reduced order processing time by 40% and achieved 99.5% accuracy. Their same-day shipping capabilities helped us compete with industry giants.",
-    name: "Sarah Mitchell",
-    role: "VP Operations, TechRetail",
-    image: skillMapImg,
-    ringColor: "ring-blue-200"
-  },
-  {
-    quote: "Their FDA-compliant cold chain logistics are exceptional. We've maintained 100% regulatory compliance with zero temperature excursions. The real-time monitoring and complete audit trails give us complete confidence.",
-    name: "Dr. James Chen",
-    role: "Director, PharmaLogistics",
-    image: skillMapImg,
-    ringColor: "ring-teal-200"
-  },
-  {
-    quote: "Just-in-time delivery with 99.8% on-time performance and zero production stoppages. Their strategic distribution centers and predictive inventory management cut our inventory costs by 50%.",
-    name: "Robert Johnson",
-    role: "Operations Manager, AutoParts Co.",
-    image: skillMapImg,
-    ringColor: "ring-blue-200"
-  }
-];
 ---
 
 <BaseLayout title="ポートフォリオ - ちゃぴぃのまったりダイアリー">
@@ -168,22 +59,16 @@ const testimonials:any[] = [
         最近の <span class="gradient-text">制作物一覧</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto" style="color:var(--text-muted);">
-        既存の構成を保ちながら、制作物をデータ駆動で追加できるように整理しています。
+        実際の画面と一緒に、どんなアプリか・構成や技術・見どころをまとめています。
       </p>
     </div>
 
-    <ProjectGrid projects={projects} />
+    <div class="flex flex-col gap-12">
+      {projects.map((project) => (
+        <ProjectShowcase project={project} />
+      ))}
+    </div>
   </Section>
-
-  <Section background="gray" id="czz-showcase" class="bg-transparent">
-    <CzzShowcase />
-  </Section>
-
-  <!-- Use Cases with Tabs -->
-  <Section background="gray" class="bg-transparent">
-    <UseCaseTabs useCases={useCases} client:load />
-  </Section>
-
 
   <!-- CTA Section -->
   <section class="relative py-32 overflow-hidden">
