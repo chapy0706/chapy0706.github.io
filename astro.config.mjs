@@ -3,6 +3,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import { unified } from '@astrojs/markdown-remark';
 import remarkAlerts from 'remark-alerts';
 
 // https://astro.build/config
@@ -13,7 +14,9 @@ export default defineConfig({
   },
   integrations: [react()],
   markdown: {
-    remarkPlugins: [remarkAlerts],
+    processor: unified({
+      remarkPlugins: [remarkAlerts],
+    }),
   },
   vite: {
     plugins: [tailwindcss()]

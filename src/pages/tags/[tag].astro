@@ -44,7 +44,7 @@ const posts = (await getCollection("posts"))
     <ul class="grid gap-4 md:grid-cols-2">
       {posts.map((post) => (
         <li class="rounded-2xl border p-5 hover:shadow-sm transition" data-reveal>
-          <a class="block" href={`/posts/${post.slug}/`}>
+          <a class="block" href={`/posts/${post.id}/`}>
             <div class="text-sm opacity-70">{toYmd(post.data.pubDate)}</div>
             <div class="mt-1 text-xl font-semibold">{post.data.title}</div>
             {post.data.description && (

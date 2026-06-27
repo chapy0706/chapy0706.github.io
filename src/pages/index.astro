@@ -102,7 +102,7 @@ const daysRunning = (() => {
       <ul class="home-grid">
         {posts.map((post) => (
           <li class="home-card" data-reveal>
-            <a class="home-card__link" href={`/posts/${post.slug}/`}>
+            <a class="home-card__link" href={`/posts/${post.id}/`}>
               <div class="home-card__body">
                 <div class="home-date">{toYmd(post.data.pubDate)}</div>
                 <h3 class="home-card__title">{post.data.title}</h3>

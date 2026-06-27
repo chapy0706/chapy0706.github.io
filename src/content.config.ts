@@ -1,5 +1,6 @@
-// src/content/config.ts
+// src/content.config.ts
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const normalizeTags = z
   .array(z.string())
@@ -11,7 +12,7 @@ const normalizeTags = z
   );
 
 const posts = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -24,22 +25,7 @@ const posts = defineCollection({
   }),
 });
 
-const bookSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  authors: z.array(z.string()).default([]),
-  category: z.string(),
-  tags: z.array(z.string()).default([]),
-  year: z.number().int().optional(),
-  isbn: z.string().optional(),
-  url: z.string().url().optional(),
-  notes: z.string().optional(),
-});
+// books（蔵書一覧）の表示仕様は廃止。コレクション定義とページを削除した。
+// データ自体は src/content/books/library.json に残置。
 
-// library.json が Book[] なので、ここは配列スキーマにする
-const books = defineCollection({
-  type: 'data',
-  schema: z.array(bookSchema),
-});
-
-export const collections = { posts, books };
+export const collections = { posts };

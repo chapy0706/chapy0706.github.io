@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/BaseLayout.astro";
 
 type Props = {
@@ -12,13 +12,13 @@ const normalize = (t: string) => t.trim().toLowerCase();
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props as Props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const tags = (post.data.tags ?? []).map(normalize).filter(Boolean);
 ---
